@@ -1,0 +1,199 @@
+select:invalid { 
+    color: gray;
+}
+
+
+.titulo-indicativo {
+    padding: 2px;
+}
+
+h2 {
+    color: red;
+    font: 18px Montserrat;
+    margin: 0px 0px 8px;
+}
+
+h3 {
+    color: #13386D;
+    font: 24px Montserrat, sans-serif;
+    margin: 0px 0px 8px;
+    padding: 0px 0px 4px;
+}
+
+.title-form {
+    padding: 10px 0px 0px 0px;
+    margin: 0px 0px -45px 0px;
+}
+
+.txt-form{
+    padding: 2px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
+}
+
+.form-control {
+    padding: 0px 0px 5px 7px;
+}
+
+.title-form {
+    padding: 10px 0px 0px 0px;
+    margin: 0;
+}
+
+.subtitle-form {
+    padding: 15px 0px 0px 22px;
+    margin: 0px 0px 4px -10px;
+    font-size: 18px;
+}
+
+.txt-obliga {
+    font-size: 14px;
+    color: var(--color-base-txt);
+    margin: 0;
+    padding: 0px 0px 0px 12px;
+}
+
+.button-tac {
+    width: 128px;
+    color: var(--color-base-white);
+    background-color: var(--color-base-blue);
+    padding: 0px 0px 0px 0px;
+    margin: 20px 0px 20px 15px;
+}
+
+.btn-middle {
+    cursor: pointer;
+    font-size: 15px;
+    margin: 0;
+    width: 100%;
+    padding: 11px 0px 11px 0px;
+    color: #3366CC;
+    border: 2px solid #3366CC;
+    background-color: white;
+    border-radius: 30px;
+    
+}
+
+.form-juridica {
+    visibility: hidden;
+}
+
+.upload-file {
+    /*
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity = 0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+    */
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    padding: 38px;
+    box-sizing: border-box;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+  }
+
+.button-carga {
+  background-color: #fff;
+  color: #3366CC;
+  border: 2px solid #3366CC;
+  border-radius: 30px;
+  font: normal 600 12px/2.5 Work Sans, sans-serif;
+  margin: 5px 0px 5px 0px;
+  padding: 10px 20px 10px 20px;
+  text-transform: uppercase;
+  white-space: pre-line;
+  width: 20%;
+}
+  
+.button-carga:hover {
+    background-color: var(--titulo-subtitulo);
+    color: #FFF;
+}
+
+.button-carga-principal {
+    background-color: #3366CC;
+    color: #FFFF;
+    border: 2px solid #3366CC;
+    border-radius: 30px;
+    font: normal 600 12px/2.5 Work Sans, sans-serif;
+    margin: 5px 0px 5px 0px;
+    padding: 10px 20px 10px 20px;
+    text-transform: uppercase;
+    white-space: pre-line;
+    width: 20%;
+}
+
+.button-carga-principal:hover {
+    background-color: var(--titulo-subtitulo);
+    border: 2px solid var(--titulo-subtitulo);
+}
+
+.bold-blue {
+	font-weight: bold;
+	color: #0277BD;
+}
+
+/* Estilos tabla */
+
+.tabla {
+    border: #bababa98 solid 2px;
+    border-radius: 10px;
+    background-color: #ffff;
+  }
+  
+table,
+th,
+td {
+    border-collapse:collapse;
+    color: #4B4B4B;
+    margin: 0;
+    padding: 15px 0px 5px 16px;   
+    text-align: left;
+    font: normal 200 12px/10px Work Sans;
+    text-transform: uppercase;
+}
+  
+  .titulo-tableta {
+    background-color: #E6EFFD;
+    border-spacing: 10px;
+    color: #004884;
+    font: normal bold 12px/10px Montserrat;
+    margin: 0;
+    padding: 18px;
+    text-align: left;
+    text-transform: none;
+  }
+  
+  .titulo-tabla {
+    font: normal 600 14px/10px Work Sans;
+    color: #004884;
+    padding: 0;
+    margin: 15px;
+  }
+

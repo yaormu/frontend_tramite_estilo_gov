@@ -1,0 +1,36 @@
+.header {
+    max-width: 100%;
+    max-height: 148px;
+    background: var(--color-base-white);
+    opacity: 1;
+    margin: 0px 0px 30px 0px;
+    padding: 20px 0px 0px 0px;
+  }
+
+.img-crc {
+    height: 100px;
+    width: 200px;
+    vertical-align: middle;
+}  
+  
+  .header-puntogov{
+    background: var(--color-base-blue);
+    font-size: 0.75rem;
+    padding: 0;
+    flex-flow: column;
+    z-index: 9;
+  }
+  
+  .header-logogov {
+    margin: 2px 0px 0px 80px;
+    width: 135px;
+    height: 27px;
+  }
+  
+  .header-logocrc {
+    margin: 8px 0px 0px 80px;
+    width: 175px;
+    height: 75px;
+    background: transparent 0% 0% no-repeat padding-box;
+    opacity: 1;
+  }

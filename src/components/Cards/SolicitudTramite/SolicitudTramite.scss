@@ -1,0 +1,44 @@
+a {
+    text-decoration: none;
+}
+
+.tarjeta-acciones {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #0049843a;
+    border-radius: 12px;
+    
+    
+    .head-acciones:hover {
+        background: #00498413;
+
+        a {
+            text-decoration: none;
+        }
+
+        p {
+            text-align: right;
+        }
+
+    }
+
+    .head-acciones {
+        padding-top: 23px;
+        padding-bottom: 20px;
+        text-align: center;
+        cursor: pointer;
+        border-bottom: 4px solid #004884;
+        border-top-left-radius: 8 px;
+        border-top-right-radius: 8px;
+    }
+
+    .body-acciones {
+        padding: 25px 31px 20px;
+
+        p {
+            text-align: justify;
+        }
+    }
+    
+    
+}

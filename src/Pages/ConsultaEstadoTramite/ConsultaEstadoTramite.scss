@@ -1,0 +1,135 @@
+.ConsultaTramite {
+    background-color: black;
+    color: wheat;
+}
+
+.txt-form {
+    width: 115%;
+    height: 10%;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 150px 10px 150px;
+}
+
+.form-radicado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 50%;
+}
+
+.form-control {
+    display: flex;
+    width: 50%;
+    margin: 0px 255px 50px 280px;
+    text-align: center;
+}
+
+.title-form-radicado {
+    margin: 30px 0px 0px 0px;
+    text-align: center;
+}
+
+.captcha-consulta-tramite {
+    margin: 30px 200px 0px 200px;
+}
+
+.btn-consulta-radicado {
+    background-color: #3366CC;
+    border: 1.5px solid;
+    border-color: #3366CC;
+    border-radius: 30px;
+    color: #ffff;
+    font: normal 800 15px/25px 'Work Sans', sans-serif;
+    height: 100%;
+    margin: 30px 250px 0px 250px;
+    line-height: 1.5;
+    padding: 12px 50px 12px 60px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    white-space: pre-line;
+}
+
+.btn-consulta-radicado:hover {
+    background-color: #13386d;
+    border: 1.5px solid;
+    border-color: #13386d;
+}
+
+
+
+/* Estilo formulario */
+
+.contenedor {
+	margin: 40px auto;
+	max-width: 500px;
+}
+
+.contenedor h1 {
+	font-size: 36px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.formulario {
+	padding: 20px;
+	border-radius: 5px;
+	background: #fff;
+	box-shadow:0 42px 80px rgba(0, 0, 0, 0.07);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.formulario input {
+	width: 100%;
+	padding: 20px;
+	margin-bottom: 20px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	border: 1px solid rgba(0,0,0,.2);
+	outline: none;
+	border-radius: 3px;
+	transition: .3s ease all;
+}
+
+.formulario input:focus {
+	border: 1px solid #4d77ff;
+}
+
+
+
+.formulario button {
+	font-family: 'Roboto', sans-serif;
+	background: #4d77ff;
+	border-radius: 3px;
+	padding: 15px 30px;
+	border: none;
+	cursor: pointer;
+	display: inline-block;
+	color: #fff;
+	font-size: 16px;
+	transition: .3s ease all;
+	outline: none;
+}
+
+.formulario button:hover {
+	background: #1f45c4;
+}
+
+.error-captcha {
+	color: red;
+	margin-bottom: 20px;
+}
+
+
+.recaptcha {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0px 0px 30px 0px;
+  }
+  
+  

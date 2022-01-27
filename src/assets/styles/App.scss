@@ -1,0 +1,95 @@
+//node_modules/bootstrap/scss/bootstrap
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-base-white: #ffffff;
+  --color-white-two: #F6F8F9;
+  --color-base-blue: #13386d;
+  --color-blue-three: #2b92e713;
+  --color-base-txt: #4B4B4B;
+  --color-black-two: #BABABA24;
+  --color-barra: #bababa98;
+  --color-base-rojo-crc: #dc3545;
+  --color-base-errores: #A80521;
+  --color-hoover: #00498413;
+  /*color texto*/
+  --titulo-subtitulo: #004884;
+  --text-secundario: var(--color-base-blue);
+  --txt-corridos-captions: var(--color-base-txt);
+  /*Grosor letras*/
+  --Bold: bold;
+  --Semibold: bolder;
+  --Medium: lighter;
+  --Regular: normal;
+}
+
+
+$white-one: #FFFFFF;
+$white-two: #E6EFFD; // fondo de dropdowns estado HOVER, campos formulario y delineado de contenedor informativo
+$white-three: #F6F8F9; // fondo separar secciones o menú
+$red-one: #A80521; //texto o campos de error
+$blue-one: #004884; //Color para títulos y subtitulos, utilizan fondo blanco o claro
+$blue-two: #3366CC; //Botones activo, enlace y controno de campo texto, estado seleccionado
+$grey-one: #4B4B4B; // Color para textos corridos, captions, texto campos de texto
+$grey-two: #BABABA; //Botones estado desactivados, delineado contenedores transaccionales (campos de texto y tablas)
+
+//Tipografia 
+//Monserrate - Títulos, subtítulos y encabezados de tablas.
+//Work Sans - Párrafos, captions, botones y campos de texto.
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&family=Work+Sans:wght@100;200;300;400&display=swap');
+
+a {text-decoration: none;}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+  font: normal normal bold 24px/4px Montserrat, sans-serif;
+  color: var(--titulo-subtitulo);
+  line-height: 36px;
+  margin: 0px 0px 8px;
+  padding: 0px 0px 4px;
+}
+
+h4 {
+  font-size: 18px;
+  color: var(--titulo-subtitulo);
+  line-height: 24px;
+}
+
+h5 {
+  font: normal normal bold 16px/24px Montserrat;
+  color: var(--titulo-subtitulo);
+  line-height: 4px;
+}
+
+h6 {
+  font: normal normal bold 16px/24px Montserrat;
+  color: var(--titulo-subtitulo);
+  line-height: 4px;
+}
+
+p, ul, ol, li, a, span, label {
+  font-size: 16px;
+  font-weight: 420;
+  font-family: 'Work Sans', sans-serif;
+  line-height: 1.5;
+  color: #4B4B4B;
+} 
+
+//Diseño formularios
+
+input::placeholder {
+  font-size: 13.5px;
+  font-style: 'Work Sans', sans-serif;
+  color: #BABABA;
+}
+

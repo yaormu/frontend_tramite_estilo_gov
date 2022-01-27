@@ -1,0 +1,68 @@
+i {
+    margin: 0px 8px 0px 2px;
+}
+
+.inicio {
+    color: #004884;
+    font-size: 14px;
+}
+
+
+.barra span {
+    font-size: 12px;
+    color: var(--color-base-txt);
+}
+
+.barra {
+    .estado-1 {
+        border-top: 3px solid var(--color-base-blue);
+        margin: 0px 0px 0px 0px;
+        padding: 10px 0px 0px 0px;   
+    }
+    .estado-2, .estado-3, .estado-4  {
+        border-top: 3px solid var(--color-barra);
+        margin: 0px 0px 0px 0px;
+        padding: 10px 0px 0px 0px;
+    }
+}
+
+.barra {
+    
+    .txt-estado-1 {
+        color: rgba(102, 102, 102, 0.589);
+        margin: 0;
+        padding: 0;
+    }
+    
+    .txt-estado-2 {
+        color: var(--titulo-subtitulo);
+        font-weight: 900;
+    }
+    
+    .uno {
+        background-color: rgba(102, 102, 102, 0.589);
+        color: var(--color-base-white);
+        border: 1px solid rgba(102, 102, 102, 0.589);
+    }
+
+    .dos {
+        background-color: var(--color-base-blue);
+        color: var(--color-base-white);
+        border: 1px solid var(--color-base-blue);
+    }
+}
+
+.barra i {
+    font-family: "Montserrat", sans-serif;
+    border-radius: 50%;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 12px;
+    background: #fff;
+    border: 1px solid #4B4B4B;
+    color: #666;
+    font-style: normal;
+    text-align: left;   
+}

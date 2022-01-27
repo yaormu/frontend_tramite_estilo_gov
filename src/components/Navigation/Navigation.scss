@@ -1,0 +1,14 @@
+.navigation {
+    --bs-breadcrumb-divider: '>';
+    font-size: 14px;
+    margin: 0;
+    padding: 2px 0px 15px 0px;
+}
+
+
+
+.breadcrumb-item.active {
+    color: #004884;
+    font-size: 14px;
+    font-weight: bold;
+}
