@@ -9,8 +9,6 @@ import ConsultaTramite from "../../components/Cards/ConsultaTramite/ConsultaTram
 import BotonTutoriales from "../../components/Botones/BotonTutoriales/BotonTutoriales"
 import BotonDeDudas from "../../components/Botones/BotonDeDudas/BotonDeDudas";
 
-import styled from "styled-components";
-
 import "./Section.scss";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import SelectsAnidados from "../../components/SelectsAnidados";
@@ -169,11 +167,4 @@ const Section = () => {
 
 export default Section;
 
-const ContenedorBotones = styled.div`
-  padding: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-`;
 
