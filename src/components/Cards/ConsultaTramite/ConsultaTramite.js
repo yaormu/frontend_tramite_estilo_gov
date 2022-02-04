@@ -9,7 +9,7 @@ export default function ConsultaTramite() {
         <div className="head-acciones titulo-acciones">
           <Link to="/ConsultaEstadoTramite" className="irTramite">
             <h6 className="titulo-card">
-              Consulta el Estado de tu Trámite
+              Consulta el Estado de tu Solicitud
             </h6>
           </Link>          
         </div>

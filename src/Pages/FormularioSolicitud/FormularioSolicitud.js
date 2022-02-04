@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-//import { Link } from "react-router-dom";
+import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import FooterGov from "../../components/FooterGov/FooterGov";
 import Header from "../../components/Header/Header";
@@ -11,6 +11,12 @@ import BotonTutoriales from "../../components/Botones/BotonTutoriales/BotonTutor
 import BotonDeDudas from "../../components/Botones/BotonDeDudas/BotonDeDudas";
 
 import CalificacionExperiencia from "../../components/Cards/CalificacionExperiencia/CalificacionExperiencia";
+
+
+
+import ReCAPTCHA from "react-google-recaptcha";
+import styled from "styled-components";
+import Modal from "../../components/Modal/Modal"
 
 import {
   Formulario,
@@ -55,6 +61,13 @@ const FormularioSolicitud = () => {
   const [fabricante, cambiarFabricante] = useState({ campo: "", valido: null });
   const [formularioValido, cambiarFormularioValido] = useState(null);
 
+  const [estadoModal, cambiarEstadoModal] = useState(false);
+
+  const [captchaValido, cambiarCaptchaValido] = useState(null);
+  const [usuarioValido, cambiarUsuarioValido] = useState(false);
+
+  const captcha = useRef(null);
+
   const expresiones = {
     usuario: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -82,8 +95,27 @@ const FormularioSolicitud = () => {
     cambiarTerminos(e.target.checked);
   };
 
+
+  const onChange = () => {
+    if (captcha.current.getValue()) {
+      console.log("El usuario no es un robot");
+      cambiarCaptchaValido(true);
+    }
+  };
+
+  
+
   const onSubmit = (e) => {
     e.preventDefault();
+
+    //Colocar aquí la validación de los inputs del formulario. Si son correctos ya podemos enviar el formulario, actualizar la interfaz etc
+    if (captcha.current.getValue()) {
+      console.log("El usuario no es un robot");
+      cambiarCaptchaValido(true);
+    } else {
+      console.log("Por favor acepta el captcha");
+      cambiarCaptchaValido(false);
+    }
 
     if (
       identificacion.valido === "true" &&
@@ -544,7 +576,7 @@ const FormularioSolicitud = () => {
               </MensajeError>
             )}
             <ContenedorBotonCentrado>
-              <Boton id="envio" type="submit">
+              <Boton id="envio" type="submit" onClick={() => cambiarEstadoModal(!estadoModal)}>
                 ENVIAR
               </Boton>
               {formularioValido === true && (
@@ -578,8 +610,146 @@ const FormularioSolicitud = () => {
       </div>
       <Footer />
       <FooterGov />
+
+      {/* MODAL DE ACEPTAR FORMULARIO */}
+      <Modal
+            estado={estadoModal}
+            cambiarEstado={cambiarEstadoModal}
+            titulo=""
+            mostrarHeader={true}
+            mostrarOverlay={true}
+            posicionModal={"start"}
+            padding={"20px"}
+          >
+            {!usuarioValido && (
+              <Contenido>
+                <form>
+                <h1>
+                  Términos y condiciones de uso del Sistema de Homologación de
+                  equipos terminales
+                </h1>
+                <h6>
+                  <strong>1. Del Servicio</strong>
+                  
+                  Por lo anterior, para homologar un equipo terminal móvil en
+                  Colombia, se debe realizar OBLIGATORIAMENTE la solicitud en
+                  línea a través del formulario establecido para el efecto en el
+                  portal web (www.tramitescrcom.gov.co), en el cual se deberá
+                  suministrar la información requerida en
+                  (http://bit.ly/homologarcelular). Allí podrá encontrar una
+                  guía del paso a paso en videos para realizar este trámite.
+                </h6>
+                <br />
+
+                <ContenedorBotonCentrado className="recaptcha">
+                  <ReCAPTCHA
+                    ref={captcha}
+                    sitekey="6Lc9VDIeAAAAAHHQA1wEjx1FKlTy9uWIrZKGwwvN"
+                    onChange={onChange}
+                  />
+                </ContenedorBotonCentrado>
+                
+                {captchaValido === false && <div className="error-captcha">Por favor acepta el captcha</div>}
+                <ContenedorBotones>
+                  <Boton type="submit">
+                    <Link to="/SolicitudHomologacion" className="irTramite">
+                      ACEPTAR
+                    </Link>
+                  </Boton>
+                  <br />
+                  <Boton2 onClick={() => cambiarEstadoModal(!estadoModal)}>
+                    RECHARZAR
+                  </Boton2>
+                </ContenedorBotones>
+                </form>
+              </Contenido>
+            )}
+            {
+              usuarioValido &&
+              <div>
+                <h1>Bienvenido</h1>
+              </div>
+            }
+          </Modal>
     </>
   );
 };
 
 export default FormularioSolicitud;
+/*
+const Boton = styled.button`
+  border-radius: 20px;
+  border_radius: 100px;
+  border: none;
+  background: #1766dc;
+  cursor: pointer;
+  display: block;
+  font: normal bold 15px/5px "Works Sans", sans-serif;
+  padding: 10px 30px;
+  transition: 0.3s ease all;
+
+  a {
+    color: #ffff;
+  }
+
+  &:hover {
+    background: #004884;
+  }
+`;
+*/
+const Boton2 = styled.button`
+  border-radius: 20px;
+  border: 2px solid #3366cc;
+  background: #ffff;
+  color: #3366cc;
+  cursor: pointer;
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  padding: 10px 30px;
+  transition: 0.3s ease all;
+
+  &:hover {
+    background: #0066ff;
+    color: #ffff;
+  }
+`;
+
+const Contenido = styled.div`
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+
+  h1 {
+    color: #13386d;
+    font: normal 600 18px/10px "Montserrat", sans-serif;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  h6 {
+    color: #4b4b4b;
+    font: normal normal 1rem/10px "Works Sans", sans-serif;
+    margin: 0;
+    text-align: left;
+    line-height: 1.5;
+  }
+
+  a {
+    font: normal normal 1rem/10px "Works Sans", sans-serif;
+  }
+`;
+
+const ContenedorBotones = styled.div`
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+`;
