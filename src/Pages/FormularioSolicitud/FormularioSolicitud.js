@@ -15,11 +15,14 @@ import BotonInicio from "../../components/Botones/BotonInicio/BotonInicio";
 import Footer from "../../components/Footer/Footer";
 import FooterGov from "../../components/FooterGov/FooterGov";
 // Modal a mostra antes de enviar información formulario
-import Modal from "../../components/Modal/Modal"
+import Modal from "../../components/Modal/Modal";
 
 // Importación iconos para mostrar en mensajes de error o exito
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faExclamationTriangle, faCheckCircle} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faExclamationTriangle,
+  faCheckCircle,
+} from "@fortawesome/free-solid-svg-icons";
 
 // Libreria para el uso de recaptcha
 import ReCAPTCHA from "react-google-recaptcha";
@@ -27,32 +30,57 @@ import ReCAPTCHA from "react-google-recaptcha";
 // Libreria syled que nos permite crear componentes con diseños, despues la linea exportar se encuentran
 import styled from "styled-components";
 // Importación elementos html de componente con estilos predefinidos styled
-import {Formulario, Label, Select, Boton, ContenedorTerminos, ContenedorBotonCentrado, LeyendaError, MensajeExito, MensajeError} from "./elementos/Formularios";
+import {
+  Formulario,
+  Label,
+  Select,
+  Boton,
+  ContenedorTerminos,
+  ContenedorBotonCentrado,
+  LeyendaError,
+  MensajeExito,
+  MensajeError,
+} from "./elementos/Formularios";
 // Import componente styled con diseño predeterminado
 import ComponenteInput from "./componentes/ComponenteInput";
-
-
+import ComponenteInputDisabled from "./componentes/ComponenteInputDisabled";
 
 const FormularioSolicitud = () => {
   // Validar estado de los campos
   const [persona, cambiarPersona] = useState({ campo: "", valido: null });
   const [tipoId, cambiarTipoId] = useState({ campo: "", valido: null });
-  const [identificacion, cambiarIdentificacion] = useState({campo:"",valido: null});
-  const [identificacion2, cambiarIdentificacion2] = useState({campo:"", valido:null});
+  const [nit2, cambiarNit2] = useState({ campo: "", valido: null });
+  const [identificacion, cambiarIdentificacion] = useState({
+    campo: "",
+    valido: null,
+  });
+  const [identificacion2, cambiarIdentificacion2] = useState({
+    campo: "",
+    valido: null,
+  });
   const [nombre, cambiarNombre] = useState({ campo: "", valido: null });
   const [nombre2, cambiarNombre2] = useState({ campo: "", valido: null });
   const [apellido, cambiarApellido] = useState({ campo: "", valido: null });
   const [apellido2, cambiarApellido2] = useState({ campo: "", valido: null });
   const [pais, cambiarPais] = useState({ campo: "", valido: null });
-  const [departamento, cambiarDepartamento] = useState({campo:"", valido: null});
+  const [departamento, cambiarDepartamento] = useState({
+    campo: "",
+    valido: null,
+  });
   const [municipio, cambiarMunicipio] = useState({ campo: "", valido: null });
   const [direccion, cambiarDireccion] = useState({ campo: "", valido: null });
   const [correo, cambiarCorreo] = useState({ campo: "", valido: null });
   const [telefono, cambiarTelefono] = useState({ campo: "", valido: null });
   const [terminos, cambiarTerminos] = useState(false);
-  const [tipoDeDispositivo, cambiarTipoDeDispositivo] = useState({campo:"", valido:null});
+  const [tipoDeDispositivo, cambiarTipoDeDispositivo] = useState({
+    campo: "",
+    valido: null,
+  });
   const [marca, cambiarMarca] = useState({ campo: "", valido: null });
-  const [nombreComercial, cambiarNombreComercial] = useState({campo:"", valido:null});
+  const [nombreComercial, cambiarNombreComercial] = useState({
+    campo: "",
+    valido: null,
+  });
   const [modelo, cambiarModelo] = useState({ campo: "", valido: null });
   const [fabricante, cambiarFabricante] = useState({ campo: "", valido: null });
   const [formularioValido, cambiarFormularioValido] = useState(null);
@@ -142,90 +170,254 @@ const FormularioSolicitud = () => {
     }
   };
 
+  function getTipoPersonaDiv() {
+    switch (tipoPersona) {
+      case "natural":
+        return (
+          <>
+            <div>
+              <Label htmlFor="tipoId">Tipo de Identificación *</Label>
+              <Select
+                id="tipoIdentificacion"
+                data-toggle="tooltip"
+                title="Seleccionar tipo documento de Identificación"
+              >
+                <option value="1" selected>
+                  Cédula de Ciudadania
+                </option>
+                <option value="2">Cédula extranjeria</option>
+                <option value="3">ID pasaporte</option>
+              </Select>
+              <LeyendaError>Campo tipo iden es requerido</LeyendaError>
+            </div>
+
+            <ComponenteInput
+              estado={identificacion}
+              cambiarEstado={cambiarIdentificacion}
+              tipo="text"
+              label="Número de Identificación *"
+              placeholder="Ej: 1234567890"
+              name="identificacion"
+              leyendaError="Campo número de identificación es requerido, solo se permiten números y minimo 6 digitos"
+              expresionRegular={expresiones.identificacion}
+            />
+
+            <ComponenteInput
+              estado={identificacion2}
+              cambiarEstado={cambiarIdentificacion2}
+              tipo="text"
+              label="Confirmar Número de Identificación *"
+              placeholder="Ej: 1234567890"
+              name="identificacion"
+              leyendaError="Campo confirmar número de identificación es requerido, y debe ser igual al campo número de identificación"
+              funcion={validarIdentificacion2}
+            />
+
+            <ComponenteInput
+              estado={nombre}
+              cambiarEstado={cambiarNombre}
+              tipo="text"
+              label="Primer Nombre *"
+              placeholder="Ej: Pepito"
+              name="nombre"
+              leyendaError="Campo primer nombre es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
+
+            <ComponenteInput
+              estado={nombre2}
+              cambiarEstado={cambiarNombre2}
+              tipo="text"
+              label="Segundo Nombre"
+              placeholder="Ej: Andres"
+              name="nombre2"
+            />
+
+            <ComponenteInput
+              estado={apellido}
+              cambiarEstado={cambiarApellido}
+              tipo="text"
+              label="Primer Apellido *"
+              placeholder="Ej: Perez"
+              name="apellido"
+              leyendaError="Campo primer apellido es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
+
+            <ComponenteInput
+              estado={apellido2}
+              cambiarEstado={cambiarApellido2}
+              tipo="text"
+              label="Segundo Apellido"
+              placeholder="Ej: Rodriguez"
+              name="apellido2"
+              leyendaError="Campo requerido"
+              expresionRegular={expresiones.apellido2}
+            />
+          </>
+        );
+      case "juridica":
+        return (
+          <>
+            <div>
+              <Label htmlFor="tipoId">Tipo de Identificación *</Label>
+              <Select
+                id="tipoIdentificacion"
+                data-toggle="tooltip"
+                title="Seleccionar tipo documento de Identificación"
+              >
+                <option value="1" selected>
+                  Número de Identificación Tributaria (NIT)
+                </option>
+              </Select>
+              <LeyendaError>Campo tipo iden es requerido</LeyendaError>
+            </div>
+
+            <ComponenteInput
+              estado={identificacion}
+              cambiarEstado={cambiarIdentificacion}
+              tipo="text"
+              label="Número de Identificación *"
+              placeholder="Ej: 8603842563"
+              name="identificacion"
+              leyendaError="Campo número de identificación es requerido, solo se permiten números y minimo 6 digitos"
+              expresionRegular={expresiones.identificacion}
+            />
+
+            <ComponenteInput
+              estado={identificacion}
+              cambiarEstado={cambiarIdentificacion}
+              tipo="text"
+              label="DV *"
+              placeholder="Ej: 8"
+              name="identificacion"
+              leyendaError="Campo número de identificación es requerido, solo se permiten números y minimo 6 digitos"
+              expresionRegular={expresiones.identificacion}
+            />
+
+            <ComponenteInput
+              estado={identificacion2}
+              cambiarEstado={cambiarIdentificacion2}
+              tipo="text"
+              label="Confirmar Número de Identificación *"
+              placeholder="Ej: 8603842563"
+              name="identificacion"
+              leyendaError="Campo es requerido, debe ser igual al campo Número Identificación"
+              funcion={validarIdentificacion2}
+            />
+
+            <ComponenteInput
+              estado={identificacion2}
+              cambiarEstado={cambiarIdentificacion2}
+              tipo="text"
+              label="Confirmar DV*"
+              placeholder="Ej: 8"
+              name="identificacion"
+              leyendaError="Campo es requerido, debe ser igual al campo DV"
+              funcion={validarIdentificacion2}
+            />
+
+            <ComponenteInput
+              estado={nombre}
+              cambiarEstado={cambiarNombre}
+              tipo="text"
+              label="Nombre de la empresa *"
+              placeholder="Ej: Microchips y Telecomunicaciones SAS"
+              name="nombre"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.nombre}
+            />
+
+            <ComponenteInput
+              estado={apellido}
+              cambiarEstado={cambiarApellido}
+              tipo="text"
+              label="Nombre Representante Legal o APoderado*"
+              placeholder="Ej: Pablo Jesus Lozada Cortez"
+              name="apellido"
+              leyendaError="Campo primer apellido es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
+          </>
+        );
+      default:
+        return (
+          <>
+            <ComponenteInputDisabled
+              estado={tipoId}
+              cambiarEstado={cambiarTipoId}
+              tipo="text"
+              label="Tipo de Identificación *"
+              placeholder="Ej: Cédula de Ciudadania"
+              name="tipoId"
+            />
+            <ComponenteInputDisabled
+              estado="identificacionSeleccion"
+              tipo="text"
+              label="Número de Identificación *"
+              placeholder="Ej: 1234567890"
+              name="identificacionSeleccion"
+            />
+
+            <ComponenteInputDisabled
+              estado={nit2}
+              cambiarEstado={cambiarNit2}
+              tipo="text"
+              label="Confirmar Número de Identificación *"
+              placeholder="Ej: 1234567890"
+              name="identificacion"
+            />
+          </>
+        );
+    }
+  }
+
   return (
     <>
       <div className="container">
         <Header />
         <div className="row">
-          
           <div className="col-md-8">
             <Navigation />
-            <NavProceso /> 
-            
-            <br/>
+            <NavProceso />
+
+            <br />
             <h3 className="title-form">
               Formulario de Solicitud de Homologación de Equipos Terminales
               Móviles
             </h3>
-            <br/>
-            <br/>
-            
+            <br />
+            <br />
+
             <Formulario className="row" onSubmit={onSubmit}>
-              
               <div className="titulo-indicativo">
                 <h4 className="subtitle-form">Datos de identificación</h4>
                 <p className="txt-obliga">*Campos obligatorios</p>
               </div>
 
-              <span/>
+              <span />
 
               <div>
                 <Label htmlFor="tipoPersona">Tipo de Persona *</Label>
-                <Select id="tipoPersona" data-toggle="tooltip" 
+                <Select
+                  id="tipoPersona"
+                  data-toggle="tooltip"
                   title="Seleccionar como persona Natural o Juridica"
-                  onChange={() => {
-                    setTipoPersona(!tipoPersona);
-                  }} 
+                  onClick={(event) => {
+                    // here set target value to state which is 0, 1, 2, 3
+                    setTipoPersona(event.target.value);
+                  }}
                 >
-                  <option value="" disabled selected hidden
-                  
-                  >Ej. Natural</option>
+                  <option value="" selected hidden>
+                    Ej. Natural
+                  </option>
                   <option value="natural">Natural</option>
                   <option value="juridica">Juridica</option>
                 </Select>
                 <LeyendaError>Campo tipo persona es requerido</LeyendaError>
               </div>
 
-              
-
-              <div>
-                <Label htmlFor="tipoId">Tipo de Identificación *</Label>
-                <Select id="tipoIdentificacion" data-toggle="tooltip" title="Seleccionar tipo documento de Identificación">
-                  <option value="1" selected>Cédula de Ciudadania</option>
-                  <option value="2">Cédula extranjeria</option>
-                  <option value="3">ID pasaporte</option>
-                </Select>
-                <LeyendaError>Campo tipo iden es requerido</LeyendaError>
-              </div>
-              
-              
-              {tipoPersona ? (
-          <>
-          <input
-                tipo="text"
-                label="Tipo de Persona *"
-                placeholder="Ej: Natural"
-                name="persona"
-                leyendaError="Campo tipo de persona es requerido"
-              />          
-              
-
-              <input
-                tipo="text"
-                label="Tipo de Identificación *"
-                placeholder="Ej: Cédula de Ciudadania"
-                name="tipoId"
-                leyendaError="Campo tipo de identificación reque"
-              />
-          </>
-        ) : (
-          <div style={{ color: "blue" }}>Div 2</div>
-        )}
-              
-
-              
-
-              
+              {getTipoPersonaDiv()}
 
               {/*
               <ComponenteInput
@@ -251,70 +443,6 @@ const FormularioSolicitud = () => {
                 expresionRegular={expresiones.tipoId}
               />
               */}
-
-              <ComponenteInput
-                estado={identificacion}
-                cambiarEstado={cambiarIdentificacion}
-                tipo="text"
-                label="Número de Identificación *"
-                placeholder="Ej: 1234567890"
-                name="identificacion"
-                leyendaError="Campo número de identificación es requerido, solo se permiten números y minimo 6 digitos"
-                expresionRegular={expresiones.identificacion}
-              />
-
-              <ComponenteInput
-                estado={identificacion2}
-                cambiarEstado={cambiarIdentificacion2}
-                tipo="text"
-                label="Confirmar Número de Identificación *"
-                placeholder="Ej: 1234567890"
-                name="identificacion"
-                leyendaError="Campo confirmar número de identificación es requerido, y debe ser igual al campo número de identificación"
-                funcion={validarIdentificacion2}
-              />
-
-              <ComponenteInput
-                estado={nombre}
-                cambiarEstado={cambiarNombre}
-                tipo="text"
-                label="Primer Nombre *"
-                placeholder="Ej: Pepito"
-                name="nombre"
-                leyendaError="Campo primer nombre es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
-
-              <ComponenteInput
-                estado={nombre2}
-                cambiarEstado={cambiarNombre2}
-                tipo="text"
-                label="Segundo Nombre"
-                placeholder="Ej: Andres"
-                name="nombre2"
-              />
-
-              <ComponenteInput
-                estado={apellido}
-                cambiarEstado={cambiarApellido}
-                tipo="text"
-                label="Primer Apellido *"
-                placeholder="Ej: Perez"
-                name="apellido"
-                leyendaError="Campo primer apellido es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
-
-              <ComponenteInput
-                estado={apellido2}
-                cambiarEstado={cambiarApellido2}
-                tipo="text"
-                label="Segundo Apellido"
-                placeholder="Ej: Rodriguez"
-                name="apellido2"
-                leyendaError="Campo requerido"
-                expresionRegular={expresiones.apellido2}
-              />
 
               <div className="col-md-12 titulo-indicativo">
                 <h4 className="subtitle-form">Datos de contacto y ubicación</h4>
@@ -518,8 +646,8 @@ const FormularioSolicitud = () => {
                 ** Formatos admitidos para archivos adjuntos: Pdf, Doc, Docx,
                 Xls, Xlsx, Gif, Png, Jpeg, Tif, Tiff, Zip y Rar
               </p>
-              <br/>
-              
+              <br />
+
               <div>
                 <span class="button-carga-principal btn-file">
                   Etiqueta del equipo
@@ -539,7 +667,7 @@ const FormularioSolicitud = () => {
 
               <div class="tabla">
                 <p class="titulo-tabla">Documentos a legalizar</p>
-                
+
                 <table class="table">
                   <thead>
                     <tr>
@@ -559,9 +687,19 @@ const FormularioSolicitud = () => {
                       <th scope="row">Etiqueta del equipo *</th>
                       <td>...</td>
                       <td>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-trash"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                          <path
+                            fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                          />
                         </svg>
                       </td>
                     </tr>
@@ -571,9 +709,19 @@ const FormularioSolicitud = () => {
                       </th>
                       <td>...</td>
                       <td>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-trash"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                          <path
+                            fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                          />
                         </svg>
                       </td>
                     </tr>
@@ -607,7 +755,11 @@ const FormularioSolicitud = () => {
               </MensajeError>
             )}
             <ContenedorBotonCentrado>
-              <Boton id="envio" type="submit" onClick={() => cambiarEstadoModal(!estadoModal)}>
+              <Boton
+                id="envio"
+                type="submit"
+                onClick={() => cambiarEstadoModal(!estadoModal)}
+              >
                 ENVIAR
               </Boton>
               {formularioValido === true && (
@@ -623,7 +775,7 @@ const FormularioSolicitud = () => {
           </div>
 
           <div className="col-md-1"></div>
-          
+
           <div className="col-md-3 p-0">
             <aside className="aside">
               <br />
@@ -639,71 +791,71 @@ const FormularioSolicitud = () => {
             </aside>
           </div>
         </div>
-      {/* END CONTAINER */}
+        {/* END CONTAINER */}
       </div>
       <Footer />
       <FooterGov />
 
       {/* MODAL DE ACEPTAR FORMULARIO */}
       <Modal
-            estado={estadoModal}
-            cambiarEstado={cambiarEstadoModal}
-            titulo=""
-            mostrarHeader={true}
-            mostrarOverlay={true}
-            posicionModal={"start"}
-            padding={"20px"}
-          >
-            {!usuarioValido && (
-              <Contenido>
-                <form>
-                <h1>
-                  Términos y condiciones de uso del Sistema de Homologación de
-                  equipos terminales
-                </h1>
-                <h6>
-                  <strong>1. Del Servicio</strong>
-                  
-                  Por lo anterior, para homologar un equipo terminal móvil en
-                  Colombia, se debe realizar OBLIGATORIAMENTE la solicitud en
-                  línea a través del formulario establecido para el efecto en el
-                  portal web (www.tramitescrcom.gov.co), en el cual se deberá
-                  suministrar la información requerida en
-                  (http://bit.ly/homologarcelular). Allí podrá encontrar una
-                  guía del paso a paso en videos para realizar este trámite.
-                </h6>
-                <br />
+        estado={estadoModal}
+        cambiarEstado={cambiarEstadoModal}
+        titulo=""
+        mostrarHeader={true}
+        mostrarOverlay={true}
+        posicionModal={"start"}
+        padding={"20px"}
+      >
+        {!usuarioValido && (
+          <Contenido>
+            <form>
+              <h1>
+                Términos y condiciones de uso del Sistema de Homologación de
+                equipos terminales
+              </h1>
+              <h6>
+                <strong>1. Del Servicio</strong>
+                Por lo anterior, para homologar un equipo terminal móvil en
+                Colombia, se debe realizar OBLIGATORIAMENTE la solicitud en
+                línea a través del formulario establecido para el efecto en el
+                portal web (www.tramitescrcom.gov.co), en el cual se deberá
+                suministrar la información requerida en
+                (http://bit.ly/homologarcelular). Allí podrá encontrar una guía
+                del paso a paso en videos para realizar este trámite.
+              </h6>
+              <br />
 
-                <ContenedorBotonCentrado className="recaptcha">
-                  <ReCAPTCHA
-                    ref={captcha}
-                    sitekey="6Lc9VDIeAAAAAHHQA1wEjx1FKlTy9uWIrZKGwwvN"
-                    onChange={onChange}
-                  />
-                </ContenedorBotonCentrado>
-                
-                {captchaValido === false && <div className="error-captcha">Por favor acepta el captcha</div>}
-                <ContenedorBotones>
-                  <Boton type="submit">
-                    <Link to="/SolicitudHomologacion" className="irTramite">
-                      ACEPTAR
-                    </Link>
-                  </Boton>
-                  <br />
-                  <Boton2 onClick={() => cambiarEstadoModal(!estadoModal)}>
-                    RECHARZAR
-                  </Boton2>
-                </ContenedorBotones>
-                </form>
-              </Contenido>
-            )}
-            {
-              usuarioValido &&
-              <div>
-                <h1>Bienvenido</h1>
-              </div>
-            }
-          </Modal>
+              <ContenedorBotonCentrado className="recaptcha">
+                <ReCAPTCHA
+                  ref={captcha}
+                  sitekey="6Lc9VDIeAAAAAHHQA1wEjx1FKlTy9uWIrZKGwwvN"
+                  onChange={onChange}
+                />
+              </ContenedorBotonCentrado>
+
+              {captchaValido === false && (
+                <div className="error-captcha">Por favor acepta el captcha</div>
+              )}
+              <ContenedorBotones>
+                <Boton type="submit">
+                  <Link to="/SolicitudHomologacion" className="irTramite">
+                    ACEPTAR
+                  </Link>
+                </Boton>
+                <br />
+                <Boton2 onClick={() => cambiarEstadoModal(!estadoModal)}>
+                  RECHARZAR
+                </Boton2>
+              </ContenedorBotones>
+            </form>
+          </Contenido>
+        )}
+        {usuarioValido && (
+          <div>
+            <h1>Bienvenido</h1>
+          </div>
+        )}
+      </Modal>
     </>
   );
 };
