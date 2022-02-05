@@ -1,44 +1,40 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
-import FooterGov from "../../components/FooterGov/FooterGov";
+
+// Estilos generales del formulario
+import "./FormularioSolicitud.scss";
+
+// Componentes obligatorios a mostrar en el sitio
 import Header from "../../components/Header/Header";
 import Navigation from "../../components/Navigation/Navigation";
 import NavProceso from "../../components/NavProceso/NavProceso";
-
-import BotonInicio from "../../components/Botones/BotonInicio/BotonInicio";
 import BotonTutoriales from "../../components/Botones/BotonTutoriales/BotonTutoriales";
 import BotonDeDudas from "../../components/Botones/BotonDeDudas/BotonDeDudas";
-
 import CalificacionExperiencia from "../../components/Cards/CalificacionExperiencia/CalificacionExperiencia";
-
-
-
-import ReCAPTCHA from "react-google-recaptcha";
-import styled from "styled-components";
+import BotonInicio from "../../components/Botones/BotonInicio/BotonInicio";
+import Footer from "../../components/Footer/Footer";
+import FooterGov from "../../components/FooterGov/FooterGov";
+// Modal a mostra antes de enviar información formulario
 import Modal from "../../components/Modal/Modal"
 
-import {
-  Formulario,
-  Label,
-  ContenedorTerminos,
-  ContenedorBotonCentrado,
-  Boton,
-  MensajeExito,
-  MensajeError,
-  Select,
-  LeyendaError,
-} from "./elementos/Formularios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faExclamationTriangle,
-  faCheckCircle,
-} from "@fortawesome/free-solid-svg-icons";
+// Importación iconos para mostrar en mensajes de error o exito
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faExclamationTriangle, faCheckCircle} from "@fortawesome/free-solid-svg-icons";
+
+// Libreria para el uso de recaptcha
+import ReCAPTCHA from "react-google-recaptcha";
+
+// Libreria syled que nos permite crear componentes con diseños, despues la linea exportar se encuentran
+import styled from "styled-components";
+// Importación elementos html de componente con estilos predefinidos styled
+import {Formulario, Label, Select, Boton, ContenedorTerminos, ContenedorBotonCentrado, LeyendaError, MensajeExito, MensajeError} from "./elementos/Formularios";
+// Import componente styled con diseño predeterminado
 import ComponenteInput from "./componentes/ComponenteInput";
 
-import "./FormularioSolicitud.scss";
+
 
 const FormularioSolicitud = () => {
+  // Validar estado de los campos
   const [persona, cambiarPersona] = useState({ campo: "", valido: null });
   const [tipoId, cambiarTipoId] = useState({ campo: "", valido: null });
   const [identificacion, cambiarIdentificacion] = useState({campo:"",valido: null});
@@ -61,13 +57,21 @@ const FormularioSolicitud = () => {
   const [fabricante, cambiarFabricante] = useState({ campo: "", valido: null });
   const [formularioValido, cambiarFormularioValido] = useState(null);
 
+  // Referencia al captcha
+  const captcha = useRef(null);
+
+  // Dependiendo el estado seleccionado en lista desplegable, mostrar x campos en formulario
+  const [tipoPersona, setTipoPersona] = useState(null);
+  const [tipoIdentificacion, setTipoIdentificacion] = useState(null);
+  const [tipoDispositivo, setTipoDispositivo] = useState(null);
+  // Mostrar y ocultar modal
   const [estadoModal, cambiarEstadoModal] = useState(false);
 
+  //Dependiendo estado captcha a seleccionado dejar enviar formulario
   const [captchaValido, cambiarCaptchaValido] = useState(null);
   const [usuarioValido, cambiarUsuarioValido] = useState(false);
 
-  const captcha = useRef(null);
-
+  // Expresiones regulares para validar que los campos cumplan con las condiciones
   const expresiones = {
     usuario: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -95,15 +99,12 @@ const FormularioSolicitud = () => {
     cambiarTerminos(e.target.checked);
   };
 
-
   const onChange = () => {
     if (captcha.current.getValue()) {
       console.log("El usuario no es un robot");
       cambiarCaptchaValido(true);
     }
   };
-
-  
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -146,55 +147,85 @@ const FormularioSolicitud = () => {
       <div className="container">
         <Header />
         <div className="row">
+          
           <div className="col-md-8">
             <Navigation />
-            <NavProceso /> <br />
+            <NavProceso /> 
+            
+            <br/>
             <h3 className="title-form">
               Formulario de Solicitud de Homologación de Equipos Terminales
               Móviles
             </h3>
-            <br />
-            <br />
+            <br/>
+            <br/>
+            
             <Formulario className="row" onSubmit={onSubmit}>
-              <div className="col-md-12 titulo-indicativo">
+              
+              <div className="titulo-indicativo">
                 <h4 className="subtitle-form">Datos de identificación</h4>
                 <p className="txt-obliga">*Campos obligatorios</p>
               </div>
-              <br />
+
+              <span/>
 
               <div>
                 <Label htmlFor="tipoPersona">Tipo de Persona *</Label>
-                <Select
-                  required
-                  id="tipoPersona"
-                  data-toggle="tooltip"
-                  title="Corresponde al tipo de persona, que efectúa el trámite, Natural o Juridica"
+                <Select id="tipoPersona" data-toggle="tooltip" 
+                  title="Seleccionar como persona Natural o Juridica"
+                  onChange={() => {
+                    setTipoPersona(!tipoPersona);
+                  }} 
                 >
-                  <option value="" disabled selected hidden>
-                    Ej. Natural
-                  </option>
-                  <option value="1">Natural</option>
-                  <option value="2">Juridica</option>
+                  <option value="" disabled selected hidden
+                  
+                  >Ej. Natural</option>
+                  <option value="natural">Natural</option>
+                  <option value="juridica">Juridica</option>
                 </Select>
                 <LeyendaError>Campo tipo persona es requerido</LeyendaError>
               </div>
 
+              
+
               <div>
-                <Label htmlFor="tipoId">Tipo de Persona *</Label>
-                <Select
-                  required
-                  id="tipoId"
-                  data-toggle="tooltip"
-                  title="Corresponde al tipo de identificación de la persona Natural o Jurídica, que efectúa el trámite"
-                >
-                  <option value="1" selected>
-                    Cédula de Ciudadania
-                  </option>
+                <Label htmlFor="tipoId">Tipo de Identificación *</Label>
+                <Select id="tipoIdentificacion" data-toggle="tooltip" title="Seleccionar tipo documento de Identificación">
+                  <option value="1" selected>Cédula de Ciudadania</option>
                   <option value="2">Cédula extranjeria</option>
                   <option value="3">ID pasaporte</option>
                 </Select>
-                <LeyendaError>Campo tipo persona es requerido</LeyendaError>
+                <LeyendaError>Campo tipo iden es requerido</LeyendaError>
               </div>
+              
+              
+              {tipoPersona ? (
+          <>
+          <input
+                tipo="text"
+                label="Tipo de Persona *"
+                placeholder="Ej: Natural"
+                name="persona"
+                leyendaError="Campo tipo de persona es requerido"
+              />          
+              
+
+              <input
+                tipo="text"
+                label="Tipo de Identificación *"
+                placeholder="Ej: Cédula de Ciudadania"
+                name="tipoId"
+                leyendaError="Campo tipo de identificación reque"
+              />
+          </>
+        ) : (
+          <div style={{ color: "blue" }}>Div 2</div>
+        )}
+              
+
+              
+
+              
 
               {/*
               <ComponenteInput
@@ -591,8 +622,9 @@ const FormularioSolicitud = () => {
             </ContenedorBotonCentrado>
           </div>
 
-          <div className="col-lg-1"></div>
-          <div className="col-lg-3 p-0">
+          <div className="col-md-1"></div>
+          
+          <div className="col-md-3 p-0">
             <aside className="aside">
               <br />
               <br />
@@ -607,6 +639,7 @@ const FormularioSolicitud = () => {
             </aside>
           </div>
         </div>
+      {/* END CONTAINER */}
       </div>
       <Footer />
       <FooterGov />
