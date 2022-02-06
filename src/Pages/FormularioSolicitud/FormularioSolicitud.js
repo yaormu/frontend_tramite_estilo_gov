@@ -201,6 +201,7 @@ const FormularioSolicitud = () => {
     }
   };
 
+  // Selección tipo persona
   function getTipoPersonaDiv() {
     switch (tipoPersona) {
       case "natural":
@@ -404,6 +405,246 @@ const FormularioSolicitud = () => {
     }
   }
 
+  // Selección tipo dispositivo
+  function getTipoDispositivoDiv() {
+    switch (tipoDispositivo) {
+      case "dispositivo":
+        return (
+					<>
+          <span/>
+						<ComponenteInput
+                estado={marca}
+                cambiarEstado={cambiarMarca}
+                tipo="text"
+                label="Marca *"
+                placeholder="Ej: Apple"
+                name="marca"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+            />
+						<ComponenteInput
+                estado={nombreComercial}
+                cambiarEstado={cambiarNombreComercial}
+                tipo="text"
+                label="Nombre Comercial *"
+                placeholder="Ej: Serie 3"
+                name="nombreComercial"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+              />
+
+              <ComponenteInput
+                estado={modelo}
+                cambiarEstado={cambiarModelo}
+                tipo="text"
+                label="Modelo *"
+                placeholder="Ej: Once"
+                name="modelo"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+              />
+
+              <ComponenteInput
+                estado={fabricante}
+                cambiarEstado={cambiarFabricante}
+                tipo="text"
+                label="Fabricante"
+                placeholder="Ej: Huawei"
+                name="fabricante"
+                leyendaError="Campo requerido"
+                expresionRegular={expresiones.apellido2}
+              />
+
+							<ComponenteInput
+                estado={fabricante}
+                cambiarEstado={cambiarFabricante}
+                tipo="text"
+                label="CASO DE USO DEL DISPOSITIVO *"
+                placeholder="Ej: Las caracteristicas de dispositivo..."
+                name="fabricante"
+                leyendaError="Campo requerido"
+                expresionRegular={expresiones.apellido2}
+              />
+
+					</>				
+				);
+      case "modulo":
+        return (
+					<>
+          <span/>
+						<ComponenteInput
+                estado={marca}
+                cambiarEstado={cambiarMarca}
+                tipo="text"
+                label="Marca del Módulo Interno* CAMBIAR PARAMETROS"
+                placeholder="Ej: Apple"
+                name="marcaModulo"
+                leyendaError="Campo es requerido"
+                expresionRegular={expresiones.nombre}
+            />
+						<ComponenteInput
+                estado={nombreComercial}
+                cambiarEstado={cambiarNombreComercial}
+                tipo="text"
+                label="Nombre Comercial *"
+                placeholder="Ej: Serie 3"
+                name="nombreComercial"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+              />
+
+              <ComponenteInput
+                estado={modelo}
+                cambiarEstado={cambiarModelo}
+                tipo="text"
+                label="Modelo del Módulo Interno* CAMBIARA PARAMETROS"
+                placeholder="Ej: Once"
+                name="modelo"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+              />
+
+              <ComponenteInput
+                estado={fabricante}
+                cambiarEstado={cambiarFabricante}
+                tipo="text"
+                label="Fabricante"
+                placeholder="Ej: Huawei"
+                name="fabricante"
+                leyendaError="Campo requerido"
+                expresionRegular={expresiones.apellido2}
+              />
+
+							<ComponenteInput
+                estado={fabricante}
+                cambiarEstado={cambiarFabricante}
+                tipo="text"
+                label="MARCA DEL EQUIPO ANFRITRIÓN*"
+                placeholder="Ej: Las caracteristicas de dispositivo..."
+                name="fabricante"
+              />
+
+							<ComponenteInput
+                estado={fabricante}
+                cambiarEstado={cambiarFabricante}
+                tipo="text"
+                label="MODELO DEL EQUIPO ANFITRIÓN*"
+                placeholder="Ej: Las caracteristicas de dispositivo..."
+                name="fabricante"
+              />
+
+					</>						
+				);
+			case "otro":
+        return (
+					<>
+						<ComponenteInput
+                estado={marca}
+                cambiarEstado={cambiarMarca}
+                tipo="text"
+                label="NOMBRE OTRO DISPOSITIVO*"
+                placeholder="Ej: Apple"
+                name="marca"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+            />
+						<ComponenteInput
+                estado={marca}
+                cambiarEstado={cambiarMarca}
+                tipo="text"
+                label="Marca *"
+                placeholder="Ej: Apple"
+                name="marca"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+            />
+						<ComponenteInput
+                estado={nombreComercial}
+                cambiarEstado={cambiarNombreComercial}
+                tipo="text"
+                label="Nombre Comercial *"
+                placeholder="Ej: Serie 3"
+                name="nombreComercial"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+              />
+
+              <ComponenteInput
+                estado={modelo}
+                cambiarEstado={cambiarModelo}
+                tipo="text"
+                label="Modelo *"
+                placeholder="Ej: Once"
+                name="modelo"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+              />
+
+              <ComponenteInput
+                estado={fabricante}
+                cambiarEstado={cambiarFabricante}
+                tipo="text"
+                label="Fabricante"
+                placeholder="Ej: Huawei"
+                name="fabricante"
+                leyendaError="Campo requerido"
+                expresionRegular={expresiones.apellido2}
+              />
+
+					</>			
+			);
+      default:
+        return (
+					<>
+          <span/>
+						<ComponenteInput
+                estado={marca}
+                cambiarEstado={cambiarMarca}
+                tipo="text"
+                label="Marca *"
+                placeholder="Ej: Apple"
+                name="marca"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+            />
+						<ComponenteInput
+                estado={nombreComercial}
+                cambiarEstado={cambiarNombreComercial}
+                tipo="text"
+                label="Nombre Comercial *"
+                placeholder="Ej: Serie 3"
+                name="nombreComercial"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+              />
+
+              <ComponenteInput
+                estado={modelo}
+                cambiarEstado={cambiarModelo}
+                tipo="text"
+                label="Modelo *"
+                placeholder="Ej: Once"
+                name="modelo"
+                leyendaError="Campo es requerido, solo se aceptan letras"
+                expresionRegular={expresiones.nombre}
+              />
+
+              <ComponenteInput
+                estado={fabricante}
+                cambiarEstado={cambiarFabricante}
+                tipo="text"
+                label="Fabricante"
+                placeholder="Ej: Huawei"
+                name="fabricante"
+                leyendaError="Campo requerido"
+                expresionRegular={expresiones.apellido2}
+              />
+
+					</>
+				)
+	}
+}
+
   return (
     <>
       <div className="container">
@@ -450,31 +691,6 @@ const FormularioSolicitud = () => {
               </div>
 
               {getTipoPersonaDiv()}
-
-              {/*
-              <ComponenteInput
-                estado={persona}
-                cambiarEstado={cambiarPersona}
-                tipo="text"
-                label="Tipo de Persona *"
-                placeholder="Ej: Natural"
-                name="persona"
-                leyendaError="Campo tipo de persona es requerido"
-                expresionRegular={expresiones.persona}
-              />          
-              
-
-              <ComponenteInput
-                estado={tipoId}
-                cambiarEstado={cambiarTipoId}
-                tipo="text"
-                label="Tipo de Identificación *"
-                placeholder="Ej: Cédula de Ciudadania"
-                name="tipoId"
-                leyendaError="Campo tipo de identificación requerido"
-                expresionRegular={expresiones.tipoId}
-              />
-              */}
 
               <div className="col-md-12 titulo-indicativo">
                 <h4 className="subtitle-form">Datos de contacto y ubicación</h4>
@@ -569,7 +785,36 @@ const FormularioSolicitud = () => {
               </div>
               <br />
 
-              <ComponenteInput
+              <div>
+                <Label htmlFor="tipoDispositivo">Tipo de Dispositivo*</Label>
+                <Select
+                  id="tipoDispositivo"
+                  data-toggle="tooltip"
+                  title="Seleccionar tipo dispositivo"
+                  onClick={(event) => {
+                    // here set target value to state which is 0, 1, 2, 3
+                    setTipoDispositivo(event.target.value);
+                  }}
+                >
+                  <option value="" selected hidden>Ej. Móvil</option>
+                  <option value="telefono">Télefono Inteligente</option>
+                  <option value="computador">Computador de Bolsillo</option>
+                  <option value="dispositivo">Dispositivo IoT</option>
+                  <option value="modulo">Módulo</option>
+                  <option value="reloj">Reloj Inteligente</option>
+                  <option value="router">Router</option>
+                  <option value="otro">Otro ¿Cúal?</option>
+                </Select>
+                <LeyendaError>Campo tipo persona es requerido</LeyendaError>
+              </div>
+              
+              {getTipoDispositivoDiv()}
+
+              
+
+              <br />
+              {/*
+<ComponenteInput
                 estado={tipoDeDispositivo}
                 cambiarEstado={cambiarTipoDeDispositivo}
                 tipo="text"
@@ -579,8 +824,6 @@ const FormularioSolicitud = () => {
                 leyendaError="Campo es requerido, solo se aceptan letras"
                 expresionRegular={expresiones.nombre}
               />
-
-              <br />
 
               <ComponenteInput
                 estado={marca}
@@ -625,6 +868,8 @@ const FormularioSolicitud = () => {
                 leyendaError="Campo requerido"
                 expresionRegular={expresiones.apellido2}
               />
+              */}
+              
             </Formulario>
             <br />
             <br />
