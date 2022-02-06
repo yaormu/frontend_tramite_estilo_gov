@@ -49,24 +49,23 @@ const FormularioSolicitud = () => {
   // Validar estado de los campos
   const [persona, cambiarPersona] = useState({ campo: "", valido: null });
   const [tipoId, cambiarTipoId] = useState({ campo: "", valido: null });
-  const [nit2, cambiarNit2] = useState({ campo: "", valido: null });
-  const [identificacion, cambiarIdentificacion] = useState({
-    campo: "",
-    valido: null,
-  });
-  const [identificacion2, cambiarIdentificacion2] = useState({
-    campo: "",
-    valido: null,
-  });
+
+  const [identificacion, cambiarIdentificacion] = useState({ campo: "", valido: null });
+  const [identificacion2, cambiarIdentificacion2] = useState({ campo: "", valido: null });
   const [nombre, cambiarNombre] = useState({ campo: "", valido: null });
   const [nombre2, cambiarNombre2] = useState({ campo: "", valido: null });
   const [apellido, cambiarApellido] = useState({ campo: "", valido: null });
   const [apellido2, cambiarApellido2] = useState({ campo: "", valido: null });
+
+  const [nit, cambiarNit] = useState({ campo: "", valido: null });
+  const [nit2, cambiarNit2] = useState({ campo: "", valido: null });
+  const [nombreEmpresa, cambiarNombreEmpresa] = useState({ campo: "", valido: null });
+  const [nombreRLoApoderado, cambiarNombreRLoApoderado] = useState({ campo: "", valido: null });
+  const [digitoVerificacion, cambiarDigitoVerificacion] = useState({ campo: "", valido: null });
+  const [digitoVerificacion2, cambiarDigitoVerificacion2] = useState({ campo: "", valido: null });
+
   const [pais, cambiarPais] = useState({ campo: "", valido: null });
-  const [departamento, cambiarDepartamento] = useState({
-    campo: "",
-    valido: null,
-  });
+  const [departamento, cambiarDepartamento] = useState({ campo: "", valido: null });
   const [municipio, cambiarMunicipio] = useState({ campo: "", valido: null });
   const [direccion, cambiarDireccion] = useState({ campo: "", valido: null });
   const [correo, cambiarCorreo] = useState({ campo: "", valido: null });
@@ -107,8 +106,10 @@ const FormularioSolicitud = () => {
     password: /^.{4,12}$/, // 4 a 12 digitos.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^\d{7,14}$/, // 7 a 14 numeros.
+    digitoV: /^\d{1,1}$/, // 1 a 1 numero.
   };
 
+  // Campo confirmar Número de Identificación se igual campo a comprobar
   const validarIdentificacion2 = () => {
     if (identificacion.campo.length > 0) {
       if (identificacion.campo !== identificacion2.campo) {
@@ -117,6 +118,36 @@ const FormularioSolicitud = () => {
         });
       } else {
         cambiarIdentificacion2((prevState) => {
+          return { ...prevState, valido: "true" };
+        });
+      }
+    }
+  };
+
+  // Campo confirmar Número de NIT se igual campo a comprobar
+  const validarNit2 = () => {
+    if (nit.campo.length > 0) {
+      if (nit.campo !== nit2.campo) {
+        cambiarNit2((prevState) => {
+          return { ...prevState, valido: "false" };
+        });
+      } else {
+        cambiarNit2((prevState) => {
+          return { ...prevState, valido: "true" };
+        });
+      }
+    }
+  };
+
+  // Campo confirmar Número Digito veririfcacion (DV) igual campo a comprobar
+  const validarDigitoVerificacion2 = () => {
+    if (digitoVerificacion.campo.length > 0) {
+      if (digitoVerificacion.campo !== digitoVerificacion2.campo) {
+        cambiarDigitoVerificacion2((prevState) => {
+          return { ...prevState, valido: "false" };
+        });
+      } else {
+        cambiarDigitoVerificacion2((prevState) => {
           return { ...prevState, valido: "true" };
         });
       }
@@ -272,65 +303,66 @@ const FormularioSolicitud = () => {
               </Select>
               <LeyendaError>Campo tipo iden es requerido</LeyendaError>
             </div>
-
+          
             <ComponenteInput
-              estado={identificacion}
-              cambiarEstado={cambiarIdentificacion}
+              estado={nit}
+              cambiarEstado={cambiarNit}
               tipo="text"
               label="Número de Identificación *"
               placeholder="Ej: 8603842563"
-              name="identificacion"
-              leyendaError="Campo número de identificación es requerido, solo se permiten números y minimo 6 digitos"
+              name="nit"
+              leyendaError="Campo requerido, solo se aceptan números"
               expresionRegular={expresiones.identificacion}
             />
-
+            
             <ComponenteInput
-              estado={identificacion}
-              cambiarEstado={cambiarIdentificacion}
+              estado={digitoVerificacion}
+              cambiarEstado={cambiarDigitoVerificacion}
               tipo="text"
-              label="DV *"
+              label="Digito Verificación *"
               placeholder="Ej: 8"
-              name="identificacion"
-              leyendaError="Campo número de identificación es requerido, solo se permiten números y minimo 6 digitos"
-              expresionRegular={expresiones.identificacion}
+              name="digitoVerificacion"
+              leyendaError="Campo requerido, solo se un número"
+              expresionRegular={expresiones.digitoV}
             />
 
             <ComponenteInput
-              estado={identificacion2}
-              cambiarEstado={cambiarIdentificacion2}
+              estado={nit2}
+              cambiarEstado={cambiarNit2}
               tipo="text"
               label="Confirmar Número de Identificación *"
               placeholder="Ej: 8603842563"
-              name="identificacion"
-              leyendaError="Campo es requerido, debe ser igual al campo Número Identificación"
-              funcion={validarIdentificacion2}
+              name="nit2"
+              leyendaError="Campo requerido, coincidir con número nit ingresado"
+              funcion={validarNit2}
             />
 
             <ComponenteInput
-              estado={identificacion2}
-              cambiarEstado={cambiarIdentificacion2}
+              estado={digitoVerificacion2}
+              cambiarEstado={cambiarDigitoVerificacion2}
               tipo="text"
-              label="Confirmar DV*"
+              label="Confirmar Digito Verificación*"
               placeholder="Ej: 8"
-              name="identificacion"
-              leyendaError="Campo es requerido, debe ser igual al campo DV"
-              funcion={validarIdentificacion2}
+              name="digitoVerificacion2"
+              leyendaError="Campo es requerido, coincidir con número DV ingresado"
+              expresionRegular={expresiones.digitoV}
+              funcion={validarDigitoVerificacion2}
             />
 
             <ComponenteInput
-              estado={nombre}
-              cambiarEstado={cambiarNombre}
+              estado={nombreEmpresa}
+              cambiarEstado={cambiarNombreEmpresa}
               tipo="text"
               label="Nombre de la empresa *"
               placeholder="Ej: Microchips y Telecomunicaciones SAS"
-              name="nombre"
+              name="nombreEmpresa"
               leyendaError="Campo es requerido"
               expresionRegular={expresiones.nombre}
             />
 
             <ComponenteInput
-              estado={apellido}
-              cambiarEstado={cambiarApellido}
+              estado={nombreRLoApoderado}
+              cambiarEstado={cambiarNombreRLoApoderado}
               tipo="text"
               label="Nombre Representante Legal o APoderado*"
               placeholder="Ej: Pablo Jesus Lozada Cortez"

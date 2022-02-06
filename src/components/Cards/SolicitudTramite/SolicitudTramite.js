@@ -23,7 +23,7 @@ export default function SolicitudTramite() {
           <p className="texto-card">
             Realice la solicitud del tramite ante la Comisión de Regulación de
             Comunicaciones.
-          </p>cd
+          </p>
         </div>
       </div>
     </div>
