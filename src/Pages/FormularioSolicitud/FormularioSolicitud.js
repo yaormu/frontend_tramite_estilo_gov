@@ -44,45 +44,49 @@ import {
 // Import componente styled con diseño predeterminado
 import ComponenteInput from "./componentes/ComponenteInput";
 import ComponenteInputDisabled from "./componentes/ComponenteInputDisabled";
+import DragArea from "./componentes/DragArea";
 
 const FormularioSolicitud = () => {
-  // Validar estado de los campos
+  
+  // Validar Datos de identificación
   const [persona, cambiarPersona] = useState({ campo: "", valido: null });
   const [tipoId, cambiarTipoId] = useState({ campo: "", valido: null });
-
   const [identificacion, cambiarIdentificacion] = useState({ campo: "", valido: null });
   const [identificacion2, cambiarIdentificacion2] = useState({ campo: "", valido: null });
   const [nombre, cambiarNombre] = useState({ campo: "", valido: null });
   const [nombre2, cambiarNombre2] = useState({ campo: "", valido: null });
   const [apellido, cambiarApellido] = useState({ campo: "", valido: null });
   const [apellido2, cambiarApellido2] = useState({ campo: "", valido: null });
-
+  
+  // Validar Datos de contacto y ubicación
   const [nit, cambiarNit] = useState({ campo: "", valido: null });
   const [nit2, cambiarNit2] = useState({ campo: "", valido: null });
   const [nombreEmpresa, cambiarNombreEmpresa] = useState({ campo: "", valido: null });
   const [nombreRLoApoderado, cambiarNombreRLoApoderado] = useState({ campo: "", valido: null });
   const [digitoVerificacion, cambiarDigitoVerificacion] = useState({ campo: "", valido: null });
   const [digitoVerificacion2, cambiarDigitoVerificacion2] = useState({ campo: "", valido: null });
-
+  
+  // Validar Datos de contacto y ubicación
   const [pais, cambiarPais] = useState({ campo: "", valido: null });
   const [departamento, cambiarDepartamento] = useState({ campo: "", valido: null });
   const [municipio, cambiarMunicipio] = useState({ campo: "", valido: null });
   const [direccion, cambiarDireccion] = useState({ campo: "", valido: null });
   const [correo, cambiarCorreo] = useState({ campo: "", valido: null });
+  const [correo2, cambiarCorreo2] = useState({ campo: "", valido: null });
   const [telefono, cambiarTelefono] = useState({ campo: "", valido: null });
-  const [terminos, cambiarTerminos] = useState(false);
-  const [tipoDeDispositivo, cambiarTipoDeDispositivo] = useState({
-    campo: "",
-    valido: null,
-  });
+  
+  // Validar Características del terminal móvil
+  const [nombreOtroDispositivo, cambiarNombreOtroDispositivo] = useState({ campo: "", valido: null });
   const [marca, cambiarMarca] = useState({ campo: "", valido: null });
-  const [nombreComercial, cambiarNombreComercial] = useState({
-    campo: "",
-    valido: null,
-  });
+  const [nombreComercial, cambiarNombreComercial] = useState({ campo: "", valido: null });
   const [modelo, cambiarModelo] = useState({ campo: "", valido: null });
   const [fabricante, cambiarFabricante] = useState({ campo: "", valido: null });
+  const [casoUsoDispositivo, cambiarCasoUsoDispositivo] = useState({ campo: "", valido: null });
+  const [marcaEquipoAnfitrion, cambiarMarcaEquipoAnfitrion] = useState({ campo: "", valido: null });
+  const [modeloEquipoAnfitrion, cambiarModeloEquipoAnfitrion] = useState({ campo: "", valido: null });
+  // Validar formulario y términos condiciones
   const [formularioValido, cambiarFormularioValido] = useState(null);
+  const [terminos, cambiarTerminos] = useState(false);
 
   // Referencia al captcha
   const captcha = useRef(null);
@@ -148,6 +152,21 @@ const FormularioSolicitud = () => {
         });
       } else {
         cambiarDigitoVerificacion2((prevState) => {
+          return { ...prevState, valido: "true" };
+        });
+      }
+    }
+  };
+
+  // Campo confirmar correo electronico igual campo a comprobar
+  const validarCorreo2 = () => {
+    if (correo.campo.length > 0) {
+      if (correo.campo !== correo2.campo) {
+        cambiarCorreo2((prevState) => {
+          return { ...prevState, valido: "false" };
+        });
+      } else {
+        cambiarCorreo2((prevState) => {
           return { ...prevState, valido: "true" };
         });
       }
@@ -419,7 +438,7 @@ const FormularioSolicitud = () => {
                 label="Marca *"
                 placeholder="Ej: Apple"
                 name="marca"
-                leyendaError="Campo es requerido, solo se aceptan letras"
+                leyendaError="Campo es requerido"
                 expresionRegular={expresiones.nombre}
             />
 						<ComponenteInput
@@ -429,7 +448,7 @@ const FormularioSolicitud = () => {
                 label="Nombre Comercial *"
                 placeholder="Ej: Serie 3"
                 name="nombreComercial"
-                leyendaError="Campo es requerido, solo se aceptan letras"
+                leyendaError="Campo es requerido"
                 expresionRegular={expresiones.nombre}
               />
 
@@ -440,7 +459,7 @@ const FormularioSolicitud = () => {
                 label="Modelo *"
                 placeholder="Ej: Once"
                 name="modelo"
-                leyendaError="Campo es requerido, solo se aceptan letras"
+                leyendaError="Campo es requerido"
                 expresionRegular={expresiones.nombre}
               />
 
@@ -451,20 +470,26 @@ const FormularioSolicitud = () => {
                 label="Fabricante"
                 placeholder="Ej: Huawei"
                 name="fabricante"
+              />
+              
+							<ComponenteInput
+                estado={casoUsoDispositivo}
+                cambiarEstado={cambiarCasoUsoDispositivo}
+                tipo="text"
+                label="Caso de uso del Dispositivo*"
+                placeholder="Ej: Las caracteristicas de dispositivo..."
+                name="casoUsoDispositivo"
                 leyendaError="Campo requerido"
-                expresionRegular={expresiones.apellido2}
+                expresionRegular={expresiones.apellido}
               />
 
-							<ComponenteInput
-                estado={fabricante}
-                cambiarEstado={cambiarFabricante}
-                tipo="text"
-                label="CASO DE USO DEL DISPOSITIVO *"
-                placeholder="Ej: Las caracteristicas de dispositivo..."
-                name="fabricante"
-                leyendaError="Campo requerido"
-                expresionRegular={expresiones.apellido2}
-              />
+<div class="contenedor-comentarios col-12 mt-3 mb-2 p-0">
+      <p class="mb-0 pb-1 title-comentario">Escribre tus comentarios:</p>
+	    <textarea className="textoarea"
+        placeholder="Queremos conocer tu experiencia ó sugerencias" 
+      >
+      </textarea>
+    </div>
 
 					</>				
 				);
@@ -476,7 +501,7 @@ const FormularioSolicitud = () => {
                 estado={marca}
                 cambiarEstado={cambiarMarca}
                 tipo="text"
-                label="Marca del Módulo Interno* CAMBIAR PARAMETROS"
+                label="Marca del Módulo Interno*"
                 placeholder="Ej: Apple"
                 name="marcaModulo"
                 leyendaError="Campo es requerido"
@@ -486,7 +511,7 @@ const FormularioSolicitud = () => {
                 estado={nombreComercial}
                 cambiarEstado={cambiarNombreComercial}
                 tipo="text"
-                label="Nombre Comercial *"
+                label="Nombre Comercial*"
                 placeholder="Ej: Serie 3"
                 name="nombreComercial"
                 leyendaError="Campo es requerido, solo se aceptan letras"
@@ -497,10 +522,10 @@ const FormularioSolicitud = () => {
                 estado={modelo}
                 cambiarEstado={cambiarModelo}
                 tipo="text"
-                label="Modelo del Módulo Interno* CAMBIARA PARAMETROS"
+                label="Modelo del Módulo Interno*"
                 placeholder="Ej: Once"
-                name="modelo"
-                leyendaError="Campo es requerido, solo se aceptan letras"
+                name="modeloModuloInterno"
+                leyendaError="Campo es requerido"
                 expresionRegular={expresiones.nombre}
               />
 
@@ -511,26 +536,24 @@ const FormularioSolicitud = () => {
                 label="Fabricante"
                 placeholder="Ej: Huawei"
                 name="fabricante"
-                leyendaError="Campo requerido"
-                expresionRegular={expresiones.apellido2}
               />
 
 							<ComponenteInput
-                estado={fabricante}
-                cambiarEstado={cambiarFabricante}
+                estado={marcaEquipoAnfitrion}
+                cambiarEstado={cambiarMarcaEquipoAnfitrion}
                 tipo="text"
-                label="MARCA DEL EQUIPO ANFRITRIÓN*"
+                label="Marca del Equipo Anfitrión*"
                 placeholder="Ej: Las caracteristicas de dispositivo..."
-                name="fabricante"
+                name="marcaEquipoFabricante"
               />
 
 							<ComponenteInput
-                estado={fabricante}
-                cambiarEstado={cambiarFabricante}
+                estado={modeloEquipoAnfitrion}
+                cambiarEstado={cambiarModeloEquipoAnfitrion}
                 tipo="text"
-                label="MODELO DEL EQUIPO ANFITRIÓN*"
+                label="Modelo del Equipo Anfitrión*"
                 placeholder="Ej: Las caracteristicas de dispositivo..."
-                name="fabricante"
+                name="modeloEquipoAnfitrion"
               />
 
 					</>						
@@ -539,13 +562,13 @@ const FormularioSolicitud = () => {
         return (
 					<>
 						<ComponenteInput
-                estado={marca}
-                cambiarEstado={cambiarMarca}
+                estado={nombreOtroDispositivo}
+                cambiarEstado={cambiarNombreOtroDispositivo}
                 tipo="text"
-                label="NOMBRE OTRO DISPOSITIVO*"
+                label="Nombre otro Dispositivo*"
                 placeholder="Ej: Apple"
-                name="marca"
-                leyendaError="Campo es requerido, solo se aceptan letras"
+                name="nombreOtroDispositivo"
+                leyendaError="Campo es requerido"
                 expresionRegular={expresiones.nombre}
             />
 						<ComponenteInput
@@ -924,6 +947,10 @@ const FormularioSolicitud = () => {
                 Xls, Xlsx, Gif, Png, Jpeg, Tif, Tiff, Zip y Rar
               </p>
               <br />
+
+              <div>
+                <DragArea />
+              </div>
 
               <div>
                 <span class="button-carga-principal btn-file">
