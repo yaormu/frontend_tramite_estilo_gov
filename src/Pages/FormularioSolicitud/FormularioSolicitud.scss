@@ -8,21 +8,22 @@ select:invalid {
 }
 
 h2 {
-    color: red;
+    color: #004884;
     font: 18px Montserrat;
     margin: 0px 0px 8px;
 }
 
 h3 {
-    color: #13386D;
+    color: #004884;
     font: 24px Montserrat, sans-serif;
     margin: 0px 0px 8px;
     padding: 0px 0px 4px;
 }
 
 .title-form {
-    padding: 10px 0px 0px 0px;
-    margin: 0px 0px -45px 0px;
+    padding: 0px 0px 0px 0px;
+    margin: 30px 0px 0px 0px;
+    font: normal 500 24px "Montserrat", sans-serif;
 }
 
 .txt-form{
@@ -31,25 +32,20 @@ h3 {
 }
 
 .form-control {
-    padding: 0px 0px 5px 7px;
-}
-
-.title-form {
-    padding: 10px 0px 0px 0px;
-    margin: 0;
+    padding: 0px 0px 5px 0px;
 }
 
 .subtitle-form {
-    padding: 15px 0px 0px 22px;
-    margin: 0px 0px 4px -10px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
     font-size: 18px;
 }
 
 .txt-obliga {
     font-size: 14px;
     color: var(--color-base-txt);
-    margin: 0;
-    padding: 0px 0px 0px 12px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
 }
 
 .button-tac {
@@ -197,3 +193,9 @@ td {
     margin: 15px;
   }
 
+.aceptacionFormulario {
+    color: #3366CC;
+    text-decoration-line: underline;
+    margin: 0;
+    padding: 0;
+}

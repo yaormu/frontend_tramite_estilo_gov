@@ -11,6 +11,7 @@ import NavProceso from "../../components/NavProceso/NavProceso";
 import BotonTutoriales from "../../components/Botones/BotonTutoriales/BotonTutoriales";
 import BotonDeDudas from "../../components/Botones/BotonDeDudas/BotonDeDudas";
 import CalificacionExperiencia from "../../components/Cards/CalificacionExperiencia/CalificacionExperiencia";
+import CalificaExperienciaFooter from "../../components/Cards/CalificacionExperiencia/CalificaExperienciaFooter";
 import BotonInicio from "../../components/Botones/BotonInicio/BotonInicio";
 import Footer from "../../components/Footer/Footer";
 import FooterGov from "../../components/FooterGov/FooterGov";
@@ -45,48 +46,86 @@ import {
 import ComponenteInput from "./componentes/ComponenteInput";
 import ComponenteInputDisabled from "./componentes/ComponenteInputDisabled";
 import DragArea from "./componentes/DragArea";
+import TestingDocument from "../../components/TestingDocument/TestingDocument";
+import MenuDesplegable from "../../components/MenuDesplegable/MenuDesplegable";
 
 const FormularioSolicitud = () => {
-  
   // Validar Datos de identificación
   const [persona, cambiarPersona] = useState({ campo: "", valido: null });
   const [tipoId, cambiarTipoId] = useState({ campo: "", valido: null });
-  const [identificacion, cambiarIdentificacion] = useState({ campo: "", valido: null });
-  const [identificacion2, cambiarIdentificacion2] = useState({ campo: "", valido: null });
+  const [identificacion, cambiarIdentificacion] = useState({
+    campo: "",
+    valido: null,
+  });
+  const [identificacion2, cambiarIdentificacion2] = useState({
+    campo: "",
+    valido: null,
+  });
   const [nombre, cambiarNombre] = useState({ campo: "", valido: null });
   const [nombre2, cambiarNombre2] = useState({ campo: "", valido: null });
   const [apellido, cambiarApellido] = useState({ campo: "", valido: null });
   const [apellido2, cambiarApellido2] = useState({ campo: "", valido: null });
-  
+
   // Validar Datos de contacto y ubicación
   const [nit, cambiarNit] = useState({ campo: "", valido: null });
   const [nit2, cambiarNit2] = useState({ campo: "", valido: null });
-  const [nombreEmpresa, cambiarNombreEmpresa] = useState({ campo: "", valido: null });
-  const [nombreRLoApoderado, cambiarNombreRLoApoderado] = useState({ campo: "", valido: null });
-  const [digitoVerificacion, cambiarDigitoVerificacion] = useState({ campo: "", valido: null });
-  const [digitoVerificacion2, cambiarDigitoVerificacion2] = useState({ campo: "", valido: null });
-  
+  const [nombreEmpresa, cambiarNombreEmpresa] = useState({
+    campo: "",
+    valido: null,
+  });
+  const [nombreRLoApoderado, cambiarNombreRLoApoderado] = useState({
+    campo: "",
+    valido: null,
+  });
+  const [digitoVerificacion, cambiarDigitoVerificacion] = useState({
+    campo: "",
+    valido: null,
+  });
+  const [digitoVerificacion2, cambiarDigitoVerificacion2] = useState({
+    campo: "",
+    valido: null,
+  });
+
   // Validar Datos de contacto y ubicación
   const [pais, cambiarPais] = useState({ campo: "", valido: null });
-  const [departamento, cambiarDepartamento] = useState({ campo: "", valido: null });
+  const [departamento, cambiarDepartamento] = useState({
+    campo: "",
+    valido: null,
+  });
   const [municipio, cambiarMunicipio] = useState({ campo: "", valido: null });
   const [direccion, cambiarDireccion] = useState({ campo: "", valido: null });
   const [correo, cambiarCorreo] = useState({ campo: "", valido: null });
   const [correo2, cambiarCorreo2] = useState({ campo: "", valido: null });
   const [telefono, cambiarTelefono] = useState({ campo: "", valido: null });
-  
+
   // Validar Características del terminal móvil
-  const [nombreOtroDispositivo, cambiarNombreOtroDispositivo] = useState({ campo: "", valido: null });
+  const [nombreOtroDispositivo, cambiarNombreOtroDispositivo] = useState({
+    campo: "",
+    valido: null,
+  });
   const [marca, cambiarMarca] = useState({ campo: "", valido: null });
-  const [nombreComercial, cambiarNombreComercial] = useState({ campo: "", valido: null });
+  const [nombreComercial, cambiarNombreComercial] = useState({
+    campo: "",
+    valido: null,
+  });
   const [modelo, cambiarModelo] = useState({ campo: "", valido: null });
   const [fabricante, cambiarFabricante] = useState({ campo: "", valido: null });
-  const [casoUsoDispositivo, cambiarCasoUsoDispositivo] = useState({ campo: "", valido: null });
-  const [marcaEquipoAnfitrion, cambiarMarcaEquipoAnfitrion] = useState({ campo: "", valido: null });
-  const [modeloEquipoAnfitrion, cambiarModeloEquipoAnfitrion] = useState({ campo: "", valido: null });
+  const [casoUsoDispositivo, cambiarCasoUsoDispositivo] = useState({
+    campo: "",
+    valido: null,
+  });
+  const [marcaEquipoAnfitrion, cambiarMarcaEquipoAnfitrion] = useState({
+    campo: "",
+    valido: null,
+  });
+  const [modeloEquipoAnfitrion, cambiarModeloEquipoAnfitrion] = useState({
+    campo: "",
+    valido: null,
+  });
   // Validar formulario y términos condiciones
   const [formularioValido, cambiarFormularioValido] = useState(null);
   const [terminos, cambiarTerminos] = useState(false);
+  const [autorizaDatos, cambiarAutorizaDatos] = useState(false);
 
   // Referencia al captcha
   const captcha = useRef(null);
@@ -97,6 +136,8 @@ const FormularioSolicitud = () => {
   const [tipoDispositivo, setTipoDispositivo] = useState(null);
   // Mostrar y ocultar modal
   const [estadoModal, cambiarEstadoModal] = useState(false);
+  const [estadoModalTerminos, cambiarEstadoModalTerminos] = useState(false);
+  const [estadoModalDatos, cambiarEstadoModalDatos] = useState(false);
 
   //Dependiendo estado captcha a seleccionado dejar enviar formulario
   const [captchaValido, cambiarCaptchaValido] = useState(null);
@@ -175,6 +216,10 @@ const FormularioSolicitud = () => {
 
   const onChangeTerminos = (e) => {
     cambiarTerminos(e.target.checked);
+  };
+
+  const onChangeDatos = (e) => {
+    cambiarAutorizaDatos(e.target.checked);
   };
 
   const onChange = () => {
@@ -323,7 +368,7 @@ const FormularioSolicitud = () => {
               </Select>
               <LeyendaError>Campo tipo iden es requerido</LeyendaError>
             </div>
-          
+
             <ComponenteInput
               estado={nit}
               cambiarEstado={cambiarNit}
@@ -334,7 +379,7 @@ const FormularioSolicitud = () => {
               leyendaError="Campo requerido, solo se aceptan números"
               expresionRegular={expresiones.identificacion}
             />
-            
+
             <ComponenteInput
               estado={digitoVerificacion}
               cambiarEstado={cambiarDigitoVerificacion}
@@ -429,244 +474,434 @@ const FormularioSolicitud = () => {
     switch (tipoDispositivo) {
       case "dispositivo":
         return (
-					<>
-          <span/>
-						<ComponenteInput
-                estado={marca}
-                cambiarEstado={cambiarMarca}
-                tipo="text"
-                label="Marca *"
-                placeholder="Ej: Apple"
-                name="marca"
-                leyendaError="Campo es requerido"
-                expresionRegular={expresiones.nombre}
+          <>
+            <span />
+            <ComponenteInput
+              estado={marca}
+              cambiarEstado={cambiarMarca}
+              tipo="text"
+              label="Marca *"
+              placeholder="Ej: Apple"
+              name="marca"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.nombre}
             />
-						<ComponenteInput
-                estado={nombreComercial}
-                cambiarEstado={cambiarNombreComercial}
-                tipo="text"
-                label="Nombre Comercial *"
-                placeholder="Ej: Serie 3"
-                name="nombreComercial"
-                leyendaError="Campo es requerido"
-                expresionRegular={expresiones.nombre}
-              />
+            <ComponenteInput
+              estado={nombreComercial}
+              cambiarEstado={cambiarNombreComercial}
+              tipo="text"
+              label="Nombre Comercial *"
+              placeholder="Ej: Serie 3"
+              name="nombreComercial"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.nombre}
+            />
 
-              <ComponenteInput
-                estado={modelo}
-                cambiarEstado={cambiarModelo}
-                tipo="text"
-                label="Modelo *"
-                placeholder="Ej: Once"
-                name="modelo"
-                leyendaError="Campo es requerido"
-                expresionRegular={expresiones.nombre}
-              />
+            <ComponenteInput
+              estado={modelo}
+              cambiarEstado={cambiarModelo}
+              tipo="text"
+              label="Modelo *"
+              placeholder="Ej: Once"
+              name="modelo"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.nombre}
+            />
 
-              <ComponenteInput
-                estado={fabricante}
-                cambiarEstado={cambiarFabricante}
-                tipo="text"
-                label="Fabricante"
-                placeholder="Ej: Huawei"
-                name="fabricante"
-              />
-              
-							<ComponenteInput
-                estado={casoUsoDispositivo}
-                cambiarEstado={cambiarCasoUsoDispositivo}
-                tipo="text"
-                label="Caso de uso del Dispositivo*"
-                placeholder="Ej: Las caracteristicas de dispositivo..."
-                name="casoUsoDispositivo"
-                leyendaError="Campo requerido"
-                expresionRegular={expresiones.apellido}
-              />
+            <ComponenteInput
+              estado={fabricante}
+              cambiarEstado={cambiarFabricante}
+              tipo="text"
+              label="Fabricante"
+              placeholder="Ej: Huawei"
+              name="fabricante"
+            />
 
-<div class="contenedor-comentarios col-12 mt-3 mb-2 p-0">
-      <p class="mb-0 pb-1 title-comentario">Escribre tus comentarios:</p>
-	    <textarea className="textoarea"
-        placeholder="Queremos conocer tu experiencia ó sugerencias" 
-      >
-      </textarea>
-    </div>
+            <ComponenteInput
+              estado={casoUsoDispositivo}
+              cambiarEstado={cambiarCasoUsoDispositivo}
+              tipo="text"
+              label="Caso de uso del Dispositivo*"
+              placeholder="Ej: Las caracteristicas de dispositivo..."
+              name="casoUsoDispositivo"
+              leyendaError="Campo requerido"
+              expresionRegular={expresiones.apellido}
+            />
 
-					</>				
-				);
+            <div class="contenedor-comentarios">
+              <p class="mb-0 pb-1 title-comentario">
+                Escribre tus comentarios:
+              </p>
+              <textarea
+                className="textoarea"
+                placeholder="Queremos conocer tu experiencia ó sugerencias"
+              ></textarea>
+            </div>
+          </>
+        );
       case "modulo":
         return (
-					<>
-          <span/>
-						<ComponenteInput
-                estado={marca}
-                cambiarEstado={cambiarMarca}
-                tipo="text"
-                label="Marca del Módulo Interno*"
-                placeholder="Ej: Apple"
-                name="marcaModulo"
-                leyendaError="Campo es requerido"
-                expresionRegular={expresiones.nombre}
+          <>
+            <span />
+            <ComponenteInput
+              estado={marca}
+              cambiarEstado={cambiarMarca}
+              tipo="text"
+              label="Marca del Módulo Interno*"
+              placeholder="Ej: Apple"
+              name="marcaModulo"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.nombre}
             />
-						<ComponenteInput
-                estado={nombreComercial}
-                cambiarEstado={cambiarNombreComercial}
-                tipo="text"
-                label="Nombre Comercial*"
-                placeholder="Ej: Serie 3"
-                name="nombreComercial"
-                leyendaError="Campo es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
+            <ComponenteInput
+              estado={nombreComercial}
+              cambiarEstado={cambiarNombreComercial}
+              tipo="text"
+              label="Nombre Comercial*"
+              placeholder="Ej: Serie 3"
+              name="nombreComercial"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
 
-              <ComponenteInput
-                estado={modelo}
-                cambiarEstado={cambiarModelo}
-                tipo="text"
-                label="Modelo del Módulo Interno*"
-                placeholder="Ej: Once"
-                name="modeloModuloInterno"
-                leyendaError="Campo es requerido"
-                expresionRegular={expresiones.nombre}
-              />
+            <ComponenteInput
+              estado={modelo}
+              cambiarEstado={cambiarModelo}
+              tipo="text"
+              label="Modelo del Módulo Interno*"
+              placeholder="Ej: Once"
+              name="modeloModuloInterno"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.nombre}
+            />
 
-              <ComponenteInput
-                estado={fabricante}
-                cambiarEstado={cambiarFabricante}
-                tipo="text"
-                label="Fabricante"
-                placeholder="Ej: Huawei"
-                name="fabricante"
-              />
+            <ComponenteInput
+              estado={fabricante}
+              cambiarEstado={cambiarFabricante}
+              tipo="text"
+              label="Fabricante"
+              placeholder="Ej: Huawei"
+              name="fabricante"
+            />
 
-							<ComponenteInput
-                estado={marcaEquipoAnfitrion}
-                cambiarEstado={cambiarMarcaEquipoAnfitrion}
-                tipo="text"
-                label="Marca del Equipo Anfitrión*"
-                placeholder="Ej: Las caracteristicas de dispositivo..."
-                name="marcaEquipoFabricante"
-              />
+            <ComponenteInput
+              estado={marcaEquipoAnfitrion}
+              cambiarEstado={cambiarMarcaEquipoAnfitrion}
+              tipo="text"
+              label="Marca del Equipo Anfitrión*"
+              placeholder="Ej: Las caracteristicas de dispositivo..."
+              name="marcaEquipoFabricante"
+            />
 
-							<ComponenteInput
-                estado={modeloEquipoAnfitrion}
-                cambiarEstado={cambiarModeloEquipoAnfitrion}
-                tipo="text"
-                label="Modelo del Equipo Anfitrión*"
-                placeholder="Ej: Las caracteristicas de dispositivo..."
-                name="modeloEquipoAnfitrion"
-              />
-
-					</>						
-				);
-			case "otro":
+            <ComponenteInput
+              estado={modeloEquipoAnfitrion}
+              cambiarEstado={cambiarModeloEquipoAnfitrion}
+              tipo="text"
+              label="Modelo del Equipo Anfitrión*"
+              placeholder="Ej: Las caracteristicas de dispositivo..."
+              name="modeloEquipoAnfitrion"
+            />
+          </>
+        );
+      case "otro":
         return (
-					<>
-						<ComponenteInput
-                estado={nombreOtroDispositivo}
-                cambiarEstado={cambiarNombreOtroDispositivo}
-                tipo="text"
-                label="Nombre otro Dispositivo*"
-                placeholder="Ej: Apple"
-                name="nombreOtroDispositivo"
-                leyendaError="Campo es requerido"
-                expresionRegular={expresiones.nombre}
+          <>
+            <ComponenteInput
+              estado={nombreOtroDispositivo}
+              cambiarEstado={cambiarNombreOtroDispositivo}
+              tipo="text"
+              label="Nombre otro Dispositivo*"
+              placeholder="Ej: Apple"
+              name="nombreOtroDispositivo"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.nombre}
             />
-						<ComponenteInput
-                estado={marca}
-                cambiarEstado={cambiarMarca}
-                tipo="text"
-                label="Marca *"
-                placeholder="Ej: Apple"
-                name="marca"
-                leyendaError="Campo es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
+            <ComponenteInput
+              estado={marca}
+              cambiarEstado={cambiarMarca}
+              tipo="text"
+              label="Marca *"
+              placeholder="Ej: Apple"
+              name="marca"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
             />
-						<ComponenteInput
-                estado={nombreComercial}
-                cambiarEstado={cambiarNombreComercial}
-                tipo="text"
-                label="Nombre Comercial *"
-                placeholder="Ej: Serie 3"
-                name="nombreComercial"
-                leyendaError="Campo es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
+            <ComponenteInput
+              estado={nombreComercial}
+              cambiarEstado={cambiarNombreComercial}
+              tipo="text"
+              label="Nombre Comercial *"
+              placeholder="Ej: Serie 3"
+              name="nombreComercial"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
 
-              <ComponenteInput
-                estado={modelo}
-                cambiarEstado={cambiarModelo}
-                tipo="text"
-                label="Modelo *"
-                placeholder="Ej: Once"
-                name="modelo"
-                leyendaError="Campo es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
+            <ComponenteInput
+              estado={modelo}
+              cambiarEstado={cambiarModelo}
+              tipo="text"
+              label="Modelo *"
+              placeholder="Ej: Once"
+              name="modelo"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
 
-              <ComponenteInput
-                estado={fabricante}
-                cambiarEstado={cambiarFabricante}
-                tipo="text"
-                label="Fabricante"
-                placeholder="Ej: Huawei"
-                name="fabricante"
-                leyendaError="Campo requerido"
-                expresionRegular={expresiones.apellido2}
-              />
-
-					</>			
-			);
+            <ComponenteInput
+              estado={fabricante}
+              cambiarEstado={cambiarFabricante}
+              tipo="text"
+              label="Fabricante"
+              placeholder="Ej: Huawei"
+              name="fabricante"
+              leyendaError="Campo requerido"
+              expresionRegular={expresiones.apellido2}
+            />
+          </>
+        );
       default:
         return (
-					<>
-          <span/>
-						<ComponenteInput
-                estado={marca}
-                cambiarEstado={cambiarMarca}
-                tipo="text"
-                label="Marca *"
-                placeholder="Ej: Apple"
-                name="marca"
-                leyendaError="Campo es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
+          <>
+            <span />
+            <ComponenteInput
+              estado={marca}
+              cambiarEstado={cambiarMarca}
+              tipo="text"
+              label="Marca *"
+              placeholder="Ej: Apple"
+              name="marca"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
             />
-						<ComponenteInput
-                estado={nombreComercial}
-                cambiarEstado={cambiarNombreComercial}
-                tipo="text"
-                label="Nombre Comercial *"
-                placeholder="Ej: Serie 3"
-                name="nombreComercial"
-                leyendaError="Campo es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
+            <ComponenteInput
+              estado={nombreComercial}
+              cambiarEstado={cambiarNombreComercial}
+              tipo="text"
+              label="Nombre Comercial *"
+              placeholder="Ej: Serie 3"
+              name="nombreComercial"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
 
-              <ComponenteInput
-                estado={modelo}
-                cambiarEstado={cambiarModelo}
-                tipo="text"
-                label="Modelo *"
-                placeholder="Ej: Once"
-                name="modelo"
-                leyendaError="Campo es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
+            <ComponenteInput
+              estado={modelo}
+              cambiarEstado={cambiarModelo}
+              tipo="text"
+              label="Modelo *"
+              placeholder="Ej: Once"
+              name="modelo"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
 
-              <ComponenteInput
-                estado={fabricante}
-                cambiarEstado={cambiarFabricante}
-                tipo="text"
-                label="Fabricante"
-                placeholder="Ej: Huawei"
-                name="fabricante"
-                leyendaError="Campo requerido"
-                expresionRegular={expresiones.apellido2}
-              />
+            <ComponenteInput
+              estado={fabricante}
+              cambiarEstado={cambiarFabricante}
+              tipo="text"
+              label="Fabricante"
+              placeholder="Ej: Huawei"
+              name="fabricante"
+              leyendaError="Campo requerido"
+              expresionRegular={expresiones.apellido2}
+            />
+          </>
+        );
+    }
+  }
 
-					</>
-				)
-	}
-}
+  // Selección tipo dispositivo
+  function getTipoPaisDiv() {
+    switch (pais) {
+      case "colombia":
+        return (
+          <>
+            <MenuDesplegable />
+
+            <ComponenteInput
+              estado={direccion}
+              cambiarEstado={cambiarDireccion}
+              tipo="text"
+              label="Dirección *"
+              placeholder="Ej: CL 1 23 45"
+              name="direccion"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
+
+            <ComponenteInput
+              estado={correo}
+              cambiarEstado={cambiarCorreo}
+              tipo="text"
+              label="Correo Electrónico *"
+              placeholder="Ej: falso@gmail.com"
+              name="correo"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.correo}
+            />
+
+            <ComponenteInput
+              estado={correo}
+              cambiarEstado={cambiarCorreo}
+              tipo="text"
+              label="Confirmar Correo Electrónico *"
+              placeholder="Ej: falso@gmail.com"
+              name="correo"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.correo}
+            />
+
+            <ComponenteInput
+              estado={telefono}
+              cambiarEstado={cambiarTelefono}
+              tipo="text"
+              label="Teléfono Remitente *"
+              placeholder="Ej: 300 123 45 67"
+              name="telefono"
+              leyendaError="Campo es requerido, solo números"
+              expresionRegular={expresiones.telefono}
+            />
+          </>
+        );
+      case "otroPais":
+        return (
+          <>
+            <ComponenteInputDisabled
+              estado={departamento}
+              cambiarEstado={cambiarDepartamento}
+              tipo="text"
+              label="Departamento *"
+              placeholder="Ej: Cundinamarca"
+              name="departamento"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
+            <ComponenteInputDisabled
+              estado={municipio}
+              cambiarEstado={cambiarMunicipio}
+              tipo="text"
+              label="Municipio *"
+              placeholder="Ej: Madrid"
+              name="municipio"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
+            <ComponenteInput
+              estado={direccion}
+              cambiarEstado={cambiarDireccion}
+              tipo="text"
+              label="Dirección *"
+              placeholder="Ej: CL 1 23 45"
+              name="direccion"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
+
+            <ComponenteInput
+              estado={correo}
+              cambiarEstado={cambiarCorreo}
+              tipo="text"
+              label="Correo Electrónico *"
+              placeholder="Ej: falso@gmail.com"
+              name="correo"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.correo}
+            />
+
+            <ComponenteInput
+              estado={correo}
+              cambiarEstado={cambiarCorreo}
+              tipo="text"
+              label="Confirmar Correo Electrónico *"
+              placeholder="Ej: falso@gmail.com"
+              name="correo"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.correo}
+            />
+
+            <ComponenteInput
+              estado={telefono}
+              cambiarEstado={cambiarTelefono}
+              tipo="text"
+              label="Teléfono Remitente *"
+              placeholder="Ej: 300 123 45 67"
+              name="telefono"
+              leyendaError="Campo es requerido, solo números"
+              expresionRegular={expresiones.telefono}
+            />
+          </>
+        );
+      default:
+        return (
+          <>
+            <ComponenteInputDisabled
+              estado={departamento}
+              cambiarEstado={cambiarDepartamento}
+              tipo="text"
+              label="Departamento *"
+              placeholder="Ej: Cundinamarca"
+              name="departamento"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
+            <ComponenteInputDisabled
+              estado={municipio}
+              cambiarEstado={cambiarMunicipio}
+              tipo="text"
+              label="Municipio *"
+              placeholder="Ej: Madrid"
+              name="municipio"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
+            <ComponenteInput
+              estado={direccion}
+              cambiarEstado={cambiarDireccion}
+              tipo="text"
+              label="Dirección *"
+              placeholder="Ej: CL 1 23 45"
+              name="direccion"
+              leyendaError="Campo es requerido, solo se aceptan letras"
+              expresionRegular={expresiones.nombre}
+            />
+
+            <ComponenteInput
+              estado={correo}
+              cambiarEstado={cambiarCorreo}
+              tipo="text"
+              label="Correo Electrónico *"
+              placeholder="Ej: falso@gmail.com"
+              name="correo"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.correo}
+            />
+
+            <ComponenteInput
+              estado={correo}
+              cambiarEstado={cambiarCorreo}
+              tipo="text"
+              label="Confirmar Correo Electrónico *"
+              placeholder="Ej: falso@gmail.com"
+              name="correo"
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.correo}
+            />
+
+            <ComponenteInput
+              estado={telefono}
+              cambiarEstado={cambiarTelefono}
+              tipo="text"
+              label="Teléfono Remitente *"
+              placeholder="Ej: 300 123 45 67"
+              name="telefono"
+              leyendaError="Campo es requerido, solo números"
+              expresionRegular={expresiones.telefono}
+            />
+          </>
+        );
+    }
+  }
 
   return (
     <>
@@ -719,84 +954,37 @@ const FormularioSolicitud = () => {
                 <h4 className="subtitle-form">Datos de contacto y ubicación</h4>
                 <p className="txt-obliga">*Campos obligatorios</p>
               </div>
+              <span />
+              <div>
+                <Label htmlFor="tipoPais">País *</Label>
+                <Select
+                  id="tipoPais"
+                  data-toggle="tooltip"
+                  title="Seleccionar país de residencia"
+                  onClick={(event) => {
+                    // here set target value to state which is 0, 1, 2, 3
+                    cambiarPais(event.target.value);
+                  }}
+                >
+                  <option value="" selected hidden>
+                    Ej. Colombia
+                  </option>
+                  <option value="colombia">Colombia</option>
+                  <option value="otroPais">Alemania</option>
+                  <option value="otroPais">Arabia Saudita</option>
+                  <option value="otroPais">Argentina</option>
+                  <option value="otroPais">Bolivia</option>
+                  <option value="otroPais">Canada</option>
+                  <option value="otroPais">Corea del Norte</option>
+                  <option value="otroPais">China</option>
+                  <option value="otroPais">Estados Unidos</option>
+                  <option value="otroPais">Honkg Kong</option>
+                </Select>
+                <LeyendaError>Campo tipo persona es requerido</LeyendaError>
+              </div>
+
+              {getTipoPaisDiv()}
               <br />
-
-              <ComponenteInput
-                estado={pais}
-                cambiarEstado={cambiarPais}
-                tipo="text"
-                label="Pais *"
-                placeholder="Ej: Colombia"
-                name="pais"
-                leyendaError="Campo es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
-
-              <ComponenteInput
-                estado={departamento}
-                cambiarEstado={cambiarDepartamento}
-                tipo="text"
-                label="Departamento *"
-                placeholder="Ej: Cundinamarca"
-                name="departamento"
-                leyendaError="Campo es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
-
-              <ComponenteInput
-                estado={municipio}
-                cambiarEstado={cambiarMunicipio}
-                tipo="text"
-                label="Municipio *"
-                placeholder="Ej: Madrid"
-                name="municipio"
-                leyendaError="Campo es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
-
-              <ComponenteInput
-                estado={direccion}
-                cambiarEstado={cambiarDireccion}
-                tipo="text"
-                label="Dirección *"
-                placeholder="Ej: CL 1 23 45"
-                name="direccion"
-                leyendaError="Campo es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
-
-              <ComponenteInput
-                estado={correo}
-                cambiarEstado={cambiarCorreo}
-                tipo="text"
-                label="Correo Electrónico *"
-                placeholder="Ej: falso@gmail.com"
-                name="correo"
-                leyendaError="Campo es requerido"
-                expresionRegular={expresiones.correo}
-              />
-
-              <ComponenteInput
-                estado={correo}
-                cambiarEstado={cambiarCorreo}
-                tipo="text"
-                label="Confirmar Correo Electrónico *"
-                placeholder="Ej: falso@gmail.com"
-                name="correo"
-                leyendaError="Campo es requerido"
-                expresionRegular={expresiones.correo}
-              />
-
-              <ComponenteInput
-                estado={telefono}
-                cambiarEstado={cambiarTelefono}
-                tipo="text"
-                label="Teléfono Remitente *"
-                placeholder="Ej: 300 123 45 67"
-                name="telefono"
-                leyendaError="Campo es requerido, solo números"
-                expresionRegular={expresiones.telefono}
-              />
 
               <br />
 
@@ -819,7 +1007,9 @@ const FormularioSolicitud = () => {
                     setTipoDispositivo(event.target.value);
                   }}
                 >
-                  <option value="" selected hidden>Ej. Móvil</option>
+                  <option value="" selected hidden>
+                    Ej. Móvil
+                  </option>
                   <option value="telefono">Télefono Inteligente</option>
                   <option value="computador">Computador de Bolsillo</option>
                   <option value="dispositivo">Dispositivo IoT</option>
@@ -830,10 +1020,8 @@ const FormularioSolicitud = () => {
                 </Select>
                 <LeyendaError>Campo tipo persona es requerido</LeyendaError>
               </div>
-              
-              {getTipoDispositivoDiv()}
 
-              
+              {getTipoDispositivoDiv()}
 
               <br />
               {/*
@@ -892,7 +1080,6 @@ const FormularioSolicitud = () => {
                 expresionRegular={expresiones.apellido2}
               />
               */}
-              
             </Formulario>
             <br />
             <br />
@@ -916,22 +1103,15 @@ const FormularioSolicitud = () => {
             </div>
             <div class="tabla">
               <p class="titulo-tabla">Listado de TAC</p>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col" class="titulo-tableta">
-                      TAC
-                    </th>
-                    <th scope="col" class="titulo-tableta">
-                      Acciones
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Sin datos</th>
-                  </tr>
-                </tbody>
+              <table class="rwd-table">
+                <tr>
+                  <th>TAC</th>
+                  <th>Acciones</th>
+                </tr>
+                <tr>
+                  <td data-th="datos">Sin datos</td>
+                  <td data-th="accion"> ... </td>
+                </tr>
               </table>
             </div>
             <br />
@@ -951,93 +1131,20 @@ const FormularioSolicitud = () => {
               <div>
                 <DragArea />
               </div>
-
-              <div>
-                <span class="button-carga-principal btn-file">
-                  Etiqueta del equipo
-                  <input type="file" />
-                </span>
-              </div>
               <br />
-              <br />
-              <div>
-                <span class="button-carga btn-file">
-                  Certificado de conformidad de normas técnicas
-                  <input type="file" />
-                </span>
-              </div>
-              <br />
-              <br />
-
-              <div class="tabla">
-                <p class="titulo-tabla">Documentos a legalizar</p>
-
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col" class="titulo-tableta">
-                        Nombre del Archivo
-                      </th>
-                      <th scope="col" class="titulo-tableta">
-                        Archivo Cargado
-                      </th>
-                      <th scope="col" class="titulo-tableta">
-                        Eliminar Archivo
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">Etiqueta del equipo *</th>
-                      <td>...</td>
-                      <td>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          class="bi bi-trash"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                          <path
-                            fill-rule="evenodd"
-                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                          />
-                        </svg>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        Certificado de conformidad de normas técnicas (opcional)
-                      </th>
-                      <td>...</td>
-                      <td>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          class="bi bi-trash"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                          <path
-                            fill-rule="evenodd"
-                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                          />
-                        </svg>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
             </div>
+
             <br />
+
             <div className="col-md-12 titulo-indicativo">
-              <h4 className="subtitle-form">Verificación de Seguridad *</h4>
+              <h4 className="subtitle-form">
+                Aviso de Términos y Autorización para el Tratamiento de Datos
+                Personales*
+              </h4>
             </div>
+
             <br />
+
             <ContenedorTerminos>
               <Label>
                 <input
@@ -1047,7 +1154,28 @@ const FormularioSolicitud = () => {
                   checked={terminos}
                   onChange={onChangeTerminos}
                 />
-                Acepto que he leido los Términos y condiciones *
+                <a
+                  className="aceptacionFormulario"
+                  onClick={() => cambiarEstadoModalTerminos(!estadoModalTerminos)}
+                >
+                  Acepto que he leido los Términos y condiciones *
+                </a>
+              </Label>
+              <br />
+              <Label>
+                <input
+                  type="checkbox"
+                  name="autorizaDatos"
+                  id="autorizaDatos"
+                  checked={autorizaDatos}
+                  onChange={onChangeDatos}
+                />
+                <a
+                  className="aceptacionFormulario"
+                  onClick={() => cambiarEstadoModalDatos(!estadoModalDatos)}
+                >
+                  Autorizo el tratamiento de datos personales
+                </a>
               </Label>
             </ContenedorTerminos>
             {formularioValido === false && (
@@ -1058,24 +1186,34 @@ const FormularioSolicitud = () => {
                 </p>
               </MensajeError>
             )}
-            <ContenedorBotonCentrado>
-              <Boton
-                id="envio"
-                type="submit"
-                onClick={() => cambiarEstadoModal(!estadoModal)}
-              >
-                ENVIAR
-              </Boton>
-              {formularioValido === true && (
-                <MensajeExito id="msjexito">
-                  <p>
-                    <FontAwesomeIcon icon={faCheckCircle} />
-                    <b>Exitosa: </b>Su solicitud se ha registrado
-                    satisfactoriamente
-                  </p>
-                </MensajeExito>
-              )}
-            </ContenedorBotonCentrado>
+            <br />
+            <br />
+            <h4 className="subtitle-form">Verificación de Seguridad *</h4>
+            <br />
+            <ReCAPTCHA
+              ref={captcha}
+              sitekey="6Lc9VDIeAAAAAHHQA1wEjx1FKlTy9uWIrZKGwwvN"
+              onChange={onChange}
+            />
+
+            <br />
+            <br />
+            <Boton
+              id="envio"
+              type="submit"
+              onClick={() => cambiarEstadoModal(!estadoModal)}
+            >
+              REGISTRAR SOLICITUD
+            </Boton>
+            {formularioValido === true && (
+              <MensajeExito id="msjexito">
+                <p>
+                  <FontAwesomeIcon icon={faCheckCircle} />
+                  <b>Exitosa: </b>Su solicitud se ha registrado
+                  satisfactoriamente
+                </p>
+              </MensajeExito>
+            )}
           </div>
 
           <div className="col-md-1"></div>
@@ -1097,6 +1235,7 @@ const FormularioSolicitud = () => {
         </div>
         {/* END CONTAINER */}
       </div>
+      <CalificaExperienciaFooter />
       <Footer />
       <FooterGov />
 
@@ -1113,45 +1252,102 @@ const FormularioSolicitud = () => {
         {!usuarioValido && (
           <Contenido>
             <form>
-              <h1>
-                Términos y condiciones de uso del Sistema de Homologación de
-                equipos terminales
-              </h1>
-              <h6>
-                <strong>1. Del Servicio</strong>
-                Por lo anterior, para homologar un equipo terminal móvil en
-                Colombia, se debe realizar OBLIGATORIAMENTE la solicitud en
-                línea a través del formulario establecido para el efecto en el
-                portal web (www.tramitescrcom.gov.co), en el cual se deberá
-                suministrar la información requerida en
-                (http://bit.ly/homologarcelular). Allí podrá encontrar una guía
-                del paso a paso en videos para realizar este trámite.
-              </h6>
+              <h1>Confirmación</h1>
+              <h6>¿Estas seguro de registrar la información?</h6>
               <br />
 
-              <ContenedorBotonCentrado className="recaptcha">
-                <ReCAPTCHA
-                  ref={captcha}
-                  sitekey="6Lc9VDIeAAAAAHHQA1wEjx1FKlTy9uWIrZKGwwvN"
-                  onChange={onChange}
-                />
-              </ContenedorBotonCentrado>
-
-              {captchaValido === false && (
-                <div className="error-captcha">Por favor acepta el captcha</div>
-              )}
+              
               <ContenedorBotones>
-                <Boton type="submit">
-                  <Link to="/SolicitudHomologacion" className="irTramite">
+                <Botoncito1 type="submit">
+                  <Link to="/ProcesoSolicitud" className="irTramite">
                     ACEPTAR
                   </Link>
-                </Boton>
+                </Botoncito1>
                 <br />
-                <Boton2 onClick={() => cambiarEstadoModal(!estadoModal)}>
-                  RECHARZAR
-                </Boton2>
-              </ContenedorBotones>
+                <Botoncito2 onClick={() => cambiarEstadoModal(!estadoModal)}>
+                  CANCELAR
+                </Botoncito2>
+                </ContenedorBotones>
             </form>
+          </Contenido>
+        )}
+        {usuarioValido && (
+          <div>
+            <h1>Bienvenido</h1>
+          </div>
+        )}
+      </Modal>
+
+      {/* MODAL TERMINOS Y CONDICIONES */}
+      <Modal
+        estado={estadoModalTerminos}
+        cambiarEstado={cambiarEstadoModalTerminos}
+        titulo="Términos y condiciones"
+        mostrarHeader={true}
+        mostrarOverlay={true}
+        posicionModal={"start"}
+        padding={"20px"}
+        width={"900px"}
+        min-height={"400px"}
+      >
+        {!usuarioValido && (
+          <Contenido>
+            <h1>Homologación de equipos terminales</h1>
+            <h2>1. Del Servicio</h2>
+            <p>
+              Trámite por medio del cual la CRC busca que un equipo terminal móvil tenga un adecuado funcionamiento e interacción con las redes de comunicaciones del país en términos de sus frecuencias de operación y que cumpla con los estándares internacionales sobre los límites de exposición humana a los campos electromagnéticos para un uso seguro por parte del usuario interesado
+            </p>
+            <p>
+              Por lo anterior, para homologar un equipo terminal móvil en Colombia, se debe realizar OBLIGATORIAMENTE la solicitud en línea a través del formulario establecido para el efecto en el portal web (www.tramitescrcom.gov.co), en el cual se deberá suministrar la información requerida en (http://bit.ly/homologarcelular). Allí podrá encontrar una guía del paso a paso en videos para realizar este trámite.
+            </p>
+            <h2>2. De Las Responsabilidades de la CRC</h2>
+            <p>
+              La CRC es el órgano encargado de promover la competencia en los mercados, promover el pluralismo informativo, evitar el abuso de posición dominante, regular los mercados de las redes y los servicios de comunicaciones y garantizar la protección de los derechos de los usuarios; con el fin que la prestación de los servicios sea económicamente eficiente, y refleje altos niveles de calidad, de las redes y los servicios de comunicaciones, incluidos los servicios de televisión abierta radiodifundida y de radiodifusión sonora.
+            </p>
+            <p>
+              La CRC estudiará cada solicitud de homologación y dará la respuesta pertinente.
+            </p>
+            <h2>3. Uso de los Datos Personales</h2>
+            <p>
+              La CRC garantiza que los datos suministrados por el usuario sólo serán utilizados para la administración y gestión del trámite de homologación, conforme a la Ley 1581 de 2012 y de acuerdo con la <a Target="_blanck" 
+                href="https://www.crcom.gov.co/uploads/images/files/Politica%20de%20Tratamiento%20Info%20Personal.pdf"
+              > Política de Tratamiento de Información Personal
+              </a>
+            </p>
+            <h2>4. De los Costos</h2>
+            <p>El trámite no tiene costo alguno.</p>
+            
+          </Contenido>
+        )}
+        {usuarioValido && (
+          <div>
+            <h1>Bienvenido</h1>
+          </div>
+        )}
+      </Modal>
+
+      {/* MODAL TRATAMIENTO DE DATOS */}
+      <Modal
+        estado={estadoModalDatos}
+        cambiarEstado={cambiarEstadoModalDatos}
+        titulo="Politica de tratamiento de datos personales"
+        mostrarHeader={true}
+        mostrarOverlay={true}
+        posicionModal={"start"}
+        padding={"20px"}
+        width={"700px"}
+        min-height={"300px"}
+      >
+        {!usuarioValido && (
+          <Contenido>
+            <p>
+              La Comisión de Regulación de Comunicaciones, como responsable del tratamiento de la información, manifiesta que no compartirá ni entregará a terceros no autorizados expresamente por el titular, la información de carácter personal, dada por los ciudadanos a la entidad, en cumplimiento de lo establecido en la Ley 1581 de 2012, para la protección de Datos Personales, la Ley Estatutaria 1266 de 2008,con las disposiciones generales del Habeas Data y la regulación del manejo de la información contenida en las bases de datos personales, así como la Ley 1712 de 2014, Ley de Transparencia y Derecho de Acceso a la Información Pública Nacional.
+            </p>
+            <p>
+              Para más información puedes consultar aquí la <a Target="_blanck" href="https://crcom.gov.co/sites/default/files/transparencia/contenido_multimedia/Politica_de_tratamiento_info_personal.pdf">
+                Política de Tratamiento de Información Personal
+              </a>
+            </p>
           </Contenido>
         )}
         {usuarioValido && (
@@ -1186,21 +1382,54 @@ const Boton = styled.button`
   }
 `;
 */
-const Boton2 = styled.button`
-  border-radius: 20px;
+
+/*
+<ContenedorBotonCentrado className="recaptcha">
+                <ReCAPTCHA
+                  ref={captcha}
+                  sitekey="6Lc9VDIeAAAAAHHQA1wEjx1FKlTy9uWIrZKGwwvN"
+                  onChange={onChange}
+                />
+              </ContenedorBotonCentrado>
+
+              {captchaValido === false && (
+                <div className="error-captcha">Por favor acepta el captcha</div>
+              )}
+*/
+
+const Botoncito1 = styled.button`
+  background: #3366CC;
+  border-radius: 15px;
   border: 2px solid #3366cc;
-  background: #ffff;
+  color: #FFFF;
+  cursor: pointer;
+  display: block;
+  font: normal 500 15px "Work Sans", sans-serif;
+  transition: 0.3s ease all;
+  padding: 15px 10px 15px 10px;
+  width: 40%;
+
+  &:hover {
+    background: #F6F8F9;
+    color: #FFFF;
+  }
+`;
+
+const Botoncito2 = styled.button`
+  background: #FFFF;
+  border-radius: 15px;
+  border: 2px solid #3366cc;
   color: #3366cc;
   cursor: pointer;
   display: block;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  padding: 10px 30px;
+  font: normal 500 15px "Work Sans", sans-serif;
   transition: 0.3s ease all;
+  padding: 15px 10px 15px 10px;
+  width: 40%;
 
   &:hover {
-    background: #0066ff;
-    color: #ffff;
+    background: #3366CC;
+    color: #FFFF;
   }
 `;
 
@@ -1236,8 +1465,9 @@ const Contenido = styled.div`
 `;
 
 const ContenedorBotones = styled.div`
-  padding: 40px;
+  padding: 0px;
   display: flex;
+  float: left;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;

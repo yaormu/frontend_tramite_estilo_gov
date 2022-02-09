@@ -17,6 +17,7 @@ import RtaTramite from "./Pages/RtaTramite/RtaTramite";
 import ProcesoSolicitud from "./Pages/ProcesoSolicitud/ProcesoSolicitud";
 import RtaSolicitud from "./Pages/RtaSolicitud/RtaSolicitud";
 import Prueba from "./components/Cards/Prueba/Prueba";
+import ProcesoMiSolicitud from "./Pages/ProcesoMiSolicitud/ProcesoMiSolicitud";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="/ProcesoSolicitud" element={<ProcesoSolicitud />} />
         <Route path="/RespuestaSolicitud" element={<RtaSolicitud />} />
         <Route path="/Prueba" element={<Prueba />} />
+        <Route path="/EstadoSolicitud" element={<ProcesoMiSolicitud />} />
       </Routes>
     </Router>
   );

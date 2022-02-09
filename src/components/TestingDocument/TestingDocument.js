@@ -1,3 +1,4 @@
+import { faTable } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 const formatoArchivos = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf'];
@@ -9,7 +10,6 @@ const TestingDocument = () => {
 
     if(file.size > 5242880) {
       console.log("Supera las 5MB")
-
       return; 
     }
 
@@ -17,7 +17,6 @@ const TestingDocument = () => {
 
     if(formatoArchivos.indexOf(file.type < 0)) {
       console.log("Formato No Valido")
-
       return;
     }
 
@@ -50,7 +49,51 @@ const TestingDocument = () => {
     <>
       <input type="file" onChange={onFileChange} />
 
+      <div>
+        <table class="default">
 
+  <tr>
+
+    <th>Hoy</th>
+
+    <th>Mañana</th>
+
+    <th>Jueves</th>
+
+  </tr>
+
+  <tr>
+
+    <td>Soleado</td>
+
+    <td>Mayormente soleado</td>
+
+    <td>Parcialmente nublado</td>
+
+  </tr>
+
+  <tr>
+
+    <td>19°C</td>
+
+    <td>17°C</td>
+
+    <td>12°C</td>
+
+  </tr>
+
+  <tr>
+
+    <td>E 13 km/h</td>
+
+    <td>E 11 km/h</td>
+
+    <td>S 16 km/h</td>
+
+  </tr>
+
+</table>
+      </div>
     </>
    );
 }

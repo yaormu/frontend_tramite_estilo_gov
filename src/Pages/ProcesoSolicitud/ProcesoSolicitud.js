@@ -10,6 +10,9 @@ import BotonInicio from "../../components/Botones/BotonInicio/BotonInicio";
 import Footer from "../../components/Footer/Footer";
 import FooterGov from "../../components/FooterGov/FooterGov";
 
+
+
+
 import { Boton } from "../FormularioSolicitud/elementos/Formularios";
 
 const ProcesoSolicitud = () => {
@@ -19,7 +22,7 @@ const ProcesoSolicitud = () => {
         <Header />
         <div className="row">
           <div className="col-md-8">
-            <Navigation />
+            <Navigation paginaActual="solicitud" />
             <NavProceso /> 
             <br/>
             <h3 className="title-form-proceso-radicado">

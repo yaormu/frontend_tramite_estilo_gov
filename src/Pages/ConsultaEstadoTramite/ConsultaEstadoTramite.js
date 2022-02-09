@@ -12,6 +12,7 @@ import BotonDeDudas from "../../components/Botones/BotonDeDudas/BotonDeDudas";
 import BotonInicio from "../../components/Botones/BotonInicio/BotonInicio";
 
 import CalificacionExperiencia from "../../components/Cards/CalificacionExperiencia/CalificacionExperiencia";
+import CalificaExperienciaFooter from "../../components/Cards/CalificacionExperiencia/CalificaExperienciaFooter";
 
 import {
   faCheckCircle,
@@ -82,7 +83,7 @@ const ConsultaEstadoTramite = () => {
             <div className="col-md-8">
               <Navigation />
               <NavProceso /> <br />
-              <h3 className="title-form-radicado">Consultar Mis Trámites</h3>
+              <h3 className="title-form">Conoce el Estado de tú Solicitud</h3>
               <br />
               <p>
                 A través de la siguiente funcionalidad, consulte el estado de
@@ -93,26 +94,26 @@ const ConsultaEstadoTramite = () => {
               <br />
               <br />
               <Formulario action="" onSubmit={submit}>
-                <ContenedorBotonCentrado>
+                
                   <ComponenteInput
                     estado={radicado}
                     cambiarEstado={cambiarRadicado}
                     tipo="text"
                     label="Ingrese Número de Rádicado *"
-                    placeholder="Ej: 123456789012"
+                    placeholder="Ej: 202201204578"
                     name="radicado"
                     leyendaError="Campo es requerido, solo se permiten números y minimo 6 digitos"
                     expresionRegular={expresiones.numRadicado}
                   />
-                </ContenedorBotonCentrado>
-
-                <ContenedorBotonCentrado className="recaptcha">
+                
+<span/>
+                
                   <ReCAPTCHA
                     ref={captcha}
                     sitekey="6Lc9VDIeAAAAAHHQA1wEjx1FKlTy9uWIrZKGwwvN"
                     onChange={onChange}
                   />
-                </ContenedorBotonCentrado>
+                
 
                 {/*captchaValido === false && (
                   <div className="error-captcha">
@@ -129,9 +130,9 @@ const ConsultaEstadoTramite = () => {
                   </MensajeError>
                 )}
 
-                <ContenedorBotonCentrado>
+                <span/>
                   <Boton type="submit">
-                    <Link to="/ProcesoSolicitud">CONSULTAR</Link>
+                    <Link to="/EstadoSolicitud">CONSULTAR</Link>
                   </Boton>
                   {formularioValido === true && (
                     <MensajeExito id="msjexito">
@@ -142,15 +143,15 @@ const ConsultaEstadoTramite = () => {
                       </p>
                     </MensajeExito>
                   )}
-                </ContenedorBotonCentrado>
+              
               </Formulario>
             </div>
           )}
-          {/*usuarioValido && (
+          {usuarioValido && (
             <div>
-              <h1>BIENVENIDO A VER EL PROCESO COMO VA</h1>
+            <Link to="/ProcesoSolicitud">CONSULTAR</Link>
             </div>
-          )*/}
+          )}
           <div className="col-lg-1"></div>
           <div className="col-lg-3 p-0">
             <aside className="aside">
@@ -168,6 +169,7 @@ const ConsultaEstadoTramite = () => {
           </div>
         </div>
       </div>
+      <CalificaExperienciaFooter />
       <Footer />
       <FooterGov />
     </>

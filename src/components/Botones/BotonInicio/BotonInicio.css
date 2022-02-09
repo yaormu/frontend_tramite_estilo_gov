@@ -23,5 +23,6 @@
 }
 
 .inicio:hover {
-    color: #FFFF;
+    color: #FFFF !important;
+    text-decoration: none !important;
 }

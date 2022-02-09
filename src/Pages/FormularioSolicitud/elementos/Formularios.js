@@ -134,11 +134,12 @@ const Boton = styled.button `
     border: 1.5px solid #3366CC;
     border-radius: 30px;
     color: #ffff;
-    font: normal bold 15px/14px "Works Sans", sans-serif;
-    margin: 0px 0px 0px 15px;
-    padding: 10px 0px 10px 0px;
+    font: normal bold 15px "Works Sans", sans-serif;
+    margin: 0px 0px 100px 0px;
+    padding: 15px 5px 15px 5px;
     text-transform: uppercase;
     white-space: pre-line;
+    width: 30%;
     /*
     display: flex;
     height: 40px;

@@ -9,14 +9,17 @@ const Modal = ({
     mostrarHeader,
     mostrarOverlay,
     posicionModal,
-    padding
+    padding,
+    width,
+    minheight,
+
 }) => {
     return (
     <>
         {
             estado &&
             <Overlay mostrarOverlay={mostrarOverlay} posicionModal={posicionModal}>
-                <ContenedorModal padding={padding}>
+                <ContenedorModal padding={padding} width={width} min-height={minheight}>
                     {
                         mostrarHeader &&
                             <EncabezadoModal>
@@ -54,8 +57,8 @@ const Overlay = styled.div`
 `
 
 const ContenedorModal = styled.div`
-    width: 1200px;
-    min-height: 500px;
+    width: ${props => props.width ? props.width : '400px'};
+    min-height: ${props => props.minheight ? props.minheight : '200px'};
     background: #fff;
     position: relative;
     border-radius: 5px;
@@ -84,7 +87,7 @@ const BotonCerrar = styled.button`
     right: 20px;
     
     width: 30px;
-    height: 30px;
+    height: 60px;
     border: none;   
     background: none;
     cursor: pointer;

@@ -87,7 +87,7 @@ const Section = () => {
                   */}
                 </div>
 
-                <h3>Solicitud de Homologación de Equipos Terminales</h3>
+                <h3 className="title-form">Solicitud de Homologación de Equipos Terminales</h3>
                 <br />
                 <article>
                   <h4 className="title-section">
@@ -156,10 +156,10 @@ const Section = () => {
           </div>
         </div>
       </section>
-      <ContactForm />
+      {/*<ContactForm />
       <hr/>
       <SelectsAnidados />
-      <hr/>
+      <hr/>*/}
       <br/><br/><br/><br/>
     </>
   );
