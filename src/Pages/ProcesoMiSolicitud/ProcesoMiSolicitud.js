@@ -55,14 +55,12 @@ const ProcesoMiSolicitud = () => {
                 <th>Documento</th>
               </tr>
               <tr>
-                <td data-th="Movie Title">Pendiente</td>
-                <td data-th="Genre">15-02-2022</td>
-                <td data-th="Year">25-02-2022</td>
-                <td data-th="Gross">26-02-2021</td>
-                <td data-th="Gross">
-                  <a className="mostraDocumento" href="#" Target="_blank">
-                    VER PDF
-                  </a>
+                <td data-th="estado">Pendiente</td>
+                <td data-th="radicado">10-02-2022</td>
+                <td data-th="salida"></td>
+                <td data-th="salidaRadicado"></td>
+                <td data-th="documento">
+                  <a className="mostraDocumento" href="#" Target="_blank"></a>
                 </td>
               </tr>
             </table>

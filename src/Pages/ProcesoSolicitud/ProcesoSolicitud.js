@@ -10,7 +10,8 @@ import BotonInicio from "../../components/Botones/BotonInicio/BotonInicio";
 import Footer from "../../components/Footer/Footer";
 import FooterGov from "../../components/FooterGov/FooterGov";
 
-
+import Instancia3 from "../../components/NavProceso/Instancia3";
+import Navegacion from "../../components/Navigation/Navegacion";
 
 
 import { Boton } from "../FormularioSolicitud/elementos/Formularios";
@@ -22,11 +23,15 @@ const ProcesoSolicitud = () => {
         <Header />
         <div className="row">
           <div className="col-md-8">
-            <Navigation paginaActual="solicitud" />
-            <NavProceso /> 
+            <Navegacion
+              inicio="Inicio"
+              pagina="Solicitud de Homologación..."
+              paginaActual="Resumen Radicación Solicitud"
+            />
+            <Instancia3 /> 
             <br/>
-            <h3 className="title-form-proceso-radicado">
-              Resumen Radicación:
+            <h3 className="title-form">
+              Resumen Formulario de Solicitud de Homologación de Equipos Términales Móviles
             </h3>
             <br/>
             <p>
@@ -42,10 +47,12 @@ const ProcesoSolicitud = () => {
             </p>
             <br/>
             <p style={{color: "#A80521", fontSize: "15px"}}>
-              Tiempo de respuesta aproximadamente en 10 días habiles (20-feb-2022 14:22:13)
+              Tiempo de respuesta aproximadamente en 10 días habiles (10-feb-2022)
             </p>
             <br/>
             <br/>
+
+            
           
           <div>
           <Boton>

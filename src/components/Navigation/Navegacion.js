@@ -7,8 +7,8 @@ const Navegacion = ({inicio, pagina, paginaActual}) => {
         <>
             <nav className="navigation" aria-label="breadcrumb">
                     <ol class="breadcrumb navega-lista">
-                        <li class="breadcrumb-item">
-                            <NavLink to="/" className="inicio">
+                        <li class="breadcrumb-item" aria-current="page">
+                            <NavLink to="/" className="inicion">
                                 {inicio}
                             </NavLink>
                         </li>

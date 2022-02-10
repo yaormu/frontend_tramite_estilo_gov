@@ -35,7 +35,6 @@ import {
   Formulario,
   Label,
   Select,
-  Boton,
   ContenedorTerminos,
   ContenedorBotonCentrado,
   LeyendaError,
@@ -292,9 +291,9 @@ const FormularioSolicitud = () => {
               cambiarEstado={cambiarIdentificacion}
               tipo="text"
               label="Número de Identificación *"
-              placeholder="Ej: 1234567890"
+              placeholder="Ej: 1001245785"
               name="identificacion"
-              leyendaError="Campo número de identificación es requerido, solo se permiten números y minimo 6 digitos"
+              leyendaError="Campo requerido, solo se aceptan números y minimo 6 digitos"
               expresionRegular={expresiones.identificacion}
             />
 
@@ -303,9 +302,9 @@ const FormularioSolicitud = () => {
               cambiarEstado={cambiarIdentificacion2}
               tipo="text"
               label="Confirmar Número de Identificación *"
-              placeholder="Ej: 1234567890"
+              placeholder="Ej: 1001245785"
               name="identificacion"
-              leyendaError="Campo confirmar número de identificación es requerido, y debe ser igual al campo número de identificación"
+              leyendaError="Campo requerido, debe ser igual al campo identificación"
               funcion={validarIdentificacion2}
             />
 
@@ -316,7 +315,7 @@ const FormularioSolicitud = () => {
               label="Primer Nombre *"
               placeholder="Ej: Pepito"
               name="nombre"
-              leyendaError="Campo primer nombre es requerido, solo se aceptan letras"
+              leyendaError="Campo requerido, solo se aceptan letras"
               expresionRegular={expresiones.nombre}
             />
 
@@ -336,7 +335,7 @@ const FormularioSolicitud = () => {
               label="Primer Apellido *"
               placeholder="Ej: Perez"
               name="apellido"
-              leyendaError="Campo primer apellido es requerido, solo se aceptan letras"
+              leyendaError="Campo requerido, solo se aceptan letras"
               expresionRegular={expresiones.nombre}
             />
 
@@ -484,7 +483,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Apple"
               name="marca"
               leyendaError="Campo es requerido"
-              expresionRegular={expresiones.nombre}
+              
             />
             <ComponenteInput
               estado={nombreComercial}
@@ -494,7 +493,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Serie 3"
               name="nombreComercial"
               leyendaError="Campo es requerido"
-              expresionRegular={expresiones.nombre}
+              
             />
 
             <ComponenteInput
@@ -505,7 +504,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Once"
               name="modelo"
               leyendaError="Campo es requerido"
-              expresionRegular={expresiones.nombre}
+              
             />
 
             <ComponenteInput
@@ -516,7 +515,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Huawei"
               name="fabricante"
             />
-
+            
             <ComponenteInput
               estado={casoUsoDispositivo}
               cambiarEstado={cambiarCasoUsoDispositivo}
@@ -525,18 +524,23 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Las caracteristicas de dispositivo..."
               name="casoUsoDispositivo"
               leyendaError="Campo requerido"
-              expresionRegular={expresiones.apellido}
+            
             />
 
-            <div class="contenedor-comentarios">
-              <p class="mb-0 pb-1 title-comentario">
-                Escribre tus comentarios:
-              </p>
+            
+            {/*
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Escribre tus comentarios:</label>
               <textarea
-                className="textoarea"
-                placeholder="Queremos conocer tu experiencia ó sugerencias"
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                placeholder="Ej: Caracteristicas u observaciones del dispositivo IoT decir..."
+                rows="3"
               ></textarea>
             </div>
+            */}
+            
+
           </>
         );
       case "modulo":
@@ -551,7 +555,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Apple"
               name="marcaModulo"
               leyendaError="Campo es requerido"
-              expresionRegular={expresiones.nombre}
+              
             />
             <ComponenteInput
               estado={nombreComercial}
@@ -561,7 +565,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Serie 3"
               name="nombreComercial"
               leyendaError="Campo es requerido, solo se aceptan letras"
-              expresionRegular={expresiones.nombre}
+              
             />
 
             <ComponenteInput
@@ -572,7 +576,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Once"
               name="modeloModuloInterno"
               leyendaError="Campo es requerido"
-              expresionRegular={expresiones.nombre}
+              
             />
 
             <ComponenteInput
@@ -614,7 +618,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Apple"
               name="nombreOtroDispositivo"
               leyendaError="Campo es requerido"
-              expresionRegular={expresiones.nombre}
+              
             />
             <ComponenteInput
               estado={marca}
@@ -624,7 +628,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Apple"
               name="marca"
               leyendaError="Campo es requerido, solo se aceptan letras"
-              expresionRegular={expresiones.nombre}
+              
             />
             <ComponenteInput
               estado={nombreComercial}
@@ -633,7 +637,7 @@ const FormularioSolicitud = () => {
               label="Nombre Comercial *"
               placeholder="Ej: Serie 3"
               name="nombreComercial"
-              leyendaError="Campo es requerido, solo se aceptan letras"
+              leyendaError="Campo es requerido"
               expresionRegular={expresiones.nombre}
             />
 
@@ -644,8 +648,8 @@ const FormularioSolicitud = () => {
               label="Modelo *"
               placeholder="Ej: Once"
               name="modelo"
-              leyendaError="Campo es requerido, solo se aceptan letras"
-              expresionRegular={expresiones.nombre}
+              leyendaError="Campo es requerido"
+              
             />
 
             <ComponenteInput
@@ -656,7 +660,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Huawei"
               name="fabricante"
               leyendaError="Campo requerido"
-              expresionRegular={expresiones.apellido2}
+              
             />
           </>
         );
@@ -669,20 +673,20 @@ const FormularioSolicitud = () => {
               cambiarEstado={cambiarMarca}
               tipo="text"
               label="Marca *"
-              placeholder="Ej: Apple"
+              placeholder="Ej: Marca del Fabricante Dispositivo"
               name="marca"
-              leyendaError="Campo es requerido, solo se aceptan letras"
-              expresionRegular={expresiones.nombre}
+              leyendaError="Campo es requerido"
+              
             />
             <ComponenteInput
               estado={nombreComercial}
               cambiarEstado={cambiarNombreComercial}
               tipo="text"
               label="Nombre Comercial *"
-              placeholder="Ej: Serie 3"
+              placeholder="Ej: Nombre Comercial del Dispositivo"
               name="nombreComercial"
-              leyendaError="Campo es requerido, solo se aceptan letras"
-              expresionRegular={expresiones.nombre}
+              leyendaError="Campo es requerido"
+             
             />
 
             <ComponenteInput
@@ -690,10 +694,10 @@ const FormularioSolicitud = () => {
               cambiarEstado={cambiarModelo}
               tipo="text"
               label="Modelo *"
-              placeholder="Ej: Once"
+              placeholder="Ej: Módelo que estipula el fabricante"
               name="modelo"
-              leyendaError="Campo es requerido, solo se aceptan letras"
-              expresionRegular={expresiones.nombre}
+              leyendaError="Campo es requerido"
+              
             />
 
             <ComponenteInput
@@ -701,10 +705,9 @@ const FormularioSolicitud = () => {
               cambiarEstado={cambiarFabricante}
               tipo="text"
               label="Fabricante"
-              placeholder="Ej: Huawei"
+              placeholder="Ej: Fabricante de la Marca"
               name="fabricante"
               leyendaError="Campo requerido"
-              expresionRegular={expresiones.apellido2}
             />
           </>
         );
@@ -726,8 +729,8 @@ const FormularioSolicitud = () => {
               label="Dirección *"
               placeholder="Ej: CL 1 23 45"
               name="direccion"
-              leyendaError="Campo es requerido, solo se aceptan letras"
-              expresionRegular={expresiones.nombre}
+              leyendaError="Campo es requerido"
+              
             />
 
             <ComponenteInput
@@ -737,19 +740,20 @@ const FormularioSolicitud = () => {
               label="Correo Electrónico *"
               placeholder="Ej: falso@gmail.com"
               name="correo"
-              leyendaError="Campo es requerido"
+              leyendaError="Campo es requerido, cumplir con las caracteristicas de un email"
               expresionRegular={expresiones.correo}
             />
 
             <ComponenteInput
-              estado={correo}
-              cambiarEstado={cambiarCorreo}
+              estado={correo2}
+              cambiarEstado={cambiarCorreo2}
               tipo="text"
               label="Confirmar Correo Electrónico *"
               placeholder="Ej: falso@gmail.com"
               name="correo"
-              leyendaError="Campo es requerido"
+              leyendaError="Campo es requerido, coincidir con email anteriormente digitado"
               expresionRegular={expresiones.correo}
+              funcion={validarCorreo2}
             />
 
             <ComponenteInput
@@ -759,7 +763,7 @@ const FormularioSolicitud = () => {
               label="Teléfono Remitente *"
               placeholder="Ej: 300 123 45 67"
               name="telefono"
-              leyendaError="Campo es requerido, solo números"
+              leyendaError="Campo es requerido, solo se aceptan números"
               expresionRegular={expresiones.telefono}
             />
           </>
@@ -795,7 +799,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: CL 1 23 45"
               name="direccion"
               leyendaError="Campo es requerido, solo se aceptan letras"
-              expresionRegular={expresiones.nombre}
+              
             />
 
             <ComponenteInput
@@ -810,14 +814,15 @@ const FormularioSolicitud = () => {
             />
 
             <ComponenteInput
-              estado={correo}
-              cambiarEstado={cambiarCorreo}
+              estado={correo2}
+              cambiarEstado={cambiarCorreo2}
               tipo="text"
               label="Confirmar Correo Electrónico *"
               placeholder="Ej: falso@gmail.com"
               name="correo"
               leyendaError="Campo es requerido"
               expresionRegular={expresiones.correo}
+              funcion={validarCorreo2}
             />
 
             <ComponenteInput
@@ -863,7 +868,7 @@ const FormularioSolicitud = () => {
               placeholder="Ej: CL 1 23 45"
               name="direccion"
               leyendaError="Campo es requerido, solo se aceptan letras"
-              expresionRegular={expresiones.nombre}
+              
             />
 
             <ComponenteInput
@@ -878,14 +883,15 @@ const FormularioSolicitud = () => {
             />
 
             <ComponenteInput
-              estado={correo}
-              cambiarEstado={cambiarCorreo}
+              estado={correo2}
+              cambiarEstado={cambiarCorreo2}
               tipo="text"
               label="Confirmar Correo Electrónico *"
               placeholder="Ej: falso@gmail.com"
               name="correo"
               leyendaError="Campo es requerido"
               expresionRegular={expresiones.correo}
+              funcion={validarCorreo2}
             />
 
             <ComponenteInput
@@ -1025,7 +1031,7 @@ const FormularioSolicitud = () => {
 
               <br />
               {/*
-<ComponenteInput
+                <ComponenteInput
                 estado={tipoDeDispositivo}
                 cambiarEstado={cambiarTipoDeDispositivo}
                 tipo="text"
@@ -1156,7 +1162,9 @@ const FormularioSolicitud = () => {
                 />
                 <a
                   className="aceptacionFormulario"
-                  onClick={() => cambiarEstadoModalTerminos(!estadoModalTerminos)}
+                  onClick={() =>
+                    cambiarEstadoModalTerminos(!estadoModalTerminos)
+                  }
                 >
                   Acepto que he leido los Términos y condiciones *
                 </a>
@@ -1256,7 +1264,6 @@ const FormularioSolicitud = () => {
               <h6>¿Estas seguro de registrar la información?</h6>
               <br />
 
-              
               <ContenedorBotones>
                 <Botoncito1 type="submit">
                   <Link to="/ProcesoSolicitud" className="irTramite">
@@ -1267,7 +1274,7 @@ const FormularioSolicitud = () => {
                 <Botoncito2 onClick={() => cambiarEstadoModal(!estadoModal)}>
                   CANCELAR
                 </Botoncito2>
-                </ContenedorBotones>
+              </ContenedorBotones>
             </form>
           </Contenido>
         )}
@@ -1295,28 +1302,53 @@ const FormularioSolicitud = () => {
             <h1>Homologación de equipos terminales</h1>
             <h2>1. Del Servicio</h2>
             <p>
-              Trámite por medio del cual la CRC busca que un equipo terminal móvil tenga un adecuado funcionamiento e interacción con las redes de comunicaciones del país en términos de sus frecuencias de operación y que cumpla con los estándares internacionales sobre los límites de exposición humana a los campos electromagnéticos para un uso seguro por parte del usuario interesado
+              Trámite por medio del cual la CRC busca que un equipo terminal
+              móvil tenga un adecuado funcionamiento e interacción con las redes
+              de comunicaciones del país en términos de sus frecuencias de
+              operación y que cumpla con los estándares internacionales sobre
+              los límites de exposición humana a los campos electromagnéticos
+              para un uso seguro por parte del usuario interesado
             </p>
             <p>
-              Por lo anterior, para homologar un equipo terminal móvil en Colombia, se debe realizar OBLIGATORIAMENTE la solicitud en línea a través del formulario establecido para el efecto en el portal web (www.tramitescrcom.gov.co), en el cual se deberá suministrar la información requerida en (http://bit.ly/homologarcelular). Allí podrá encontrar una guía del paso a paso en videos para realizar este trámite.
+              Por lo anterior, para homologar un equipo terminal móvil en
+              Colombia, se debe realizar OBLIGATORIAMENTE la solicitud en línea
+              a través del formulario establecido para el efecto en el portal
+              web (www.tramitescrcom.gov.co), en el cual se deberá suministrar
+              la información requerida en (http://bit.ly/homologarcelular). Allí
+              podrá encontrar una guía del paso a paso en videos para realizar
+              este trámite.
             </p>
             <h2>2. De Las Responsabilidades de la CRC</h2>
             <p>
-              La CRC es el órgano encargado de promover la competencia en los mercados, promover el pluralismo informativo, evitar el abuso de posición dominante, regular los mercados de las redes y los servicios de comunicaciones y garantizar la protección de los derechos de los usuarios; con el fin que la prestación de los servicios sea económicamente eficiente, y refleje altos niveles de calidad, de las redes y los servicios de comunicaciones, incluidos los servicios de televisión abierta radiodifundida y de radiodifusión sonora.
+              La CRC es el órgano encargado de promover la competencia en los
+              mercados, promover el pluralismo informativo, evitar el abuso de
+              posición dominante, regular los mercados de las redes y los
+              servicios de comunicaciones y garantizar la protección de los
+              derechos de los usuarios; con el fin que la prestación de los
+              servicios sea económicamente eficiente, y refleje altos niveles de
+              calidad, de las redes y los servicios de comunicaciones, incluidos
+              los servicios de televisión abierta radiodifundida y de
+              radiodifusión sonora.
             </p>
             <p>
-              La CRC estudiará cada solicitud de homologación y dará la respuesta pertinente.
+              La CRC estudiará cada solicitud de homologación y dará la
+              respuesta pertinente.
             </p>
             <h2>3. Uso de los Datos Personales</h2>
             <p>
-              La CRC garantiza que los datos suministrados por el usuario sólo serán utilizados para la administración y gestión del trámite de homologación, conforme a la Ley 1581 de 2012 y de acuerdo con la <a Target="_blanck" 
+              La CRC garantiza que los datos suministrados por el usuario sólo
+              serán utilizados para la administración y gestión del trámite de
+              homologación, conforme a la Ley 1581 de 2012 y de acuerdo con la{" "}
+              <a
+                Target="_blanck"
                 href="https://www.crcom.gov.co/uploads/images/files/Politica%20de%20Tratamiento%20Info%20Personal.pdf"
-              > Política de Tratamiento de Información Personal
+              >
+                {" "}
+                Política de Tratamiento de Información Personal
               </a>
             </p>
             <h2>4. De los Costos</h2>
             <p>El trámite no tiene costo alguno.</p>
-            
           </Contenido>
         )}
         {usuarioValido && (
@@ -1341,10 +1373,24 @@ const FormularioSolicitud = () => {
         {!usuarioValido && (
           <Contenido>
             <p>
-              La Comisión de Regulación de Comunicaciones, como responsable del tratamiento de la información, manifiesta que no compartirá ni entregará a terceros no autorizados expresamente por el titular, la información de carácter personal, dada por los ciudadanos a la entidad, en cumplimiento de lo establecido en la Ley 1581 de 2012, para la protección de Datos Personales, la Ley Estatutaria 1266 de 2008,con las disposiciones generales del Habeas Data y la regulación del manejo de la información contenida en las bases de datos personales, así como la Ley 1712 de 2014, Ley de Transparencia y Derecho de Acceso a la Información Pública Nacional.
+              La Comisión de Regulación de Comunicaciones, como responsable del
+              tratamiento de la información, manifiesta que no compartirá ni
+              entregará a terceros no autorizados expresamente por el titular,
+              la información de carácter personal, dada por los ciudadanos a la
+              entidad, en cumplimiento de lo establecido en la Ley 1581 de 2012,
+              para la protección de Datos Personales, la Ley Estatutaria 1266 de
+              2008,con las disposiciones generales del Habeas Data y la
+              regulación del manejo de la información contenida en las bases de
+              datos personales, así como la Ley 1712 de 2014, Ley de
+              Transparencia y Derecho de Acceso a la Información Pública
+              Nacional.
             </p>
             <p>
-              Para más información puedes consultar aquí la <a Target="_blanck" href="https://crcom.gov.co/sites/default/files/transparencia/contenido_multimedia/Politica_de_tratamiento_info_personal.pdf">
+              Para más información puedes consultar aquí la{" "}
+              <a
+                Target="_blanck"
+                href="https://crcom.gov.co/sites/default/files/transparencia/contenido_multimedia/Politica_de_tratamiento_info_personal.pdf"
+              >
                 Política de Tratamiento de Información Personal
               </a>
             </p>
@@ -1361,27 +1407,25 @@ const FormularioSolicitud = () => {
 };
 
 export default FormularioSolicitud;
-/*
+
 const Boton = styled.button`
   border-radius: 20px;
-  border_radius: 100px;
-  border: none;
+  border: 2px solid #1766dc;
   background: #1766dc;
+  color: #FFFF;
   cursor: pointer;
   display: block;
-  font: normal bold 15px/5px "Works Sans", sans-serif;
-  padding: 10px 30px;
+  font: normal bold 15px "Works Sans", sans-serif;
+  padding: 15px 10px;
   transition: 0.3s ease all;
-
-  a {
-    color: #ffff;
-  }
+  width: 35%;
 
   &:hover {
     background: #004884;
+    border-color: #004884;
   }
 `;
-*/
+
 
 /*
 <ContenedorBotonCentrado className="recaptcha">
@@ -1398,10 +1442,10 @@ const Boton = styled.button`
 */
 
 const Botoncito1 = styled.button`
-  background: #3366CC;
+  background: #3366cc;
   border-radius: 15px;
   border: 2px solid #3366cc;
-  color: #FFFF;
+  color: #ffff;
   cursor: pointer;
   display: block;
   font: normal 500 15px "Work Sans", sans-serif;
@@ -1410,13 +1454,17 @@ const Botoncito1 = styled.button`
   width: 40%;
 
   &:hover {
-    background: #F6F8F9;
+    background: #004884;
+    border-color: #004884; 
+  }
+
+  a {
     color: #FFFF;
   }
 `;
 
 const Botoncito2 = styled.button`
-  background: #FFFF;
+  background: #ffff;
   border-radius: 15px;
   border: 2px solid #3366cc;
   color: #3366cc;
@@ -1425,11 +1473,11 @@ const Botoncito2 = styled.button`
   font: normal 500 15px "Work Sans", sans-serif;
   transition: 0.3s ease all;
   padding: 15px 10px 15px 10px;
-  width: 40%;
+  width: 42%;
 
   &:hover {
-    background: #3366CC;
-    color: #FFFF;
+    background: #3366cc;
+    color: #ffff;
   }
 `;
 

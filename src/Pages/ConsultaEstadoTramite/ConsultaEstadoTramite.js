@@ -21,6 +21,9 @@ import {
 
 import "./ConsultaEstadoTramite.scss";
 
+// Libreria syled que nos permite crear componentes con diseños, despues la linea exportar se encuentran
+import styled from "styled-components";
+
 import {
   Formulario,
   ContenedorBotonCentrado,
@@ -94,64 +97,55 @@ const ConsultaEstadoTramite = () => {
               <br />
               <br />
               <Formulario action="" onSubmit={submit}>
-                
-                  <ComponenteInput
-                    estado={radicado}
-                    cambiarEstado={cambiarRadicado}
-                    tipo="text"
-                    label="Ingrese Número de Rádicado *"
-                    placeholder="Ej: 202201204578"
-                    name="radicado"
-                    leyendaError="Campo es requerido, solo se permiten números y minimo 6 digitos"
-                    expresionRegular={expresiones.numRadicado}
-                  />
-                
-<span/>
-                
-                  <ReCAPTCHA
-                    ref={captcha}
-                    sitekey="6Lc9VDIeAAAAAHHQA1wEjx1FKlTy9uWIrZKGwwvN"
-                    onChange={onChange}
-                  />
-                
+                <ComponenteInput
+                  estado={radicado}
+                  cambiarEstado={cambiarRadicado}
+                  tipo="text"
+                  label="Ingrese Número de Rádicado *"
+                  placeholder="Ej: 202201204578"
+                  name="radicado"
+                  leyendaError="Campo es requerido, solo se permiten números y minimo 6 digitos"
+                  expresionRegular={expresiones.numRadicado}
+                />
 
-                {/*captchaValido === false && (
-                  <div className="error-captcha">
-                    Por favor acepta el captcha
-                  </div>
-                )*/}
-                {formularioValido === false && 
-                 captchaValido === false &&(
-                  <MensajeError>
-                    <p>
-                      <FontAwesomeIcon icon={faExclamationTriangle} />
-                      <b>Error: </b> Por favor rellena el formulario, campo número radicado erroneo o captcha sin marcar!
-                    </p>
-                  </MensajeError>
+                <span />
+
+                <ReCAPTCHA
+                  ref={captcha}
+                  sitekey="6Lc9VDIeAAAAAHHQA1wEjx1FKlTy9uWIrZKGwwvN"
+                  onChange={onChange}
+                />
+
+                {captchaValido === false && (
+                  <>
+                    <span />
+                    <p className="error-captcha">Por favor acepta el captcha</p>
+                  </>
                 )}
 
-                <span/>
-                  <Boton type="submit">
-                    <Link to="/EstadoSolicitud">CONSULTAR</Link>
-                  </Boton>
-                  {formularioValido === true && (
-                    <MensajeExito id="msjexito">
-                      <p>
-                        <FontAwesomeIcon icon={faCheckCircle} />
-                        <b>Exitosa: </b>Su solicitud se ha registrado
-                        satisfactoriamente
-                      </p>
-                    </MensajeExito>
-                  )}
-              
+                <span />
+                <BotonEstado type="submit">
+                  <Link to="/EstadoSolicitud">CONSULTAR</Link>
+                </BotonEstado>
+
               </Formulario>
             </div>
           )}
-          {usuarioValido && (
-            <div>
-            <Link to="/ProcesoSolicitud">CONSULTAR</Link>
-            </div>
-          )}
+          {
+            usuarioValido === true && 
+            formularioValido === true && 
+            captchaValido === true && (
+              <MensajeExito id="msjexito">
+                    <p>
+                      <FontAwesomeIcon icon={faCheckCircle} />
+                      <b>Exitosa: </b>Su solicitud se ha registrado
+                      satisfactoriamente
+                    </p>
+                  <h1>VERGAAA</h1>
+                    
+                  </MensajeExito>
+            )
+          }
           <div className="col-lg-1"></div>
           <div className="col-lg-3 p-0">
             <aside className="aside">
@@ -169,6 +163,32 @@ const ConsultaEstadoTramite = () => {
           </div>
         </div>
       </div>
+      {
+         
+        captchaValido === false && (
+        <MensajeError>
+          <p>
+            <FontAwesomeIcon icon={faExclamationTriangle} />
+            <b>Error: </b> Por favor rellena el formulario, campo número
+            radicado erroneo o captcha sin marcar!
+          </p>
+        </MensajeError>
+      )}
+
+      {
+        captchaValido === true && (
+        <MensajeExito id="msjexito">
+                    <p>
+                      <FontAwesomeIcon icon={faCheckCircle} />
+                      <b>Validación Exitosa: </b> Procede a consultar
+                    </p>
+                  
+                    
+                  </MensajeExito>
+        )
+      }
+
+
       <CalificaExperienciaFooter />
       <Footer />
       <FooterGov />
@@ -177,3 +197,28 @@ const ConsultaEstadoTramite = () => {
 };
 
 export default ConsultaEstadoTramite;
+
+const BotonEstado = styled.button`
+  background-color: #3366cc;
+  border-radius: 30px;
+  border: 2px solid #3366cc;
+  padding: 9px 60px 9px 60px;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  margin: 10px -12px 10px 0px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 60%;
+
+  a {
+    color: #ffff;
+    font: normal normal 15px "Work Sans", sanf-serif;
+  }
+
+  &:hover {
+    background-color: #13386d;
+    border-color: #13386d;
+    color: red;
+    text-color: red;
+  }
+`;
