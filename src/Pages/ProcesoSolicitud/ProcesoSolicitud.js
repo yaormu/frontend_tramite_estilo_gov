@@ -32,76 +32,160 @@ const ProcesoSolicitud = () => {
               Resumen Solicitud Homologación Equipo Términal Móvil
             </h3>
             <br />
-            <p>La información ha sido guardada exitosamente, el número de radicado es: 2021705216.
-            Por favor, conserva este número para realizar seguimiento al
-              proceso del trámite de Homologación de Equipos Terminales Móviles.</p>
             
 
-            <p style={{ color: "#A80521", fontSize: "15px" }}>
-              Tiempo de Respuesta aproximadamente en 10 días habiles
-              a partir de la fecha rádicado.
-            </p>
-
-            <div className="container">
+            <div className="container p-0">
               <div className="row">
-                <div className="titulo-indicativo col-md-12">
-                  <h4 className="subtitle-form">
-                    Datos de identificación:
-                  </h4>
+                
+                <div className="col-md-12 p-0">
+                  <p>
+                    La información ha sido guardada exitosamente, el número de radicado es: 2021705216.
+                    Por favor, conserva este número para realizar seguimiento al proceso del trámite de Homologación 
+                    de Equipos Terminales Móviles.
+                  </p>
+            
+                  <p style={{ color: "#A80521", fontSize: "15px" }}>
+                    Tiempo de Respuesta aproximadamente en 10 días habiles
+                    a partir de la fecha rádicado.
+                  </p>
                 </div>
-                <div className="col-md-6">Primer Nombre: Jose</div>
-                <div className="col-md-6">Segundo Nombre: Heriberto</div>
-                <span />
-                <div className="col-md-6">Primer Apellido: Salazar</div>
-                <div className="col-md-6">Segundo Apellido: Guerrero</div>
-                <div className="titulo-indicativo">
-                  <h4 className="subtitle-form">
-                    Datos de Contacto y ubicación:
-                  </h4>
+                
+                <div className="col-md-6 p-1">
+                  <strong>Fecha de registro</strong>
+                  <p>2021-09-28 10:45</p>
                 </div>
-                <div className="col-md-6">País: Colombia</div>
-                <div className="col-md-6">Departamento: Cundinamarca</div>
-                <span />
-                <div className="col-md-6">Ciudad: Bógota D.C.</div>
-                <div className="col-md-6">
-                  Dirección: Calle 93 # 12 - 25 Barrio Sur
+
+                <div className="col-md-6 p-1">
+                  <strong>Número de radicado</strong>
+                  <p>2022705216</p>
                 </div>
-                <div className="col-md-6">
-                  Correo Electronico: don@gmail.com
-                </div>
-                <div className="col-md-6">Número de Contacto: 3002563314</div>
-                <div className="titulo-indicativo col-md-12">
-                  <h4 className="subtitle-form">
-                    Características del terminal móvil:
-                  </h4>
-                </div>
-                <div className="col-md-6">Tipo de Dispositivo: Telefono Inteligente</div>
-                <div className="col-md-6">Marca: Huawei</div>
-                <div className="col-md-6">Nombre Comercial: P30</div>
-                <div className="col-md-6">Modelo: Lite</div>
-                <div className="col-md-6">Fabricante: Huawei Corporation</div>
 
                 <div className="titulo-indicativo col-md-12">
-                  <h4 className="subtitle-form">
-                    Listado de TAC:
-                  </h4>
+                  <h3 className="subtitle-form">
+                    Datos de identificación
+                  </h3>
                 </div>
-                <div className="col-md-6">Número de TAC: 02124654</div>
+
+                <div className="col-md-6 p-1">
+                  <strong>Tipo de Persona</strong>
+                  <p>Natural</p>
+                </div>
+
+                <div className="col-md-6 p-1">
+                  <strong>Tipo de Identificación</strong>
+                  <p>1091452369</p>
+                </div>
+
+                <span/>
+
+                <div className="col-md-6 p-1">
+                  <strong>Nombre Completo</strong>
+                  <p>CARLOS ALBERTO ORJUELA BENITEZ</p>
+                </div>
+
+                <span/>
+
+                <div className="col-md-6 p-1">
+                  <strong>País</strong>
+                  <p>Colombia</p>
+                </div>
+
+                <div className="col-md-6 p-1">
+                  <strong>Departamento</strong>
+                  <p>Bogotá D.C.</p>
+                </div>
+
+                <div className="col-md-6 p-1">
+                  <strong>Municipio</strong>
+                  <p>Bogotá D.C.</p>
+                </div>
+
+                <div className="col-md-6 p-1">
+                  <strong>Dirección</strong>
+                  <p>CARRERA 90 NO 132-45</p>
+                </div>
+
+                <div className="col-md-6 p-1">
+                  <strong>Correo electrónico</strong>
+                  <p>Cninguno8403@hotmail.com</p>
+                </div>
+
+                <div className="col-md-6 p-1">
+                  <strong>Teléfono remitente</strong>
+                  <p>6013198300</p>
+                </div>
 
                 <div className="titulo-indicativo col-md-12">
-                  <h4 className="subtitle-form">
-                    Archivos Adjunto:
-                  </h4>
+                  <h3 className="subtitle-form">
+                    Características del terminal móvil
+                  </h3>
                 </div>
-                <div className="col-md-6">Documento: Imagen3.jpg</div>
 
-                <div className="titulo-indicativo col-md-12">
-                  <h4 className="subtitle-form">
-                    Archivos para Homologación:
-                  </h4>
+                <div className="col-md-6 p-1">
+                  <strong>Tipo de Dispositivo</strong>
+                  <p>Teléfono Inteligente</p>
                 </div>
-                <div className="col-md-6">Etiqueta del equipo: Equipo.pdf</div>
-                <div className="col-md-6">Certificado de Conformidad: NA</div>
+
+                <span/>
+
+                <div className="col-md-6 p-1">
+                  <strong>Marca</strong>
+                  <p>APPLE</p>
+                </div>
+
+                <div className="col-md-6 p-1">
+                  <strong>Nombre Comercial</strong>
+                  <p>IPHONE 11</p>
+                </div>
+
+                <div className="col-md-6 p-1">
+                  <strong>Modelo</strong>
+                  <p>A1778</p>
+                </div>
+
+                <div className="col-md-6 p-1">
+                  <strong>Fabricante</strong>
+                  <p>APPLE</p>
+                </div>
+
+                <div className="tabla">
+                  <p className="titulo-tabla">TAC</p>
+                  <table className="rwd-table">
+                    <tr>
+                      <th>Número</th>
+                    </tr>
+                    <tr>
+                      <td data-th="etiqueta">01013200</td>
+                    </tr>
+                    
+                  </table>
+                </div>
+
+                <div>
+                  <br/><br/>
+                </div>
+
+                <div className="tabla">
+                  <p className="titulo-tabla">Archivos adjuntos</p>
+                  <table className="rwd-table">
+                    <tr>
+                      <th>Nombre del Archivo</th>
+                      <th>Tipo</th>
+                      <th>Tamaño(MB)</th>
+                    </tr>
+                    <tr>
+                      <td data-th="etiqueta">SPOT CON CÓDIGOS VIGENTES</td>
+                      <td data-th="archivo">xlsx</td>
+                      <td data-tj="accion">0.14</td>
+                    </tr>
+                    <tr>
+                      <td data-th="etiqueta">INFORME MARCACION 06_09_2021</td>
+                      <td data-th="archivo">xlsx</td>
+                      <td data-tj="accion">0.01</td>
+                    </tr>
+                  </table>
+                </div>
+                
               </div>
             </div>
             <br />

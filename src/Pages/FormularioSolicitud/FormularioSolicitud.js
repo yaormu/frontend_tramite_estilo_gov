@@ -1132,9 +1132,6 @@ const FormularioSolicitud = () => {
     }
   }
 
-  
-  
-
   return (
     <>
       <div className="container">
@@ -1532,27 +1529,30 @@ const FormularioSolicitud = () => {
         mostrarHeader={true}
         mostrarOverlay={true}
         posicionModal={"start"}
-        padding={"20px"}
+        padding={"10px"}
+        width={"700px"}
+        min-height={"700px"}
       >
         {!usuarioValido && (
           <Contenido>
-            <form>
+            <div>
               <h1>Confirmación</h1>
+            </div>
+            <div>
               <h6>¿Estas seguro de registrar la información?</h6>
-              <br />
-
-              <ContenedorBotones>
-                <Botoncito1 type="submit">
-                  <Link to="/ProcesoSolicitud" className="irTramite">
-                    ACEPTAR
-                  </Link>
-                </Botoncito1>
-                <br />
-                <Botoncito2 onClick={() => cambiarEstadoModal(!estadoModal)}>
-                  CANCELAR
-                </Botoncito2>
-              </ContenedorBotones>
-            </form>
+            </div>
+            <br/>
+            <ContenedorBotones>
+              <PrimaryButton type="submit">
+                <Link to="/ProcesoSolicitud" className="irTramite">
+                  ACEPTAR
+                </Link>
+              </PrimaryButton>
+              <br/>
+              <SecondaryButton onClick={() => cambiarEstadoModal(!estadoModal)}>
+                CANCELAR
+              </SecondaryButton>
+            </ContenedorBotones>
           </Contenido>
         )}
         {usuarioValido && (
@@ -1571,7 +1571,7 @@ const FormularioSolicitud = () => {
         mostrarOverlay={true}
         posicionModal={"start"}
         padding={"20px"}
-        width={"900px"}
+        width={"650px"}
         min-height={"400px"}
       >
         {!usuarioValido && (
@@ -1695,7 +1695,7 @@ const Boton = styled.button`
   font: normal bold 15px "Works Sans", sans-serif;
   padding: 15px 10px;
   transition: 0.3s ease all;
-  width: 35%;
+  width: 30%;
 
   &:hover {
     background: #004884;
@@ -1703,6 +1703,26 @@ const Boton = styled.button`
   }
 `;
 
+const PrimaryButton = styled(Boton)`
+  background-color: #1766dc;
+  color: #FFFF;
+  width: 30%;
+  height: auto;
+  padding: 10px 10px 10px 10px;
+`;
+
+const SecondaryButton = styled(Boton)`
+  background-color: #FFFF;
+  color: #1766dc;
+  width: 30%;
+  height: auto;
+  padding: 10px 10px 10px 10px;
+
+  &:hover {
+    background: #004884;
+    color: #FFFF;
+  }
+`;
 
 /*
 <ContenedorBotonCentrado className="recaptcha">
@@ -1718,51 +1738,12 @@ const Boton = styled.button`
               )}
 */
 
-const Botoncito1 = styled.button`
-  background: #3366cc;
-  border-radius: 15px;
-  border: 2px solid #3366cc;
-  color: #ffff;
-  cursor: pointer;
-  display: block;
-  font: normal 500 15px "Work Sans", sans-serif;
-  transition: 0.3s ease all;
-  padding: 15px 10px 15px 10px;
-  width: 40%;
-
-  &:hover {
-    background: #004884;
-    border-color: #004884; 
-  }
-
-  a {
-    color: #FFFF;
-  }
-`;
-
-const Botoncito2 = styled.button`
-  background: #ffff;
-  border-radius: 15px;
-  border: 2px solid #3366cc;
-  color: #3366cc;
-  cursor: pointer;
-  display: block;
-  font: normal 500 15px "Work Sans", sans-serif;
-  transition: 0.3s ease all;
-  padding: 15px 10px 15px 10px;
-  width: 42%;
-
-  &:hover {
-    background: #3366cc;
-    color: #ffff;
-  }
-`;
-
 const Contenido = styled.div`
-  display: flex;
+  display: block;
   padding: 20px;
-  flex-direction: column;
+  flex-direction: row;
   max-height: calc(100vh - 210px);
+  justify-content: center;
   overflow-y: auto;
 
   ::-webkit-scrollbar {
@@ -1774,26 +1755,27 @@ const Contenido = styled.div`
     font: normal 600 18px/10px "Montserrat", sans-serif;
     line-height: 1.5;
     margin-bottom: 10px;
+    text-align: center;
   }
 
   h6 {
     color: #4b4b4b;
     font: normal normal 1rem/10px "Works Sans", sans-serif;
     margin: 0;
-    text-align: left;
+    text-align: center;
     line-height: 1.5;
   }
 
   a {
-    font: normal normal 1rem/10px "Works Sans", sans-serif;
+    color: #FFFF;
+    font: normal 550 15px/10px "Works Sans", sans-serif;
   }
 `;
 
 const ContenedorBotones = styled.div`
   padding: 0px;
   display: flex;
-  float: left;
-  flex-wrap: wrap;
+  text-align: center;
   justify-content: center;
-  gap: 20px;
+  gap: 2px;
 `;

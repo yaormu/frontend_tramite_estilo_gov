@@ -42,7 +42,7 @@ const Input = styled.input `
     line-height: 35px;
     padding: 0 40px 0 10px;
     transition: .3s ease all;
-    border: 3px solid #BABABA;
+    border: 1px solid #BABABA;
     
 
     &:focus {
