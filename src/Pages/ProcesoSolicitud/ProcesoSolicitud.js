@@ -32,21 +32,14 @@ const ProcesoSolicitud = () => {
               Resumen Solicitud Homologación Equipo Términal Móvil
             </h3>
             <br />
-            <p>
-              Apreciado(a) ciudadano(a) su trámite ha sido radicado de forma
-              satisfactoria en el sistema de trámites.
-              <br />
-              <strong>Número de trámite</strong>
-              <br />
-              2022705202
-              <br />
-              Por favor, conserve este número para realizar seguimiento al
-              proceso del trámite de Homologación de Equipos Terminales Móviles
-            </p>
+            <p>La información ha sido guardada exitosamente, el número de radicado es: 2021705216.
+            Por favor, conserva este número para realizar seguimiento al
+              proceso del trámite de Homologación de Equipos Terminales Móviles.</p>
+            
 
             <p style={{ color: "#A80521", fontSize: "15px" }}>
-              Tiempo de RespuestaSolicitud aproximadamente en 10 días habiles
-              (20-feb-2022 14:22:13)
+              Tiempo de Respuesta aproximadamente en 10 días habiles
+              a partir de la fecha rádicado.
             </p>
 
             <div className="container">
