@@ -1,7 +1,18 @@
 import React from 'react'
-import { Input, Label, GrupoInput, LeyendaError } from "../elementos/Formularios"
+import { Input, Label, GrupoInput, LeyendaError, LeyendaExito } from "../elementos/Formularios"
 
-const ComponenteInput = ({estado, cambiarEstado, tipo, label, placeholder, name, leyendaError, expresionRegular, funcion}) => {
+const ComponenteInput = (
+    {
+        estado, 
+        cambiarEstado, 
+        tipo, 
+        label, 
+        placeholder, 
+        name, 
+        leyendaError,
+        leyendaExito, 
+        expresionRegular, funcion}) => {
+             
     const onChange = (e) => {
 		cambiarEstado({...estado, campo: e.target.value});
 	}
@@ -13,7 +24,9 @@ const ComponenteInput = ({estado, cambiarEstado, tipo, label, placeholder, name,
 			} else {
 				cambiarEstado({...estado, valido: 'false'})
 			}
-		}
+		}else {
+            cambiarEstado({...estado, valido: ''})
+        }
         
         if(funcion) {
             funcion();

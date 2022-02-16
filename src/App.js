@@ -5,19 +5,24 @@ import "./assets/styles/App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 
+// Componentes estandar de app
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import FooterGov from "./components/FooterGov/FooterGov";
 
-import Section from "./Pages/Section/Section";
+// Paginas de app
+import Inicio from "./Pages/Inicio/Inicio";
 import FormularioSolicitud from "./Pages/FormularioSolicitud/FormularioSolicitud"
 import ConsultaEstadoTramite from "./Pages/ConsultaEstadoTramite/ConsultaEstadoTramite";
-import RtaTramite from "./Pages/RtaTramite/RtaTramite";
 import ProcesoSolicitud from "./Pages/ProcesoSolicitud/ProcesoSolicitud";
-import RtaSolicitud from "./Pages/RtaSolicitud/RtaSolicitud";
+import RespuestaSolicitud from "./Pages/RespuestaSolicitud/RespuestaSolicitud";
+
+//Componentes de pruebas, para eliminar posteriormente
+import PruebaTramite from "./Pages/PruebaTramite/PruebaTramite";
+import PruebaRespuesta from "./Pages/PruebaRespuesta/PruebaRespuesta";
 import Prueba from "./components/Cards/Prueba/Prueba";
-import ProcesoMiSolicitud from "./Pages/ProcesoMiSolicitud/ProcesoMiSolicitud";
+
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -37,12 +42,13 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/SolicitudHomologacion" element={<FormularioSolicitud />} />
-        <Route path="/ConsultaEstadoTramite" element={<ConsultaEstadoTramite />} />
-        <Route path="/RespuestaTramite" element={<RtaTramite />} />
         <Route path="/ProcesoSolicitud" element={<ProcesoSolicitud />} />
-        <Route path="/RespuestaSolicitud" element={<RtaSolicitud />} />
+        <Route path="/ConsultaEstadoTramite" element={<ConsultaEstadoTramite />} />
+        <Route path="/RespuestaSolicitud" element={<RespuestaSolicitud />} />
+        {/* RUTAS DE ṔRUEBAS PARA BORRAR */}
+        <Route path="/PruebaTramite" element={<PruebaTramite />} />
+        <Route path="/PruebaRespuesta" element={<PruebaRespuesta />} />
         <Route path="/Prueba" element={<Prueba />} />
-        <Route path="/EstadoSolicitud" element={<ProcesoMiSolicitud />} />
       </Routes>
     </Router>
   );
@@ -57,7 +63,7 @@ const Home = () => {
       <div className="App">
         <div className="container">
           <Header />
-          <Section />
+          <Inicio />
         </div>
       </div>
       <Footer />

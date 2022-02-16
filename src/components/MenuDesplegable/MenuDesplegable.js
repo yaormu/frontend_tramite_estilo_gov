@@ -69,10 +69,15 @@ const MenuDesplegable = () => {
   return (
     <>
       
-        <div>
-          <Label htmlFor="pais">Departamento *</Label>
-          <Select id="pais" data-toggle="tooltip" title="Pais de residencia del usuario que realiza el trámite"
-            value={pais} onClick={handlerCargarArticulo}
+        <div className="col-md-6 p-1">
+          <Label htmlFor="pais">Departamento*</Label>
+          <Select 
+            id="pais" 
+            name="pais"
+            data-toggle="tooltip" 
+            title="Pais de residencia del usuario que realiza el trámite"
+            value={pais} 
+            onClick={handlerCargarArticulo}
           >
             <option value={-1} disabled selected hidden>
               Ej. Colombia
@@ -88,9 +93,13 @@ const MenuDesplegable = () => {
         
         
 
-        <div>
-          <Label htmlFor="departamento">Municipio *</Label>
-          <Select id="departamento" data-toggle="tooltip" title="Estado de Residencia en un país">
+        <div className="col-md-6 p-1">
+          <Label htmlFor="departamento">Municipio*</Label>
+          <Select 
+            name="departamento"
+            id="departamento" 
+            data-toggle="tooltip" 
+            title="Estado de Residencia en un país">
             <option disabled selected hidden> Ej. Bogotá </option>
             {idArticulos > -1 &&
               categorias[idArticulos].ciudad.map((item, i) => (

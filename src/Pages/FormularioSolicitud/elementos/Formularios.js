@@ -3,17 +3,11 @@ import styled, {css} from 'styled-components';
 const colores = {
     borde: "#3366CC",
     error: "#A80521",
-    exito: "#3366CC"
+    exito: "#069169"
 }
 
 const Formulario = styled.form `
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-
-    @media (max-width: 800px) {
-        grid-template-columns: 1fr;
-    }
+    display: flex;
 `;
 
 
@@ -38,6 +32,9 @@ const GrupoInput = styled.div `
 `;
 
 const Input = styled.input `
+    display: flex;
+    align-items: row;
+    gap: 20px;
     width: 100%;
     background: #fff;
     border-radius: 3px;
@@ -45,7 +42,7 @@ const Input = styled.input `
     line-height: 35px;
     padding: 0 40px 0 10px;
     transition: .3s ease all;
-    border: 1px solid #BABABA;
+    border: 3px solid #BABABA;
     
 
     &:focus {
@@ -54,8 +51,10 @@ const Input = styled.input `
         box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
     } 
 
+    
     ${props => props.valido === 'true' && css `
-        border: 1px solid #BABABA;
+        border: 1px solid ${colores.exito} !important;
+        color: ${colores.exito};
     `}
 
     ${props => props.valido === 'false' && css `
@@ -90,31 +89,43 @@ const InputDisabled = styled.input `
 `;
 
 const LeyendaError = styled.p `
-    display: none;
     font-size: 12px;
     margin-bottom: 0;
     color: ${colores.error};
     display: none;
-
+    
+    
     ${props => props.valido === 'true' && css `
-        display: none;
+        color: ${colores.exito} !important;
     `}
 
     ${props => props.valido === 'false' && css `
         display: block;
+    
     `}
 `;
 
+
+const LeyendaExito = styled.p`
+    font-size: 12px;
+    margin-bottom: 0;
+    color: ${colores.exito};
+    
+    ${props => props.valido === 'false' && css `
+    color: ${colores.error};
+    `}
+    
+    ${props => props.valido === 'true' && css `
+        color: ${colores.exito} !important;
+    `}
+
+    
+`;
+
+
+
 const ContenedorTerminos = styled.div `
-    grid-column: span 2;
-
-    input {
-        margin-right: 10px;
-    }
-
-    @media (max-width: 800px) {
-        grid-column: span1;
-    }
+   padding: 0;    
 `;
 
 const ContenedorBotonCentrado = styled.div `
@@ -122,10 +133,6 @@ const ContenedorBotonCentrado = styled.div `
     flex-direction: column;
     align-items: center;
     grid-column: span 2;
-
-    @media (max-width: 800px) {
-        grid-column: span1;
-    }
 `;
 
 const Boton = styled.button `
@@ -238,6 +245,7 @@ export {
     Input, 
     InputDisabled,
     LeyendaError, 
+    LeyendaExito,
     ContenedorTerminos,
     ContenedorBotonCentrado, 
     Boton, 

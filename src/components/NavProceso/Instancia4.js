@@ -4,8 +4,8 @@ import "./Instancia4.scss";
 const Instancia4 = () => {
     return (
         <>
-            <div class="row barra">
-	            <div class="col-3 instancia4-1">
+            <div className="row barra">
+	            <div className="col-3 instancia4-1">
                 	<span className="txt-instancia4-1">
                         <i className="instancia4-uno">
                             1
@@ -13,7 +13,7 @@ const Instancia4 = () => {
                         Inicio
                     </span>
                 </div>
-                <div class="col-3 instancia4-2">
+                <div className="col-3 instancia4-2">
                 	<span className="txt-instancia4-2"> 
                         <i className="instancia4-dos">
                             2 
@@ -21,7 +21,7 @@ const Instancia4 = () => {
                          Hago mi solicitud
                     </span>
                 </div>
-                <div class="col-3 instancia4-3">
+                <div className="col-3 instancia4-3">
                 	<span className="txt-instancia4-3"> 
                         <i className="instancia4-tres">
                             3
@@ -29,12 +29,12 @@ const Instancia4 = () => {
                         Procesan mi solicitud
                     </span>
                 </div>
-                <div class="col-3 instancia4-4">
+                <div className="col-3 instancia4-4">
                 	<span className="txt-instancia4-4"> 
                         <i className="instancia4-cuatro">
                             4
                         </i> 
-                        Respuesta
+                        RespuestaSolicitud
                     </span>
                 </div>
             </div>

@@ -45,6 +45,10 @@ $grey-two: #BABABA; //Botones estado desactivados, delineado contenedores transa
 //Work Sans - Párrafos, captions, botones y campos de texto.
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&family=Work+Sans:wght@100;200;300;400&display=swap');
 
+body {
+  background-color: transparent;
+}
+
 a {text-decoration: none;}
 
 h1, h2, h3, h4, h5 {

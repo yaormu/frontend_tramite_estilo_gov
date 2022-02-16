@@ -22,7 +22,7 @@ h3 {
 
 .title-form {
     padding: 0px 0px 0px 0px;
-    margin: 30px 0px 0px 0px;
+    margin: 20px 0px 0px -10px;
     font: normal 500 24px "Montserrat", sans-serif;
 }
 
@@ -37,7 +37,7 @@ h3 {
 
 .subtitle-form {
     padding: 0px 0px 0px 0px;
-    margin: 0px 0px 0px 0px;
+    margin: 25px 0px 10px 0px;
     font-size: 18px;
 }
 
@@ -158,9 +158,10 @@ h3 {
 /* Estilos tabla */
 
 .tabla {
-    border: #bababa98 solid 2px;
-    border-radius: 10px;
+    border: #E6EFFD solid 2px;
+    border-radius: 5px;
     background-color: #ffff;
+    margin: 0;
   }
   
 table,
@@ -187,15 +188,17 @@ td {
   }
   
   .titulo-tabla {
-    font: normal 600 14px/10px Work Sans;
-    color: #004884;
+    font: normal 600 18px/10px "Montserrat", sans-serif;
+    color: #13386D;
     padding: 0;
     margin: 15px;
   }
 
+
 .aceptacionFormulario {
     color: #3366CC;
     text-decoration-line: underline;
-    margin: 0;
+    margin: 5px;
     padding: 0;
 }
+

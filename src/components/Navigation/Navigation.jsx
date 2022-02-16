@@ -1,20 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Navigation.scss";
+import "./Navegacion.scss";
 
-const Navigation = () => {
+const Navegation = ({inicio, paginaActual}) => {
     return (
         <>
             <nav className="navigation" aria-label="breadcrumb">
-                    <ol class="breadcrumb navega-lista">
-                        <li class="breadcrumb-item active">
-                            <NavLink to="/" className="inicio">
-                                Inicio
+                    <ol className="breadcrumb navega-lista">
+                        <li className="breadcrumb-item" aria-current="page">
+                            <NavLink to="/" className="inicion">
+                                {inicio}
                             </NavLink>
                         </li>
-                        <li class="breadcrumb-item" aria-current="page">
-                            <NavLink to="/" className="solicitud">
-                                Solicitud de Homologación...
+                        
+                        <li className="breadcrumb-item" aria-current="page">
+                            <NavLink to="" className="paginaActual">
+                                {paginaActual}
                             </NavLink>
                         </li>
                     </ol>
@@ -23,4 +24,4 @@ const Navigation = () => {
     );
 }
  
-export default Navigation;
+export default Navegation;

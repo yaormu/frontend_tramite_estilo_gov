@@ -1,0 +1,42 @@
+
+table {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  border-collapse: lowercase;
+  border-radius: 5px;
+}
+
+th {
+  background: #E6EFFD;
+  border: 2px solid #E6EFFD;
+  color: #004884;
+  font: normal 610 16px/22px "Work Sans", Sans-Serif;
+  padding: 25px 20px;
+  margin: -20px 2px 2px 30px;
+  text-transform: none;
+  text-align: left;
+}
+
+td {
+  background: #FFFF;
+  border-collapse: lowercase;
+  border-bottom: 2px solid #E6EFFD;
+  color: #4B4B4B;
+  font: normal normal 16px/24px "Work Sans", Sans-Serif;
+  margin: 0;
+  padding: 15px 20px;
+  text-transform: none;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.mostraDocumento {
+  color: #3366CC;
+  text-decoration: underline;
+}
+
+tr:hover td {
+  background: #E6EFFD;
+  color: #4B4B4B;
+}

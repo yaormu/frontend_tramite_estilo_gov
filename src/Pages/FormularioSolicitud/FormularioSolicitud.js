@@ -1,12 +1,14 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import View from "./View";
+
 
 // Estilos generales del formulario
 import "./FormularioSolicitud.scss";
 
 // Componentes obligatorios a mostrar en el sitio
 import Header from "../../components/Header/Header";
-import Navigation from "../../components/Navigation/Navigation";
+import Navegacion from "../../components/Navigation/Navegacion";
 import NavProceso from "../../components/NavProceso/NavProceso";
 import BotonTutoriales from "../../components/Botones/BotonTutoriales/BotonTutoriales";
 import BotonDeDudas from "../../components/Botones/BotonDeDudas/BotonDeDudas";
@@ -17,6 +19,8 @@ import Footer from "../../components/Footer/Footer";
 import FooterGov from "../../components/FooterGov/FooterGov";
 // Modal a mostra antes de enviar información formulario
 import Modal from "../../components/Modal/Modal";
+
+//import { FormInput } from "../../components/FormInput";
 
 // Importación iconos para mostrar en mensajes de error o exito
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,7 +40,6 @@ import {
   Label,
   Select,
   ContenedorTerminos,
-  ContenedorBotonCentrado,
   LeyendaError,
   MensajeExito,
   MensajeError,
@@ -45,21 +48,17 @@ import {
 import ComponenteInput from "./componentes/ComponenteInput";
 import ComponenteInputDisabled from "./componentes/ComponenteInputDisabled";
 import DragArea from "./componentes/DragArea";
-import TestingDocument from "../../components/TestingDocument/TestingDocument";
 import MenuDesplegable from "../../components/MenuDesplegable/MenuDesplegable";
 
 const FormularioSolicitud = () => {
+  
+  
+
   // Validar Datos de identificación
   const [persona, cambiarPersona] = useState({ campo: "", valido: null });
   const [tipoId, cambiarTipoId] = useState({ campo: "", valido: null });
-  const [identificacion, cambiarIdentificacion] = useState({
-    campo: "",
-    valido: null,
-  });
-  const [identificacion2, cambiarIdentificacion2] = useState({
-    campo: "",
-    valido: null,
-  });
+  const [identificacion, cambiarIdentificacion] = useState({campo: "", valido: null});
+  const [identificacion2, cambiarIdentificacion2] = useState({campo: "", valido: null});
   const [nombre, cambiarNombre] = useState({ campo: "", valido: null });
   const [nombre2, cambiarNombre2] = useState({ campo: "", valido: null });
   const [apellido, cambiarApellido] = useState({ campo: "", valido: null });
@@ -68,59 +67,29 @@ const FormularioSolicitud = () => {
   // Validar Datos de contacto y ubicación
   const [nit, cambiarNit] = useState({ campo: "", valido: null });
   const [nit2, cambiarNit2] = useState({ campo: "", valido: null });
-  const [nombreEmpresa, cambiarNombreEmpresa] = useState({
-    campo: "",
-    valido: null,
-  });
-  const [nombreRLoApoderado, cambiarNombreRLoApoderado] = useState({
-    campo: "",
-    valido: null,
-  });
-  const [digitoVerificacion, cambiarDigitoVerificacion] = useState({
-    campo: "",
-    valido: null,
-  });
-  const [digitoVerificacion2, cambiarDigitoVerificacion2] = useState({
-    campo: "",
-    valido: null,
-  });
+  const [nombreEmpresa, cambiarNombreEmpresa] = useState({campo: "", valido: null});
+  const [nombreRLoApoderado, cambiarNombreRLoApoderado] = useState({campo: "", valido: null});
+  const [digitoVerificacion, cambiarDigitoVerificacion] = useState({campo: "", valido: null});
+  const [digitoVerificacion2, cambiarDigitoVerificacion2] = useState({campo: "", valido: null});
 
   // Validar Datos de contacto y ubicación
   const [pais, cambiarPais] = useState({ campo: "", valido: null });
-  const [departamento, cambiarDepartamento] = useState({
-    campo: "",
-    valido: null,
-  });
+  const [departamento, cambiarDepartamento] = useState({campo: "", valido: null});
   const [municipio, cambiarMunicipio] = useState({ campo: "", valido: null });
   const [direccion, cambiarDireccion] = useState({ campo: "", valido: null });
   const [correo, cambiarCorreo] = useState({ campo: "", valido: null });
-  const [correo2, cambiarCorreo2] = useState({ campo: "", valido: null });
-  const [telefono, cambiarTelefono] = useState({ campo: "", valido: null });
+  const [correo2, cambiarCorreo2] = useState({campo: "", valido: null});
+  const [telefono, cambiarTelefono] = useState({campo: "", valido: null});
 
   // Validar Características del terminal móvil
-  const [nombreOtroDispositivo, cambiarNombreOtroDispositivo] = useState({
-    campo: "",
-    valido: null,
-  });
-  const [marca, cambiarMarca] = useState({ campo: "", valido: null });
-  const [nombreComercial, cambiarNombreComercial] = useState({
-    campo: "",
-    valido: null,
-  });
-  const [modelo, cambiarModelo] = useState({ campo: "", valido: null });
-  const [fabricante, cambiarFabricante] = useState({ campo: "", valido: null });
-  const [casoUsoDispositivo, cambiarCasoUsoDispositivo] = useState({
-    campo: "",
-    valido: null,
-  });
-  const [marcaEquipoAnfitrion, cambiarMarcaEquipoAnfitrion] = useState({
-    campo: "",
-    valido: null,
-  });
-  const [modeloEquipoAnfitrion, cambiarModeloEquipoAnfitrion] = useState({
-    campo: "",
-    valido: null,
-  });
+  const [nombreOtroDispositivo, cambiarNombreOtroDispositivo] = useState({campo: "", valido: null});
+  const [marca, cambiarMarca] = useState({campo: "", valido: null});
+  const [nombreComercial, cambiarNombreComercial] = useState({campo: "", valido: null});
+  const [modelo, cambiarModelo] = useState({campo: "", valido: null});
+  const [fabricante, cambiarFabricante] = useState({campo: "", valido: null});
+  const [casoUsoDispositivo, cambiarCasoUsoDispositivo] = useState({campo: "", valido: null});
+  const [marcaEquipoAnfitrion, cambiarMarcaEquipoAnfitrion] = useState({campo: "", valido: null});
+  const [modeloEquipoAnfitrion, cambiarModeloEquipoAnfitrion] = useState({campo: "", valido: null});
   // Validar formulario y términos condiciones
   const [formularioValido, cambiarFormularioValido] = useState(null);
   const [terminos, cambiarTerminos] = useState(false);
@@ -151,6 +120,7 @@ const FormularioSolicitud = () => {
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^\d{7,14}$/, // 7 a 14 numeros.
     digitoV: /^\d{1,1}$/, // 1 a 1 numero.
+    minimoCaracteres:  /^.{2,50}$/, //Minimo 2 caracteres y máximo 50
   };
 
   // Campo confirmar Número de Identificación se igual campo a comprobar
@@ -213,6 +183,55 @@ const FormularioSolicitud = () => {
     }
   };
 
+  // Obtener los datos del formulario
+  const [formValues, setFormValues] = useState({
+    tipoPersona: "",
+    tipoIdentificacion: "",
+    identificacion: "",
+    nombre: "",
+    nombre2: "",
+    apellido: "",
+    apellido2: "",
+    nit: "",
+    digitoVerificacion: "",
+    nombreEmpresa: "",
+    nombreRL: "",
+    pais: "",
+    departamento: "",
+    municipio: "",
+    direccion: "",
+    correo: "",
+    telefono: "",
+    tipoDispositivo: "",
+    marca: "",
+    nombreComercial: "",
+    modelo: "",
+    fabricante: "",
+    casoUsoDispositivo: "",
+    modeloModuloInterno: "",
+    marcaEquipoFabricante: "",
+    modeloEquipoAnfitrion: "",
+    nombreOtroDispositivo: "",    
+  });
+
+  const [isFormVisible, setIsFormVisible] = useState(true);
+
+  const inputFileRef = useRef();
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name, value);
+
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValues);
+    console.log(inputFileRef?.current?.files);
+    setIsFormVisible(false);
+  };
+
   const onChangeTerminos = (e) => {
     cambiarTerminos(e.target.checked);
   };
@@ -270,12 +289,15 @@ const FormularioSolicitud = () => {
       case "natural":
         return (
           <>
-            <div>
-              <Label htmlFor="tipoId">Tipo de Identificación *</Label>
+            <div className="col-md-6 p-1">
+              <Label htmlFor="tipoId">Tipo de Identificación*</Label>
               <Select
                 id="tipoIdentificacion"
                 data-toggle="tooltip"
                 title="Seleccionar tipo documento de Identificación"
+                name="tipoIdentificacion"
+                value={formValues?.tipoIdentificacion}
+                onChange={handleChange}
               >
                 <option value="1" selected>
                   Cédula de Ciudadania
@@ -283,42 +305,55 @@ const FormularioSolicitud = () => {
                 <option value="2">Cédula extranjeria</option>
                 <option value="3">ID pasaporte</option>
               </Select>
-              <LeyendaError>Campo tipo iden es requerido</LeyendaError>
+              <LeyendaError>Campo es requerido</LeyendaError>
+              
             </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={identificacion}
               cambiarEstado={cambiarIdentificacion}
               tipo="text"
-              label="Número de Identificación *"
+              label="Número de Identificación*"
               placeholder="Ej: 1001245785"
               name="identificacion"
               leyendaError="Campo requerido, solo se aceptan números y minimo 6 digitos"
               expresionRegular={expresiones.identificacion}
+              value={formValues?.identificacion}
+              onChange={handleChange}
             />
-
+            </div>
+            
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={identificacion2}
               cambiarEstado={cambiarIdentificacion2}
               tipo="text"
-              label="Confirmar Número de Identificación *"
+              label="Confirmar Número de Identificación*"
               placeholder="Ej: 1001245785"
-              name="identificacion"
+              name="identificacion2"
               leyendaError="Campo requerido, debe ser igual al campo identificación"
               funcion={validarIdentificacion2}
             />
+            </div>    
+        
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={nombre}
               cambiarEstado={cambiarNombre}
               tipo="text"
-              label="Primer Nombre *"
+              label="Primer Nombre*"
               placeholder="Ej: Pepito"
               name="nombre"
               leyendaError="Campo requerido, solo se aceptan letras"
               expresionRegular={expresiones.nombre}
+              value={formValues?.nombre}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={nombre2}
               cambiarEstado={cambiarNombre2}
@@ -326,20 +361,28 @@ const FormularioSolicitud = () => {
               label="Segundo Nombre"
               placeholder="Ej: Andres"
               name="nombre2"
+              value={formValues?.nombre2}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={apellido}
               cambiarEstado={cambiarApellido}
               tipo="text"
-              label="Primer Apellido *"
+              label="Primer Apellido*"
               placeholder="Ej: Perez"
               name="apellido"
               leyendaError="Campo requerido, solo se aceptan letras"
               expresionRegular={expresiones.nombre}
+              value={formValues?.apellido}
+              onChange={handleChange}
             />
+            </div>
 
-            <ComponenteInput
+           <div className="col-md-6 p-1"> 
+           <ComponenteInput
               estado={apellido2}
               cambiarEstado={cambiarApellido2}
               tipo="text"
@@ -348,121 +391,154 @@ const FormularioSolicitud = () => {
               name="apellido2"
               leyendaError="Campo requerido"
               expresionRegular={expresiones.apellido2}
+              value={formValues?.apellido2}
+              onChange={handleChange}
             />
+           </div>
           </>
         );
       case "juridica":
         return (
           <>
-            <div>
-              <Label htmlFor="tipoId">Tipo de Identificación *</Label>
+            <div className="col-md-6 p-1">
+              <Label htmlFor="tipoId">Tipo de Identificación*</Label>
               <Select
                 id="tipoIdentificacion"
                 data-toggle="tooltip"
                 title="Seleccionar tipo documento de Identificación"
+                name="tipoIdentificacion"
+                value={formValues?.tipoIdentificacion}
+                onChange={handleChange}
               >
                 <option value="1" selected>
-                  Número de Identificación Tributaria (NIT)
+                  Número Identificación Tributaria (NIT)
                 </option>
               </Select>
               <LeyendaError>Campo tipo iden es requerido</LeyendaError>
             </div>
 
+            <div className="col-md-4 p-1"> 
             <ComponenteInput
               estado={nit}
               cambiarEstado={cambiarNit}
               tipo="text"
-              label="Número de Identificación *"
+              label="Número de Identificación*"
               placeholder="Ej: 8603842563"
               name="nit"
               leyendaError="Campo requerido, solo se aceptan números"
               expresionRegular={expresiones.identificacion}
+              value={formValues?.nit}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-2 p-1">
             <ComponenteInput
               estado={digitoVerificacion}
               cambiarEstado={cambiarDigitoVerificacion}
               tipo="text"
-              label="Digito Verificación *"
+              label="DV*"
               placeholder="Ej: 8"
               name="digitoVerificacion"
               leyendaError="Campo requerido, solo se un número"
               expresionRegular={expresiones.digitoV}
+              value={formValues?.digitoVerificacion}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-4 p-1">
             <ComponenteInput
               estado={nit2}
               cambiarEstado={cambiarNit2}
               tipo="text"
-              label="Confirmar Número de Identificación *"
+              label="Confirma Identificación*"
               placeholder="Ej: 8603842563"
               name="nit2"
               leyendaError="Campo requerido, coincidir con número nit ingresado"
               funcion={validarNit2}
             />
+            </div>
 
+            <div className="col-md-2 p-1">
             <ComponenteInput
               estado={digitoVerificacion2}
               cambiarEstado={cambiarDigitoVerificacion2}
               tipo="text"
-              label="Confirmar Digito Verificación*"
+              label="Confirma DV*"
               placeholder="Ej: 8"
               name="digitoVerificacion2"
               leyendaError="Campo es requerido, coincidir con número DV ingresado"
               expresionRegular={expresiones.digitoV}
               funcion={validarDigitoVerificacion2}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={nombreEmpresa}
               cambiarEstado={cambiarNombreEmpresa}
               tipo="text"
-              label="Nombre de la empresa *"
+              label="Nombre de la empresa*"
               placeholder="Ej: Microchips y Telecomunicaciones SAS"
               name="nombreEmpresa"
               leyendaError="Campo es requerido"
               expresionRegular={expresiones.nombre}
+              value={formValues?.nombreEmpresa}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={nombreRLoApoderado}
               cambiarEstado={cambiarNombreRLoApoderado}
               tipo="text"
               label="Nombre Representante Legal o APoderado*"
               placeholder="Ej: Pablo Jesus Lozada Cortez"
-              name="apellido"
+              name="nombreRL"
               leyendaError="Campo primer apellido es requerido, solo se aceptan letras"
               expresionRegular={expresiones.nombre}
+              value={formValues?.nombreRL}
+              onChange={handleChange}
             />
+            </div>
           </>
         );
       default:
         return (
           <>
+            <div className="col-md-6 p-1">
             <ComponenteInputDisabled
               estado={tipoId}
               cambiarEstado={cambiarTipoId}
               tipo="text"
-              label="Tipo de Identificación *"
+              label="Tipo de Identificación*"
               placeholder="Ej: Cédula de Ciudadania"
               name="tipoId"
             />
+            </div>
+            
+            <div className="col-md-6 p-1">
             <ComponenteInputDisabled
               estado="identificacionSeleccion"
               tipo="text"
-              label="Número de Identificación *"
+              label="Número de Identificación*"
               placeholder="Ej: 1234567890"
               name="identificacionSeleccion"
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInputDisabled
               estado={nit2}
               cambiarEstado={cambiarNit2}
               tipo="text"
-              label="Confirmar Número de Identificación *"
+              label="Confirmar Número de Identificación*"
               placeholder="Ej: 1234567890"
               name="identificacion"
             />
+            </div>
           </>
         );
     }
@@ -475,47 +551,66 @@ const FormularioSolicitud = () => {
         return (
           <>
             <span />
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={marca}
               cambiarEstado={cambiarMarca}
               tipo="text"
-              label="Marca *"
+              label="Marca*"
               placeholder="Ej: Apple"
               name="marca"
               leyendaError="Campo es requerido"
-              
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.marca}
+              onChange={handleChange}
             />
+            </div>
+            
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={nombreComercial}
               cambiarEstado={cambiarNombreComercial}
               tipo="text"
-              label="Nombre Comercial *"
+              label="Nombre Comercial*"
               placeholder="Ej: Serie 3"
               name="nombreComercial"
               leyendaError="Campo es requerido"
-              
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.nombreComercial}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={modelo}
               cambiarEstado={cambiarModelo}
               tipo="text"
-              label="Modelo *"
+              label="Modelo*"
               placeholder="Ej: Once"
               name="modelo"
               leyendaError="Campo es requerido"
-              
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.modelo}
+              onChange={handleChange}
             />
+            </div>
 
-            <ComponenteInput
+           <div className="col-md-6 p-1">
+           <ComponenteInput
               estado={fabricante}
               cambiarEstado={cambiarFabricante}
               tipo="text"
               label="Fabricante"
               placeholder="Ej: Huawei"
               name="fabricante"
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.fabricante}
+              onChange={handleChange}
             />
+           </div>
             
+            <div className="col-md-12 p-1">
             <ComponenteInput
               estado={casoUsoDispositivo}
               cambiarEstado={cambiarCasoUsoDispositivo}
@@ -523,16 +618,19 @@ const FormularioSolicitud = () => {
               label="Caso de uso del Dispositivo*"
               placeholder="Ej: Las caracteristicas de dispositivo..."
               name="casoUsoDispositivo"
-              leyendaError="Campo requerido"
-            
+              leyendaError="Campo requerido"   
+              expresionRegular={expresiones.minimoCaracteres}  
+              value={formValues?.casoUsoDispositivo}
+              onChange={handleChange}       
             />
+            </div>
 
             
             {/*
-            <div class="form-group">
+            <div className"form-group">
               <label for="exampleFormControlTextarea1">Escribre tus comentarios:</label>
               <textarea
-                class="form-control"
+                className"form-control"
                 id="exampleFormControlTextarea1"
                 placeholder="Ej: Caracteristicas u observaciones del dispositivo IoT decir..."
                 rows="3"
@@ -547,16 +645,22 @@ const FormularioSolicitud = () => {
         return (
           <>
             <span />
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={marca}
               cambiarEstado={cambiarMarca}
               tipo="text"
               label="Marca del Módulo Interno*"
               placeholder="Ej: Apple"
-              name="marcaModulo"
+              name="marca"
               leyendaError="Campo es requerido"
-              
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.marca}
+              onChange={handleChange}
             />
+            </div>
+            
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={nombreComercial}
               cambiarEstado={cambiarNombreComercial}
@@ -564,10 +668,14 @@ const FormularioSolicitud = () => {
               label="Nombre Comercial*"
               placeholder="Ej: Serie 3"
               name="nombreComercial"
-              leyendaError="Campo es requerido, solo se aceptan letras"
-              
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.nombreComercial}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={modelo}
               cambiarEstado={cambiarModelo}
@@ -576,9 +684,13 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Once"
               name="modeloModuloInterno"
               leyendaError="Campo es requerido"
-              
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.modeloModuloInterno}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={fabricante}
               cambiarEstado={cambiarFabricante}
@@ -586,8 +698,13 @@ const FormularioSolicitud = () => {
               label="Fabricante"
               placeholder="Ej: Huawei"
               name="fabricante"
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.fabricante}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={marcaEquipoAnfitrion}
               cambiarEstado={cambiarMarcaEquipoAnfitrion}
@@ -595,8 +712,13 @@ const FormularioSolicitud = () => {
               label="Marca del Equipo Anfitrión*"
               placeholder="Ej: Las caracteristicas de dispositivo..."
               name="marcaEquipoFabricante"
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.marcaEquipoFabricante}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={modeloEquipoAnfitrion}
               cambiarEstado={cambiarModeloEquipoAnfitrion}
@@ -604,12 +726,17 @@ const FormularioSolicitud = () => {
               label="Modelo del Equipo Anfitrión*"
               placeholder="Ej: Las caracteristicas de dispositivo..."
               name="modeloEquipoAnfitrion"
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.modeloEquipoAnfitrion}
+              onChange={handleChange}
             />
+            </div>
           </>
         );
       case "otro":
         return (
           <>
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={nombreOtroDispositivo}
               cambiarEstado={cambiarNombreOtroDispositivo}
@@ -618,8 +745,12 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Apple"
               name="nombreOtroDispositivo"
               leyendaError="Campo es requerido"
-              
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.nombreOtroDispositivo}
+              onChange={handleChange}
             />
+            </div>
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={marca}
               cambiarEstado={cambiarMarca}
@@ -627,31 +758,44 @@ const FormularioSolicitud = () => {
               label="Marca *"
               placeholder="Ej: Apple"
               name="marca"
-              leyendaError="Campo es requerido, solo se aceptan letras"
-              
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.marca}
+              onChange={handleChange}
             />
+            </div>
+            
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={nombreComercial}
               cambiarEstado={cambiarNombreComercial}
               tipo="text"
-              label="Nombre Comercial *"
+              label="Nombre Comercial*"
               placeholder="Ej: Serie 3"
               name="nombreComercial"
               leyendaError="Campo es requerido"
-              expresionRegular={expresiones.nombre}
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.nombreComercial}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={modelo}
               cambiarEstado={cambiarModelo}
               tipo="text"
-              label="Modelo *"
+              label="Modelo*"
               placeholder="Ej: Once"
               name="modelo"
               leyendaError="Campo es requerido"
-              
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.modelo}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={fabricante}
               cambiarEstado={cambiarFabricante}
@@ -660,46 +804,62 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Huawei"
               name="fabricante"
               leyendaError="Campo requerido"
-              
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.fabricante}
+              onChange={handleChange}
             />
+            </div>
           </>
         );
       default:
         return (
           <>
             <span />
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={marca}
               cambiarEstado={cambiarMarca}
               tipo="text"
-              label="Marca *"
+              label="Marca*"
               placeholder="Ej: Marca del Fabricante Dispositivo"
               name="marca"
               leyendaError="Campo es requerido"
-              
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.marca}
+              onChange={handleChange}
             />
+            </div>
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={nombreComercial}
               cambiarEstado={cambiarNombreComercial}
               tipo="text"
-              label="Nombre Comercial *"
+              label="Nombre Comercial*"
               placeholder="Ej: Nombre Comercial del Dispositivo"
               name="nombreComercial"
               leyendaError="Campo es requerido"
-             
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.nombreComercial}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={modelo}
               cambiarEstado={cambiarModelo}
               tipo="text"
-              label="Modelo *"
+              label="Modelo*"
               placeholder="Ej: Módelo que estipula el fabricante"
               name="modelo"
               leyendaError="Campo es requerido"
-              
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.modelo}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={fabricante}
               cambiarEstado={cambiarFabricante}
@@ -708,7 +868,11 @@ const FormularioSolicitud = () => {
               placeholder="Ej: Fabricante de la Marca"
               name="fabricante"
               leyendaError="Campo requerido"
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.fabricante}
+              onChange={handleChange}
             />
+            </div>
           </>
         );
     }
@@ -722,192 +886,254 @@ const FormularioSolicitud = () => {
           <>
             <MenuDesplegable />
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={direccion}
               cambiarEstado={cambiarDireccion}
               tipo="text"
-              label="Dirección *"
+              label="Dirección*"
               placeholder="Ej: CL 1 23 45"
               name="direccion"
               leyendaError="Campo es requerido"
-              
+              name="direccion"
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.direccion}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={correo}
               cambiarEstado={cambiarCorreo}
               tipo="text"
-              label="Correo Electrónico *"
+              label="Correo Electrónico*"
               placeholder="Ej: falso@gmail.com"
               name="correo"
               leyendaError="Campo es requerido, cumplir con las caracteristicas de un email"
               expresionRegular={expresiones.correo}
+              value={formValues?.correo}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={correo2}
               cambiarEstado={cambiarCorreo2}
               tipo="text"
-              label="Confirmar Correo Electrónico *"
+              label="Confirmar Correo Electrónico*"
               placeholder="Ej: falso@gmail.com"
               name="correo"
               leyendaError="Campo es requerido, coincidir con email anteriormente digitado"
               expresionRegular={expresiones.correo}
               funcion={validarCorreo2}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={telefono}
               cambiarEstado={cambiarTelefono}
               tipo="text"
-              label="Teléfono Remitente *"
+              label="Teléfono Remitente*"
               placeholder="Ej: 300 123 45 67"
               name="telefono"
               leyendaError="Campo es requerido, solo se aceptan números"
               expresionRegular={expresiones.telefono}
+              value={formValues?.telefono}
+              onChange={handleChange}
             />
+            </div>
           </>
         );
       case "otroPais":
         return (
           <>
+            <div className="col-md-6 p-1">
             <ComponenteInputDisabled
               estado={departamento}
               cambiarEstado={cambiarDepartamento}
               tipo="text"
-              label="Departamento *"
+              label="Departamento*"
               placeholder="Ej: Cundinamarca"
               name="departamento"
               leyendaError="Campo es requerido, solo se aceptan letras"
               expresionRegular={expresiones.nombre}
+              value={formValues?.departamento}
+              onChange={handleChange}
             />
+            </div>
+            <div className="col-md-6 p-1">
             <ComponenteInputDisabled
               estado={municipio}
               cambiarEstado={cambiarMunicipio}
               tipo="text"
-              label="Municipio *"
+              label="Municipio*"
               placeholder="Ej: Madrid"
               name="municipio"
               leyendaError="Campo es requerido, solo se aceptan letras"
               expresionRegular={expresiones.nombre}
+              value={formValues?.municipio}
+              onChange={handleChange}
             />
+            </div>
+            <div className="col-md-6 p-1"> 
             <ComponenteInput
               estado={direccion}
               cambiarEstado={cambiarDireccion}
               tipo="text"
-              label="Dirección *"
+              label="Dirección*"
               placeholder="Ej: CL 1 23 45"
               name="direccion"
-              leyendaError="Campo es requerido, solo se aceptan letras"
-              
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.direccion}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={correo}
               cambiarEstado={cambiarCorreo}
               tipo="text"
-              label="Correo Electrónico *"
+              label="Correo Electrónico*"
               placeholder="Ej: falso@gmail.com"
               name="correo"
               leyendaError="Campo es requerido"
               expresionRegular={expresiones.correo}
+              value={formValues?.correo}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={correo2}
               cambiarEstado={cambiarCorreo2}
               tipo="text"
-              label="Confirmar Correo Electrónico *"
+              label="Confirmar Correo Electrónico*"
               placeholder="Ej: falso@gmail.com"
               name="correo"
               leyendaError="Campo es requerido"
               expresionRegular={expresiones.correo}
               funcion={validarCorreo2}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={telefono}
               cambiarEstado={cambiarTelefono}
               tipo="text"
-              label="Teléfono Remitente *"
+              label="Teléfono Remitente*"
               placeholder="Ej: 300 123 45 67"
               name="telefono"
               leyendaError="Campo es requerido, solo números"
               expresionRegular={expresiones.telefono}
+              value={formValues?.telefono}
+              onChange={handleChange}
             />
+            </div>
           </>
         );
       default:
         return (
           <>
+            <div className="col-md-6 p-1">
             <ComponenteInputDisabled
               estado={departamento}
               cambiarEstado={cambiarDepartamento}
               tipo="text"
-              label="Departamento *"
+              label="Departamento*"
               placeholder="Ej: Cundinamarca"
               name="departamento"
               leyendaError="Campo es requerido, solo se aceptan letras"
               expresionRegular={expresiones.nombre}
+              value={formValues?.departamento}
+              onChange={handleChange}
             />
+            </div>
+            <div className="col-md-6 p-1">
             <ComponenteInputDisabled
               estado={municipio}
               cambiarEstado={cambiarMunicipio}
               tipo="text"
-              label="Municipio *"
+              label="Municipio*"
               placeholder="Ej: Madrid"
               name="municipio"
               leyendaError="Campo es requerido, solo se aceptan letras"
               expresionRegular={expresiones.nombre}
+              value={formValues?.municipio}
+              onChange={handleChange}
             />
+            </div>
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={direccion}
               cambiarEstado={cambiarDireccion}
               tipo="text"
-              label="Dirección *"
+              label="Dirección*"
               placeholder="Ej: CL 1 23 45"
               name="direccion"
-              leyendaError="Campo es requerido, solo se aceptan letras"
-              
+              leyendaError="Campo es requerido"
+              expresionRegular={expresiones.minimoCaracteres}
+              value={formValues?.direccion}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={correo}
               cambiarEstado={cambiarCorreo}
               tipo="text"
-              label="Correo Electrónico *"
+              label="Correo Electrónico*"
               placeholder="Ej: falso@gmail.com"
               name="correo"
               leyendaError="Campo es requerido"
               expresionRegular={expresiones.correo}
+              value={formValues?.correo}
+              onChange={handleChange}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={correo2}
               cambiarEstado={cambiarCorreo2}
               tipo="text"
-              label="Confirmar Correo Electrónico *"
+              label="Confirmar Correo Electrónico*"
               placeholder="Ej: falso@gmail.com"
               name="correo"
               leyendaError="Campo es requerido"
               expresionRegular={expresiones.correo}
               funcion={validarCorreo2}
             />
+            </div>
 
+            <div className="col-md-6 p-1">
             <ComponenteInput
               estado={telefono}
               cambiarEstado={cambiarTelefono}
               tipo="text"
-              label="Teléfono Remitente *"
+              label="Teléfono Remitente*"
               placeholder="Ej: 300 123 45 67"
               name="telefono"
               leyendaError="Campo es requerido, solo números"
               expresionRegular={expresiones.telefono}
+              value={formValues?.telefono}
+              onChange={handleChange}
             />
+            </div>
           </>
         );
     }
   }
+
+  
+  
 
   return (
     <>
@@ -915,7 +1141,12 @@ const FormularioSolicitud = () => {
         <Header />
         <div className="row">
           <div className="col-md-8">
-            <Navigation />
+          <>
+            <Navegacion
+              inicio="Inicio"
+              pagina="Solicitud de Homologación..."
+              paginaActual="Formulario de Solicitud de Homologación..."
+            />
             <NavProceso />
 
             <br />
@@ -925,8 +1156,8 @@ const FormularioSolicitud = () => {
             </h3>
             <br />
             <br />
-
-            <Formulario className="row" onSubmit={onSubmit}>
+            {isFormVisible ? (
+            <Formulario className="row" onSubmit={handleSubmit}>
               <div className="titulo-indicativo">
                 <h4 className="subtitle-form">Datos de identificación</h4>
                 <p className="txt-obliga">*Campos obligatorios</p>
@@ -934,16 +1165,19 @@ const FormularioSolicitud = () => {
 
               <span />
 
-              <div>
-                <Label htmlFor="tipoPersona">Tipo de Persona *</Label>
+              <div className="col-md-6 p-1">
+                <Label htmlFor="tipoPersona">Tipo de Persona*</Label>
                 <Select
                   id="tipoPersona"
+                  name="tipoPersona"
                   data-toggle="tooltip"
                   title="Seleccionar como persona Natural o Juridica"
                   onClick={(event) => {
                     // here set target value to state which is 0, 1, 2, 3
                     setTipoPersona(event.target.value);
                   }}
+                  value={formValues?.tipoPersona}
+                  onChange={handleChange}
                 >
                   <option value="" selected hidden>
                     Ej. Natural
@@ -961,9 +1195,11 @@ const FormularioSolicitud = () => {
                 <p className="txt-obliga">*Campos obligatorios</p>
               </div>
               <span />
-              <div>
-                <Label htmlFor="tipoPais">País *</Label>
+
+              <div className="col-md-6 p-1">
+                <Label htmlFor="tipoPais">País*</Label>
                 <Select
+                  name="pais"
                   id="tipoPais"
                   data-toggle="tooltip"
                   title="Seleccionar país de residencia"
@@ -971,6 +1207,8 @@ const FormularioSolicitud = () => {
                     // here set target value to state which is 0, 1, 2, 3
                     cambiarPais(event.target.value);
                   }}
+                  value={formValues?.pais}
+                  onChange={handleChange}
                 >
                   <option value="" selected hidden>
                     Ej. Colombia
@@ -1002,9 +1240,10 @@ const FormularioSolicitud = () => {
               </div>
               <br />
 
-              <div>
+              <div className="col-md-6 p-1">
                 <Label htmlFor="tipoDispositivo">Tipo de Dispositivo*</Label>
                 <Select
+                  name="tipoDispositivo"
                   id="tipoDispositivo"
                   data-toggle="tooltip"
                   title="Seleccionar tipo dispositivo"
@@ -1012,6 +1251,8 @@ const FormularioSolicitud = () => {
                     // here set target value to state which is 0, 1, 2, 3
                     setTipoDispositivo(event.target.value);
                   }}
+                  value={formValues?.tipoDispositivo}
+                  onChange={handleChange}
                 >
                   <option value="" selected hidden>
                     Ej. Móvil
@@ -1086,7 +1327,7 @@ const FormularioSolicitud = () => {
                 expresionRegular={expresiones.apellido2}
               />
               */}
-            </Formulario>
+            
             <br />
             <br />
             <div className="col-md-12 titulo-indicativo">
@@ -1099,7 +1340,7 @@ const FormularioSolicitud = () => {
               </p>
               <br />
               <div>
-                <span class="button-carga-principal btn-file">
+                <span className="button-carga-principal btn-file">
                   Agregar TAC
                   <input type="file" />
                 </span>
@@ -1107,9 +1348,10 @@ const FormularioSolicitud = () => {
               <br />
               <br />
             </div>
-            <div class="tabla">
-              <p class="titulo-tabla">Listado de TAC</p>
-              <table class="rwd-table">
+            
+            <div className="tabla">
+              <p className="titulo-tabla">Listado de TAC</p>
+              <table className="rwd-table">
                 <tr>
                   <th>TAC</th>
                   <th>Acciones</th>
@@ -1120,7 +1362,7 @@ const FormularioSolicitud = () => {
                 </tr>
               </table>
             </div>
-            <br />
+            
             <div className="col-md-12 titulo-indicativo">
               <h4 className="subtitle-form"> Archivos Adjuntos</h4>
               <p className="txt-obliga">Por favor tenga en cuenta:</p>
@@ -1169,7 +1411,7 @@ const FormularioSolicitud = () => {
                   Acepto que he leido los Términos y condiciones *
                 </a>
               </Label>
-              <br />
+              
               <Label>
                 <input
                   type="checkbox"
@@ -1202,6 +1444,7 @@ const FormularioSolicitud = () => {
               ref={captcha}
               sitekey="6Lc9VDIeAAAAAHHQA1wEjx1FKlTy9uWIrZKGwwvN"
               onChange={onChange}
+              className="recaptcha"
             />
 
             <br />
@@ -1222,11 +1465,45 @@ const FormularioSolicitud = () => {
                 </p>
               </MensajeExito>
             )}
+            </Formulario>
+            ) : (
+          <View data={formValues} />
+        )}
+        </>
           </div>
-
+          
+          {/* 
+          <div>
+            <h4>{persona.campo}</h4>
+            <h4>{tipoId.campo}</h4>
+            <h4>Numero de Identificación: {identificacion.campo}</h4>
+            <h4>Primer Nombre: {nombre.campo}</h4>
+            <h4>Segundo Nombre: {nombre2.campo}</h4>
+            <h4>Primer Apellido:{apellido.campo}</h4>
+            <h4>Segundo Apellido: {apellido2.campo}</h4>
+            <h4>{nit.campo}</h4>
+            <h4>{nombreEmpresa.campo}</h4>
+            <h4>{nombreRLoApoderado.campo}</h4>
+            <h4>{digitoVerificacion.campo}</h4>
+            <h4>{pais.campo}</h4>
+            <h4>{departamento.campo}</h4>
+            <h4>{municipio.campo}</h4>
+            <h4>Dirección: {direccion.campo}</h4>
+            <h4>Correo Electronico: {correo.campo}</h4>
+            <h4>Número de Contacto: {telefono.campo}</h4>
+            <h4>{nombreOtroDispositivo.campo}</h4>
+            <h4>Marca del Dispositivo: {marca.campo}</h4>
+            <h4>Nombre Comercial del Dispositivo: {nombreComercial.campo}</h4>
+            <h4>Modelo del Dispositivo: {modelo.campo}</h4>
+            <h4>Nombre Fabricante del Dispositivo:{fabricante.campo}</h4>
+            <h4>{casoUsoDispositivo.campo}</h4>
+            <h4>{marcaEquipoAnfitrion.campo}</h4>
+            <h4>{modeloEquipoAnfitrion.campo}</h4>
+          </div>
+            */}
           <div className="col-md-1"></div>
 
-          <div className="col-md-3 p-0">
+          <div className="col-md-3">
             <aside className="aside">
               <br />
               <br />
@@ -1332,7 +1609,7 @@ const FormularioSolicitud = () => {
             </p>
             <p>
               La CRC estudiará cada solicitud de homologación y dará la
-              respuesta pertinente.
+              RespuestaSolicitud pertinente.
             </p>
             <h2>3. Uso de los Datos Personales</h2>
             <p>

@@ -1,4 +1,4 @@
-import { faTable } from "@fortawesome/free-solid-svg-icons";
+//import { faTable } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 const formatoArchivos = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf'];
@@ -29,7 +29,7 @@ const TestingDocument = () => {
     };
   }
 
-
+  
   function getExtensionFromFormato(formato){
     
     switch (formato) {
@@ -41,6 +41,8 @@ const TestingDocument = () => {
         return 'jpg';
       case this.formatoArchivos[3]:
         return 'pdf';
+      default:
+        return "NO";
     }
   }
 
@@ -48,9 +50,9 @@ const TestingDocument = () => {
   return ( 
     <>
       <input type="file" onChange={onFileChange} />
-
+      getExtensionFromFormato()
       <div>
-        <table class="default">
+        <table className="default">
 
   <tr>
 

@@ -1,233 +1,184 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+//import { render } from "react-dom";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+//import * as Yup from "yup";
+//import { MoreResources, DisplayFormikState } from "./helper";
+
+//import styled, { css } from "styled-components";
+
 //import { Link } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import FooterGov from "../../FooterGov/FooterGov";
 import Header from "../../Header/Header";
-import Navigation from "../../Navigation/Navigation";
+import Navegacion from "../../Navigation/Navegacion";
 import NavProceso from "../../NavProceso/NavProceso";
 
-import BotonInicio from "../../Botones/BotonInicio/BotonInicio"
-import BotonTutoriales from "../../Botones/BotonTutoriales/BotonTutoriales" 
-import BotonDeDudas from "../../Botones/BotonDeDudas/BotonDeDudas"
+import BotonInicio from "../../Botones/BotonInicio/BotonInicio";
+import BotonTutoriales from "../../Botones/BotonTutoriales/BotonTutoriales";
+import BotonDeDudas from "../../Botones/BotonDeDudas/BotonDeDudas";
 
-import CalificacionExperiencia from "../CalificacionExperiencia/CalificacionExperiencia"
+import CalificacionExperiencia from "../CalificacionExperiencia/CalificacionExperiencia";
 
-import { Formulario, Label, ContenedorTerminos, ContenedorBotonCentrado, Boton, MensajeExito, MensajeError} from '../../../Pages/FormularioSolicitud/elementos/Formularios';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationTriangle, faCheckCircle } from "@fortawesome/free-solid-svg-icons"
-import ComponenteInput from "../../../Pages/FormularioSolicitud/componentes/ComponenteInput";
-
-import "./Prueba.scss";
+import "./Prueba.css";
 
 const Prueba = () => {
-
-  const [persona, cambiarPersona] = useState({campo: '', valido: null});
-  const [tipoId, cambiarTipoId] = useState({campo: '', valido: null});
-  const [identificacion, cambiarIdentificacion] = useState({campo: '', valido: null});
-  const [identificacion2, cambiarIdentificacion2] = useState({campo: '', valido: null});
-  const [nombre, cambiarNombre] = useState({campo: '', valido: null});
-  const [nombre2, cambiarNombre2] = useState({campo: '', valido: null});
-  const [apellido, cambiarApellido] = useState({campo: '', valido: null});
-  const [apellido2, cambiarApellido2] = useState({campo: '', valido: null});
-  //const [correo, cambiarCorreo] = useState({campo: '', valido: null});
-  //const [telefono, cambiarTelefono] = useState({campo: '', valido: null});
-  const [terminos, cambiarTerminos] = useState(false);
-  const [formularioValido, cambiarFormularioValido] = useState(null);  
-
-  const expresiones = {
-		usuario: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-		nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-    identificacion: /^\d{6,14}$/, // 6 a 14 numeros.
-    password: /^.{4,12}$/, // 4 a 12 digitos.
-		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-		telefono: /^\d{7,14}$/ // 7 a 14 numeros.
-	}
-
-  const validarIdentificacion2 = () => {
-    if(identificacion.campo.length > 0) {
-      if(identificacion.campo !== identificacion2.campo) {
-        cambiarIdentificacion2((prevState) => {
-          return {...prevState, valido: 'false'}
-        })
-      } else {
-        cambiarIdentificacion2((prevState) => {
-          return {...prevState, valido: 'true'}
-        })
-      }
-    }
-  }
-
-  const onChangeTerminos = (e) => {
-    cambiarTerminos(e.target.checked);
-  }
-
   
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    if(
-      identificacion.valido === 'true' &&
-      identificacion2.valido === 'true' &&
-      nombre.valido === 'true' &&
-      apellido.valido === 'true' &&
-      terminos
-    ){
-      cambiarFormularioValido(true);
-      cambiarPersona({campo: '', valido: null});
-      cambiarTipoId({campo: '', valido: null});
-      cambiarIdentificacion({campo: '', valido: null});
-      cambiarIdentificacion2({campo: '', valido: null});
-      cambiarNombre({campo: '', valido: null});
-      cambiarNombre2({campo: '', valido: null});
-      cambiarApellido({campo: '', valido: null});
-      cambiarApellido2({campo: '', valido: null});
-      cambiarTerminos(false)
-
-      // ... Puedo ir código consumido externo como de una API
-    } else {
-      cambiarFormularioValido(false);
-    }
-  }
+  const [formularioEnviado, setFormularioEnviado] = useState(false)
 
   return (
     <>
       <div className="container">
         <Header />
         <div className="row">
-          <div className="col-md-8">
-            <Navigation />
-            <NavProceso /> <br />
-            <h3 className="title-form">
-              Formulario de Solicitud de Homologación de Equipos Terminales
-              Móviles
-            </h3>
-            <br />
-            <br />
-            <Formulario className="row" onSubmit={onSubmit}>
-                            
-              <ComponenteInput
-                estado={persona}
-                cambiarEstado={cambiarPersona}
-                tipo="text"
-                label="Tipo de Persona *"
-                placeholder="Ej: Natural"
-                name="persona"
-                leyendaError="Campo tipo de persona es requerido"
-                expresionRegular={expresiones.persona}
-              />
+          <div className="col-md-8 p-0">
+            <Navegacion />
+            <NavProceso />
+            <h1>Basic</h1>
 
-              <ComponenteInput
-                estado={tipoId}
-                cambiarEstado={cambiarTipoId}
-                tipo="text"
-                label="Tipo de Identificación *"
-                placeholder="Ej: Cédula de Ciudadania"
-                name="tipoId"
-                leyendaError="Campo tipo de identificación requerido"
-                expresionRegular={expresiones.tipoId}
-              />
-
-              <ComponenteInput
-                estado={identificacion}
-                cambiarEstado={cambiarIdentificacion}
-                tipo="text"
-                label="Número de Identificación *"
-                placeholder="Ej: 1234567890"
-                name="identificacion"
-                leyendaError="Campo número de identificación es requerido, solo se permiten números y minimo 6 digitos"
-                expresionRegular={expresiones.identificacion}
-              />
-
-              <ComponenteInput
-                estado={identificacion2}
-                cambiarEstado={cambiarIdentificacion2}
-                tipo="text"
-                label="Confirmar Número de Identificación *"
-                placeholder="Ej: 1234567890"
-                name="identificacion"
-                leyendaError="Campo confirmar número de identificación es requerido, y debe ser igual al campo número de identificación"
-                funcion={validarIdentificacion2}
-              />
-
-              <ComponenteInput
-                estado={nombre}
-                cambiarEstado={cambiarNombre}
-                tipo="text"
-                label="Primer Nombre *"
-                placeholder="Ej: Pepito"
-                name="nombre"
-                leyendaError="Campo primer nombre es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
-
-              <ComponenteInput
-                estado={nombre2}
-                cambiarEstado={cambiarNombre2}
-                tipo="text"
-                label="Segundo Nombre"
-                placeholder="Ej: Andres"
-                name="nombre2"
-              />
-
-              <ComponenteInput
-                estado={apellido}
-                cambiarEstado={cambiarApellido}
-                tipo="text"
-                label="Primer Apellido *"
-                placeholder="Ej: Perez"
-                name="apellido"
-                leyendaError="Campo primer apellido es requerido, solo se aceptan letras"
-                expresionRegular={expresiones.nombre}
-              />
-
-              <ComponenteInput
-                estado={apellido2}
-                cambiarEstado={cambiarApellido2}
-                tipo="text"
-                label="Segundo Apellido"
-                placeholder="Ej: Rodriguez"
-                name="apellido2"
-                leyendaError="Campo requerido"
-                expresionRegular={expresiones.apellido2}
-              />
-              
-              
-              <ContenedorTerminos>
-                <Label>
-                  <input 
-                    type="checkbox" 
-                    name="terminos" 
-                    id="terminos" 
-                    checked={terminos} 
-                    onChange={onChangeTerminos}
-                  />
-                  Acepto que he leido los Términos y condiciones *
-                </Label>
-              </ContenedorTerminos>
-              {formularioValido === false && <MensajeError>
-                <p>
-                  <FontAwesomeIcon icon={faExclamationTriangle} />
-                  <b>Error: </b> Por favor rellena el formulario correctamente.
-                </p>
-              </MensajeError>}
-              <ContenedorBotonCentrado>
-                <Boton id="envio" type="submit">ENVIAR</Boton>
+            {/*Contenedor Formik del formulario*/}
+            <Formik
+              //Valores Iniciales Formik
+              initialValues={
                 {
-                  formularioValido === true && 
-                  <MensajeExito id="msjexito">
-                    <p>
-                      <FontAwesomeIcon icon={faCheckCircle} />
-                      <b>Exitosa: </b>Su solicitud se ha registrado satisfactoriamente
-                    </p>
-                  </MensajeExito>
+                  nombre: '',
+                  correo: ''
                 }
-              </ContenedorBotonCentrado>
-              
-            </Formulario>
+              }
+              // Validaciones Formik
+              validate={(valores) => {
+                let errores = {}
+
+                if(!valores.nombre) {
+                  errores.nombre = 'Campo nombre es obligatorio'
+                } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombre)) {
+                  errores.nombre = 'El nombre solo puede contener letras y espacios'
+                }
+
+                if(!valores.correo) {
+                  errores.correo = 'Campo correo es obligatorio'
+                } else if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.correo)) {
+                  errores.correo = 'No cumple con los parametros para un email@email.co'
+                }
+
+                if(!valores.pais) {
+                  errores.pais = 'Campo pais es obligatorio'
+                } 
+
+                return errores
+              }}
+
+              // Envío formulario Formik
+              onSubmit = {(valores, {resetForm}) => {
+                resetForm()
+                console.log('Formulario enviado')
+                setFormularioEnviado(true)
+                setTimeout(() => setFormularioEnviado(false), 3000)
+                //console.log(valores)
+                console.log(valores.pais)
+                
+              }}
+            >
+              {/*
+              Estructura render props (destructuramos): se renderiza este formulario. Al tenerlo en una funcion se puede agregar valores de formik
+              Funcion que va dentro del componente Formik y nos permite inyectar informacion como los errores
+              */}
+              {({errors}) => ( 
+                <Form className="formulario">
+                  {/*console.log(errors)*/}
+                  <div>
+                    <label htmlFor="nombre">Nombre</label>
+                    <Field
+                      type="text"
+                      id="nombre"
+                      name="nombre"
+                      placeholder="John Doe"
+                    />
+                    <ErrorMessage name="nombre" component={() => (
+                        <div className="error">{errors.nombre}</div>
+                      )} 
+                    />
+                    
+                  </div>
+                  <div>
+                    <label htmlFor="correo">Correo</label>
+                    <Field
+                      type="text"
+                      id="correo"
+                      name="correo"
+                      placeholder="correo@correo.com"
+                    />
+                    <ErrorMessage name="correo" component={() => (
+                        <div className="error">{errors.correo}</div>
+                      )} 
+                    />
+                  </div>
+                  
+                  <div>
+                    <Field name="pais" as="select">
+                      <option value="arg">Argentina</option>
+                      <option value="br">Brasil</option>
+                      <option value="col">Colombia</option>
+                      <option value="mx">Mexico</option>
+                    </Field>
+                  </div>
+                  
+                  <div>
+                    <label>
+                      <Field type="radio" name="sexo" value="hombre" /> Hombre
+                    </label>
+                    <label>
+                      <Field type="radio" name="sexo" value="mujer" /> Mujer
+                    </label>
+                  </div>    
+                 
+                  <div>
+                    <Field name="mensaje" as="textarea" placeholder="Mensaje" />
+                  </div>
+                
+                  <button type="submit">Enviar</button>
+                  {formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
+                </Form>
+              )}
+              {/*
+              {({values, errors, touched, handleSubmit, handleChange, handleBlur}) => ( //Estructura render props (destructuramos): se renderiza este formulario. Al tenerlo en una funcion se puede agregar valores de formik
+                <form className="formulario" onSubmit={handleSubmit}>
+                  console.log(errors)
+                  <div>
+                    <label htmlFor="nombre">Nombre</label>
+                    <input
+                      type="text"
+                      id="nombre"
+                      name="nombre"
+                      placeholder="John Doe"
+                      value={values.nombre}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.nombre && errors.nombre && <div className="error">{errors.nombre}</div>}
+                  </div>
+                  <div>
+                    <label htmlFor="correo">Correo</label>
+                    <input
+                      type="text"
+                      id="correo"
+                      name="correo"
+                      placeholder="correo@correo.com"
+                      value={values.correo}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.correo && errors.correo && <div className="error">{errors.correo}</div>}
+                  </div>
+                  <button type="submit">Enviar</button>
+                  {formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
+                </form>
+              )}
+              */}
+            </Formik>
           </div>
 
-          <div className="col-lg-1"></div>
-          <div className="col-lg-3 p-0">
+          <div className="col-md-1 p-0"></div>
+          <div className="col-md-3 p-0">
             <aside className="aside">
               <br />
               <br />
@@ -250,3 +201,249 @@ const Prueba = () => {
 };
 
 export default Prueba;
+
+//Estilos campos formularios y validaciones estilos
+/*
+const colores = {
+  borde: "#3366CC",
+  error: "#A80521",
+  exito: "#3366CC",
+};
+
+const Formulario = styled.form`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const Label = styled.label`
+  display: block;
+  font: normal 500 16px Work Sans;
+  line-height: 1.5;
+  margin: 0;
+  color: #4B4B4B;
+  padding: padding: 22px 0px 0px 0px;
+  cursor: pointer;
+
+  ${(props) =>
+    props.valido === "false" &&
+    css`
+      color: ${colores.error};
+    `}
+`;
+
+const GrupoInput = styled.div`
+  position: relative;
+  z-index: 90;
+`;
+
+const Input = styled.input`
+  gap: 20px;
+  width: 100%;
+  background: #fff;
+  border-radius: 3px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 40px 0 10px;
+  transition: 0.3s ease all;
+  border: 1px solid #bababa;
+
+  &:focus {
+    border: 1px solid ${colores.borde};
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+  }
+
+  ${(props) =>
+    props.valido === "true" &&
+    css`
+      border: 1px solid #bababa;
+    `}
+
+  ${(props) =>
+    props.valido === "false" &&
+    css`
+      border: 1px solid ${colores.error} !important;
+    `}
+`;
+
+const InputDisabled = styled.input`
+  width: 100%;
+  background: #fff;
+  border-radius: 3px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 40px 0 10px;
+  transition: 0.3s ease all;
+  border: 1px solid #bababa;
+
+  &:focus {
+    border: 1px solid ${colores.borde};
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+  }
+
+  ${(props) =>
+    props.valido === "true" &&
+    css`
+      border: 1px solid #bababa;
+    `}
+
+  ${(props) =>
+    props.valido === "false" &&
+    css`
+      border: 1px solid ${colores.error} !important;
+    `}
+`;
+
+const LeyendaError = styled.p`
+  display: none;
+  font-size: 12px;
+  margin-bottom: 0;
+  color: ${colores.error};
+  display: none;
+
+  ${(props) =>
+    props.valido === "true" &&
+    css`
+      display: none;
+    `}
+
+  ${(props) =>
+    props.valido === "false" &&
+    css`
+      display: block;
+    `}
+`;
+
+const ContenedorTerminos = styled.div`
+  grid-column: span 2;
+
+  input {
+    margin-right: 10px;
+  }
+
+  @media (max-width: 800px) {
+    grid-column: span1;
+  }
+`;
+
+const ContenedorBotonCentrado = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-column: span 2;
+
+  @media (max-width: 800px) {
+    grid-column: span1;
+  }
+`;
+
+const Boton = styled.button`
+  display: flex;
+  background-color: #3366cc;
+  border: 1.5px solid #3366cc;
+  border-radius: 30px;
+  color: #ffff;
+  font: normal bold 15px "Works Sans", sans-serif;
+  margin: 0px 0px 100px 0px;
+  padding: 15px 5px 15px 5px;
+  text-transform: uppercase;
+  white-space: pre-line;
+  width: 30%;
+  /*
+  display: flex;
+  height: 40px;
+  line-height: 30px;
+  width: 30%;
+  background: #004884;
+  color: #fff;
+  font: normal 600 16px/1.55px "Work Sans", sans-serift;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: .1s ease all;
+  */
+  /*
+  a {
+    color: #ffff;
+    font: normal bold 15px/14px "Works Sans", sans-serif;
+  }
+
+  &:hover {
+    background-color: #004884;
+    border-color: #004884;
+  }
+`;
+
+const MensajeExito = styled.p`
+  width: 100%;
+  height: 45%;
+  text-align: center;
+  line-height: 45px;
+  background: #069169;
+  padding: 10px 0px 0px 0px;
+  margin: 12px 0px 0px 0px;
+  border-radius: 3px;
+  grid-column: span 2;
+
+  p {
+    padding: 10px;
+    text-align: center;
+    color: #ffff;
+  }
+  b {
+    margin-left: 10px;
+  }
+`;
+
+const MensajeError = styled.div`
+  height: 45px;
+  line-height: 45px;
+  background: ${colores.error};
+  padding: 0px 5px;
+  border-radius: 3px;
+  grid-column: span 2;
+  p {
+    padding: 2px 0px 2px 0px;
+    text-align: center;
+    color: #ffff;
+  }
+  b {
+    margin-left: 10px;
+  }
+`;
+
+const Select = styled.select`
+  width: 100%;
+  background: #fff;
+  border-radius: 3px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 40px 0 10px;
+  transition: 0.3s ease all;
+  border: 1px solid #bababa;
+
+  &:focus {
+    border: 1px solid ${colores.borde};
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+  }
+
+  ${(props) =>
+    props.valido === "true" &&
+    css`
+      border: 1px solid #bababa;
+    `}
+
+  ${(props) =>
+    props.valido === "false" &&
+    css`
+      border: 1px solid ${colores.error} !important;
+    `}
+`;
+*/

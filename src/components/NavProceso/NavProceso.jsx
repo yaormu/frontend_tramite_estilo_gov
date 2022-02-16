@@ -4,8 +4,8 @@ import "./NavProceso.scss";
 const NavProceso = () => {
     return (
         <>
-            <div class="row barra">
-	            <div class="col-3 estado-1">
+            <div className="row barra">
+	            <div className="col-3 estado-1">
                 	<span className="txt-estado-1">
                         <i className="uno">
                             1
@@ -13,7 +13,7 @@ const NavProceso = () => {
                         Inicio
                     </span>
                 </div>
-                <div class="col-3 estado-2">
+                <div className="col-3 estado-2">
                 	<span className="txt-estado-2"> 
                         <i className="dos">
                             2 
@@ -21,7 +21,7 @@ const NavProceso = () => {
                          Hago mi solicitud
                     </span>
                 </div>
-                <div class="col-3 estado-3">
+                <div className="col-3 estado-3">
                 	<span className="txt-estado-3"> 
                         <i className="tres">
                             3
@@ -29,12 +29,12 @@ const NavProceso = () => {
                         Procesan mi solicitud
                     </span>
                 </div>
-                <div class="col-3 estado-4">
+                <div className="col-3 estado-4">
                 	<span className="txt-estado-4"> 
                         <i className="cuatro">
                             4
                         </i> 
-                        Respuesta
+                        RespuestaSolicitud
                     </span>
                 </div>
             </div>

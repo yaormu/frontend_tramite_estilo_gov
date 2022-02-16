@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import FooterGov from "../../components/FooterGov/FooterGov";
 import Header from "../../components/Header/Header";
-import Navigation from "../../components/Navigation/Navigation";
+import Navegacion from "../../components/Navigation/Navegacion";
 import NavProceso from "../../components/NavProceso/NavProceso";
 
 import BotonTutoriales from "../../components/Botones/BotonTutoriales/BotonTutoriales";
@@ -26,8 +26,6 @@ import styled from "styled-components";
 
 import {
   Formulario,
-  ContenedorBotonCentrado,
-  Boton,
   MensajeExito,
   MensajeError,
 } from "../FormularioSolicitud/elementos/Formularios";
@@ -84,7 +82,11 @@ const ConsultaEstadoTramite = () => {
         <div className="row">
           {!usuarioValido && (
             <div className="col-md-8">
-              <Navigation />
+              <Navegacion
+                inicio="Inicio"
+                pagina="Solicitud de Homologación..."
+                paginaActual="Conoce el Estado de tú Solicitud"
+              />
               <NavProceso /> <br />
               <h3 className="title-form">Conoce el Estado de tú Solicitud</h3>
               <br />
@@ -125,7 +127,7 @@ const ConsultaEstadoTramite = () => {
 
                 <span />
                 <BotonEstado type="submit">
-                  <Link to="/EstadoSolicitud">CONSULTAR</Link>
+                  <Link to="/RespuestaSolicitud">CONSULTAR</Link>
                 </BotonEstado>
 
               </Formulario>
@@ -141,7 +143,7 @@ const ConsultaEstadoTramite = () => {
                       <b>Exitosa: </b>Su solicitud se ha registrado
                       satisfactoriamente
                     </p>
-                  <h1>VERGAAA</h1>
+                  <h1>VEGAAA</h1>
                     
                   </MensajeExito>
             )

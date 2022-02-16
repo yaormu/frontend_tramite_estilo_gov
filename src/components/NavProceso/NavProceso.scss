@@ -3,7 +3,7 @@ i {
 }
 
 .inicio {
-    color: #004884;
+    color: #3366CC;
     font-size: 14px;
 }
 
@@ -15,12 +15,12 @@ i {
 
 .barra {
     .estado-1 {
-        border-top: 3px solid var(--color-base-blue);
+        border-top: 3px solid #3366CC;
         margin: 0px 0px 0px 0px;
         padding: 10px 0px 0px 0px;   
     }
     .estado-2, .estado-3, .estado-4  {
-        border-top: 3px solid var(--color-barra);
+        border-top: 3px solid #3366CC;
         margin: 0px 0px 0px 0px;
         padding: 10px 0px 0px 0px;
     }
@@ -35,7 +35,7 @@ i {
     }
     
     .txt-estado-2 {
-        color: var(--titulo-subtitulo);
+        color: #3366CC;
         font-weight: 900;
     }
     
@@ -46,9 +46,9 @@ i {
     }
 
     .dos {
-        background-color: var(--color-base-blue);
+        background-color: #3366CC;
         color: var(--color-base-white);
-        border: 1px solid var(--color-base-blue);
+        border: 1px solid #3366CC;
     }
 }
 
