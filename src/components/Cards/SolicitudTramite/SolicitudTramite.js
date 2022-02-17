@@ -21,8 +21,7 @@ export default function SolicitudTramite() {
         </div>
         <div className="body-acciones">
           <p className="texto-card">
-            Realice la solicitud del tramite ante la Comisión de Regulación de
-            Comunicaciones.
+            Realiza la solicitud del Trámite de Homologación de Equipos Terminales Móviles ante la Comisión de Regulación de Comunicaciones.
           </p>
         </div>
       </div>

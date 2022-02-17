@@ -34,7 +34,7 @@ const Instancia3 = () => {
                         <i className="instancia3-cuatro">
                             4
                         </i> 
-                        RespuestaSolicitud
+                        Respuesta Solicitud
                     </span>
                 </div>
             </div>

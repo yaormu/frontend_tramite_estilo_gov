@@ -83,7 +83,7 @@ const ConsultaEstadoTramite = () => {
             <div className="col-md-8">
               <Navegacion
                 inicio="Inicio"
-                pagina="Solicitud de Homologación..."
+                pagina="Solicitud de Homologación"
                 paginaActual="Conoce el Estado de tú Solicitud"
               />
               <NavProceso /> <br />
@@ -97,17 +97,20 @@ const ConsultaEstadoTramite = () => {
               </p>
               <br />
               <br />
+              
               <Formulario action="" onSubmit={submit}>
-                <ComponenteInput
-                  estado={radicado}
-                  cambiarEstado={cambiarRadicado}
-                  tipo="text"
-                  label="Ingrese Número de Rádicado *"
-                  placeholder="Ej: 202201204578"
-                  name="radicado"
-                  leyendaError="Campo es requerido, solo se permiten números y minimo 6 digitos"
-                  expresionRegular={expresiones.numRadicado}
-                />
+                <div className="col-md-6">
+                  <ComponenteInput
+                    estado={radicado}
+                    cambiarEstado={cambiarRadicado}
+                    tipo="text"
+                    label="Ingrese Número de Radicado*"
+                    placeholder="Ej: 202201204578"
+                    name="radicado"
+                    leyendaError="Campo es requerido, solo se permiten números y minimo 6 digitos"
+                    expresionRegular={expresiones.numRadicado}
+                  />
+                </div>
 
                 <br/>
 

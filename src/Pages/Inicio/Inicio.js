@@ -28,7 +28,7 @@ const Inicio = () => {
           <div className="col-md-8">
             <Navigation
               inicio="Inicio"
-              paginaActual="Solicitud de Homologación de Equipos....."
+              paginaActual="Solicitud de Homologación"
             />
             <NavProceso /> <br />
             <div className="tab-content" id="myTabContent">
@@ -90,7 +90,7 @@ const Inicio = () => {
                   */}
                 </div>
 
-                <h3 className="title-form">Solicitud de Homologación de Equipos Terminales</h3>
+                <h3 className="title-form">Solicitud de Homologación de Equipos Terminales Móviles</h3>
                 <br />
                 <article>
                   <h4 className="title-section">

@@ -34,7 +34,7 @@ const NavProceso = () => {
                         <i className="cuatro">
                             4
                         </i> 
-                        RespuestaSolicitud
+                        Respuesta Solicitud
                     </span>
                 </div>
             </div>

@@ -1,28 +1,52 @@
-.card-tutoriales {
-    top: 349px;
-    left: 909px;
-    width: 287px;
-    height: 57px;
-    background: #F6F8F9 0% 0% no-repeat padding-box;
-    box-shadow: 0px 4px 0px #BABABA24;
-    border-radius: 5px;
-    opacity: 1;
-    padding: 5px 0px 0px 0px;
-    margin: 8px 0px 20px 0px;
-  }
-  
-  .link-tutoriales {
-    color: #004884;
-    text-align: left;
-    padding: 0px 0px 0px 25px;
-    font: normal 600 16px/50px Montserrat;
-    opacity: 1;
+.accordion {
+  max-width: 600px;
+  color: var(--titulo-subtitulo);
+  font: normal 600 16px/20px Montserrat;
+  opacity: 1;
+  margin: 5px 20px 25px 20px;
+}
+
+.fa_text {
+  text-align: center;
+}
+
+.fa_text:hover {
+  color: #3366CC;
+  text-decoration-line: underline;
+}
+/*
+.accordion-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0px 4px 0px #BABABA24;
+  background-color: var(--color-white-two);
+  outline: var(--color-white-two) solid;
+  margin: 0px 0px 25px 0px;
+}
+
+.accordion-title:hover {
+  background-color: var(--color-white-two);
+}
+
+.accordion-title,
+.accordion-content {
+  padding: 1rem;
+}
+
+.accordion-content {
+  background-color: var(--color-white-two);
+  outline: var(--color-white-two) solid;
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    font-size: 18px;
   }
 
-  .link-tutoriales:link, .link-tutoriales:visited, .link-tutoriales:active {
-    color: var(--titulo-subtitulo);
+  .accordion {
+    width: 90%;
   }
-
-  .link-tutorialesa:link:hover, .link-tutoriales:visited:hover, .link-tutoriales:active:hover {
-    text-decoration: underline;
-  }
+}
+*/

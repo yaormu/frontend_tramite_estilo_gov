@@ -15,8 +15,7 @@ export default function ConsultaTramite() {
         </div>
         <div className="body-acciones">
           <p className="texto-card">
-            Consulte el estado de sus solicitudes ante la Comisión de Regulación
-            de Comunicaciones.
+            Consulta el estado de tu Trámite de Homologación de Equipos Terminales Móviles ante la Comisión de Regulación de Comunicaciones.
           </p>
         </div>
       </div>

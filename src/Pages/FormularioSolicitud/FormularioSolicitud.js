@@ -1144,14 +1144,14 @@ const FormularioSolicitud = () => {
           <>
             <Navegacion
               inicio="Inicio"
-              pagina="Solicitud de Homologación..."
-              paginaActual="Formulario de Solicitud de Homologación..."
+              pagina="Solicitud de Homologación"
+              paginaActual="Solicitud de Homologación de Equipos"
             />
             <NavProceso />
 
             <br />
             <h3 className="title-form">
-              Formulario de Solicitud de Homologación de Equipos Terminales
+              Solicitud de Homologación de Equipos Terminales
               Móviles
             </h3>
             <br />

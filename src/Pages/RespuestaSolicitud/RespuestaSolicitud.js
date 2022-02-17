@@ -27,7 +27,7 @@ const RespuestaSolicitud = () => {
           <div className="col-md-8">
             <Navegacion
               inicio="Inicio"
-              pagina="Solicitud de Homologación..."
+              pagina="Solicitud de Homologación"
               paginaActual="Conoce el Estado de tú Solicitud"
             />
             <Instancia4 />
@@ -40,8 +40,8 @@ const RespuestaSolicitud = () => {
             </p>
             <br />
             <p style={{ color: "#A80521", fontSize: "15px" }}>
-              El tiempo aproximado de RespuestaSolicitud es de diez (10) dias hábiles
-              apartir de la fecha de radicación:
+              El tiempo aproximado de respuesta a la solicitud es de quince (15) dias hábiles
+              apartir de la fecha de radicado:
             </p>
             <br />
 
