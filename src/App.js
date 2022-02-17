@@ -24,12 +24,12 @@ import PruebaRespuesta from "./Pages/PruebaRespuesta/PruebaRespuesta";
 import Prueba from "./components/Cards/Prueba/Prueba";
 
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
 
 
 const App = () => {
   return (
-    <Router>
+    <HashRouter>
       <div className="App">
         <Navbar />  
         
@@ -50,7 +50,7 @@ const App = () => {
         <Route path="/PruebaRespuesta" element={<PruebaRespuesta />} />
         <Route path="/Prueba" element={<Prueba />} />
       </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 

@@ -1480,9 +1480,10 @@ const FormularioSolicitud = () => {
               </MensajeExito>
             )}
             </Formulario>
-            {isFormVisible ? (<></>) : (
-          <View data="" />
-        )}
+            
+            {/*
+              isFormVisible ? (<></>) : ( <View data="" /> )
+            */}
         </>
           </div>
           
