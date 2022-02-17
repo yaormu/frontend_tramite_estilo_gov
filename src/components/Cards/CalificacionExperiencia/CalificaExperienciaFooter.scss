@@ -1,5 +1,7 @@
-titulo-exp {
-  line-height: 15px;
+.titulo-exp {
+  font: normal normal bold 16px/24px Montserrat;
+  color: var(--titulo-subtitulo);
+  line-height: 20px;
 }
 
 .comentarios-footer {
