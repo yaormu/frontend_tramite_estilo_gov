@@ -52,7 +52,8 @@ import MenuDesplegable from "../../components/MenuDesplegable/MenuDesplegable";
 
 const FormularioSolicitud = () => {
   
-  
+  //Validar TAC
+  const [tac, setTac] = useState({campo:"", valido: null});
 
   // Validar Datos de identificación
   const [persona, cambiarPersona] = useState({ campo: "", valido: null });
@@ -106,6 +107,7 @@ const FormularioSolicitud = () => {
   const [estadoModal, cambiarEstadoModal] = useState(false);
   const [estadoModalTerminos, cambiarEstadoModalTerminos] = useState(false);
   const [estadoModalDatos, cambiarEstadoModalDatos] = useState(false);
+  const [estadoModalTac, cambiarEstadoModalTac] = useState(false);
 
   //Dependiendo estado captcha a seleccionado dejar enviar formulario
   const [captchaValido, cambiarCaptchaValido] = useState(null);
@@ -121,6 +123,7 @@ const FormularioSolicitud = () => {
     telefono: /^\d{7,14}$/, // 7 a 14 numeros.
     digitoV: /^\d{1,1}$/, // 1 a 1 numero.
     minimoCaracteres:  /^.{2,50}$/, //Minimo 2 caracteres y máximo 50
+    validaTac: /^\d{9,10}$/, // 7 a 14 numeros
   };
 
   // Campo confirmar Número de Identificación se igual campo a comprobar
@@ -1153,7 +1156,7 @@ const FormularioSolicitud = () => {
             </h3>
             <br />
             <br />
-            {isFormVisible ? (
+            
             <Formulario className="row" onSubmit={handleSubmit}>
               <div className="titulo-indicativo">
                 <h4 className="subtitle-form">Datos de identificación</h4>
@@ -1336,12 +1339,15 @@ const FormularioSolicitud = () => {
                 datos de la GSMA.
               </p>
               <br />
-              <div>
-                <span className="button-carga-principal btn-file">
-                  Agregar TAC
-                  <input type="file" />
-                </span>
-              </div>
+              <Boton>
+              <a
+                className="aceptacionTAC"
+                onClick={() => cambiarEstadoModalTac(!estadoModalTac)}
+                style={{ color: "#FFFF", font: "normal 600 15px 'Work Sans'" }}
+              >
+                  AGREGAR TAC
+                </a>
+              </Boton>
               <br />
               <br />
             </div>
@@ -1354,8 +1360,19 @@ const FormularioSolicitud = () => {
                   <th>Acciones</th>
                 </tr>
                 <tr>
-                  <td data-th="datos">Sin datos</td>
-                  <td data-th="accion"> ... </td>
+                  <td data-th="datos">{tac.campo}</td>
+                  <td data-th="accion">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                    </svg>
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                    </svg>
+                    
+                  </td>
                 </tr>
               </table>
             </div>
@@ -1463,8 +1480,8 @@ const FormularioSolicitud = () => {
               </MensajeExito>
             )}
             </Formulario>
-            ) : (
-          <View data={formValues} />
+            {isFormVisible ? (<></>) : (
+          <View data="" />
         )}
         </>
           </div>
@@ -1520,6 +1537,50 @@ const FormularioSolicitud = () => {
       <CalificaExperienciaFooter />
       <Footer />
       <FooterGov />
+
+      {/* MODAL AGREGAR TAC */}
+      <Modal
+        estado={estadoModalTac}
+        cambiarEstado={cambiarEstadoModalTac}
+        titulo="Agregar TAC"
+        mostrarHeader={true}
+        mostrarOverlay={true}
+        posicionModal={"start"}
+        padding={"10px"}
+        width={"400px"}
+        min-height={"400px"}
+      >
+      
+          <Contenido>
+            <div>
+              <h1>TAC</h1>
+            </div>
+            <div>
+            <ComponenteInput
+              estado={tac}
+              cambiarEstado={setTac}
+              tipo="text"
+              label="Número de TAC"
+              placeholder="Ej: 0124575875"
+              name="tac"
+              leyendaError="Solo números, minimo 8 y máximo 10"
+              expresionRegular={expresiones.validaTac}
+            />
+            </div>
+            <br/>
+            <ContenedorBotones> 
+              <PrimaryButton onClick={() => cambiarEstadoModalTac(!estadoModalTac)}>
+                 ACEPTAR
+              </PrimaryButton>
+              <br/>
+              <SecondaryButton onClick={() => cambiarEstadoModalTac(!estadoModalTac)}>
+                CANCELAR
+              </SecondaryButton>
+            </ContenedorBotones>
+          </Contenido>
+    
+        
+      </Modal>
 
       {/* MODAL DE ACEPTAR FORMULARIO */}
       <Modal
