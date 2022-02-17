@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 import Header from "../../components/Header/Header";
 import NavProceso from "../../components/NavProceso/NavProceso";
 import BotonTutoriales from "../../components/Botones/BotonTutoriales/BotonTutoriales";
@@ -12,12 +16,25 @@ import FooterGov from "../../components/FooterGov/FooterGov";
 import Instancia3 from "../../components/NavProceso/Instancia3";
 import Navegacion from "../../components/Navigation/Navegacion";
 
-import { Boton } from "../FormularioSolicitud/elementos/Formularios";
+import styled, {css} from 'styled-components';
+
+const exportPdf = () => {
+
+  html2canvas(document.querySelector("#capture")).then(canvas => {
+     document.body.appendChild(canvas);  // if you want see your screenshot in body.
+     const imgData = canvas.toDataURL('image/png');
+     const pdf = new jsPDF();
+     pdf.addImage(imgData, 'PNG', 0, 0);
+     pdf.save("ResumenSolicitudEquipo.pdf"); 
+ });
+
+}
+
 
 const ProcesoSolicitud = () => {
   return (
     <>
-      <div className="container">
+      <div className="container" id="capture">
         <Header />
         <div className="row">
           <div className="col-md-8">
@@ -32,24 +49,23 @@ const ProcesoSolicitud = () => {
               Resumen Solicitud Homologación Equipo Términal Móvil
             </h3>
             <br />
-            
 
             <div className="container p-0">
               <div className="row">
-                
                 <div className="col-md-12 p-0">
                   <p>
-                    La información ha sido guardada exitosamente, el número de radicado es: 2021705216.
-                    Por favor, conserva este número para realizar seguimiento al proceso del trámite de Homologación 
-                    de Equipos Terminales Móviles.
+                    La información ha sido guardada exitosamente, el número de
+                    radicado es: 2021705216. Por favor, conserva este número
+                    para realizar seguimiento al proceso del trámite de
+                    Homologación de Equipos Terminales Móviles.
                   </p>
-            
+
                   <p style={{ color: "#A80521", fontSize: "15px" }}>
-                    Tiempo de Respuesta aproximadamente en 10 días habiles
-                    a partir de la fecha rádicado.
+                    Tiempo de Respuesta aproximadamente en 10 días habiles a
+                    partir de la fecha rádicado.
                   </p>
                 </div>
-                
+
                 <div className="col-md-6 p-1">
                   <strong>Fecha de registro</strong>
                   <p>2021-09-28 10:45</p>
@@ -61,9 +77,7 @@ const ProcesoSolicitud = () => {
                 </div>
 
                 <div className="titulo-indicativo col-md-12">
-                  <h3 className="subtitle-form">
-                    Datos de identificación
-                  </h3>
+                  <h3 className="subtitle-form">Datos de identificación</h3>
                 </div>
 
                 <div className="col-md-6 p-1">
@@ -76,14 +90,14 @@ const ProcesoSolicitud = () => {
                   <p>1091452369</p>
                 </div>
 
-                <span/>
+                <span />
 
                 <div className="col-md-6 p-1">
                   <strong>Nombre Completo</strong>
                   <p>CARLOS ALBERTO ORJUELA BENITEZ</p>
                 </div>
 
-                <span/>
+                <span />
 
                 <div className="col-md-6 p-1">
                   <strong>País</strong>
@@ -126,7 +140,7 @@ const ProcesoSolicitud = () => {
                   <p>Teléfono Inteligente</p>
                 </div>
 
-                <span/>
+                <span />
 
                 <div className="col-md-6 p-1">
                   <strong>Marca</strong>
@@ -157,12 +171,12 @@ const ProcesoSolicitud = () => {
                     <tr>
                       <td data-th="etiqueta">01013200</td>
                     </tr>
-                    
                   </table>
                 </div>
 
                 <div>
-                  <br/><br/>
+                  <br />
+                  <br />
                 </div>
 
                 <div className="tabla">
@@ -185,14 +199,19 @@ const ProcesoSolicitud = () => {
                     </tr>
                   </table>
                 </div>
-                
               </div>
+
+              
             </div>
             <br />
+            
 
-            <div>
-              <Boton>
-                <Link to="/">FINALIZAR RADICACIÓN</Link>
+            <div className="col-md-12">
+              <Boton 
+                onClick={(e) => {exportPdf()}}
+                color="red"
+              >
+                <a>Descargar</a>
               </Boton>
             </div>
           </div>
@@ -220,3 +239,29 @@ const ProcesoSolicitud = () => {
 };
 
 export default ProcesoSolicitud;
+
+const Boton = styled.button `
+justify-content: center;
+    display: flex;
+    background-color: #3366CC;
+    border: 1.5px solid #3366CC;
+    border-radius: 30px;
+    color: #ffff;
+    font: normal bold 15px "Works Sans", sans-serif;
+    margin: 10px 150px 100px 250px;
+    padding: 15px 5px 15px 5px;
+    text-transform: uppercase;
+    white-space: pre-line;
+    width: 30%;
+   
+
+    a {
+        color: #ffff;
+        font: normal bold 15px/14px "Works Sans", sans-serif;
+    }
+
+    &:hover {
+        background-color: #004884;
+        border-color: #004884;
+    }
+`;
