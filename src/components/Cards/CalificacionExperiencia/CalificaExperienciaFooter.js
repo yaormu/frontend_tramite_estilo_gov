@@ -12,7 +12,7 @@ const CalificaExperienciaFooter = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-3">
-              <h5>¿Cómo fue tu experiencia durante el proceso?</h5>
+              <h5 className="titulo-exp">¿Cómo fue tu experiencia durante el proceso?</h5>
             </div>
             <div className="col-md-4">
               <div className="calificacionfacil" onclick="TramiteFacil()">

@@ -25,7 +25,6 @@ import "./ConsultaEstadoTramite.scss";
 import styled from "styled-components";
 
 import {
-  Formulario,
   MensajeExito,
   MensajeError,
 } from "../FormularioSolicitud/elementos/Formularios";
@@ -110,7 +109,7 @@ const ConsultaEstadoTramite = () => {
                   expresionRegular={expresiones.numRadicado}
                 />
 
-                <span />
+                <br/>
 
                 <ReCAPTCHA
                   ref={captcha}
@@ -120,12 +119,12 @@ const ConsultaEstadoTramite = () => {
 
                 {captchaValido === false && (
                   <>
-                    <span />
                     <p className="error-captcha">Por favor acepta el captcha</p>
                   </>
                 )}
 
-                <span />
+                <br/>
+
                 <BotonEstado type="submit">
                   <Link to="/RespuestaSolicitud">CONSULTAR</Link>
                 </BotonEstado>
@@ -210,7 +209,7 @@ const BotonEstado = styled.button`
   margin: 10px -12px 10px 0px;
   text-transform: uppercase;
   text-align: center;
-  width: 60%;
+  width: 30%;
 
   a {
     color: #ffff;
@@ -223,4 +222,8 @@ const BotonEstado = styled.button`
     color: red;
     text-color: red;
   }
+`;
+
+const Formulario = styled.form `
+    
 `;
