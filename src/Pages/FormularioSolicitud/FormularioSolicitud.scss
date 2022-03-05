@@ -31,8 +31,12 @@ h3 {
     margin: 20px 0px 0px 0px;
 }
 
-.form-control {
-    padding: 0px 0px 5px 0px;
+.form-control-tac {
+    display: flex;
+    width: 100%;
+    padding: 2px;
+    margin: 0px 0px 2px 0px;
+    text-align: center; 
 }
 
 .subtitle-form {
@@ -203,3 +207,37 @@ td {
     padding: 0;
 }
 
+.contenido-verificacion {
+    justify-content: center;
+}
+
+.link-modal {
+    color:#0277BD;
+}
+
+.titulo-verificacion {
+    margin: 0;
+    text-align: center;
+}
+
+.recaptcha-formulario {
+    text-align: center;
+}
+
+.boton-registro {
+    display: flex;
+    margin: -30px 0px 0px 0px;
+    justify-content: center;
+}
+
+.txt-terminos {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    color: red;
+}
+
+.check-terminos {
+    margin: 10px 0px 0px 0px;
+}

@@ -1,11 +1,17 @@
+.boton-inicio {
+    text-align: center;
+    width: 120%;
+}
+
+
 .btn-inicio {
     background-color: #FFFF;
     border-radius: 30px;
     border: 2px solid #3366CC;
-    padding: 11px 0px 11px 0px;
-    letter-spacing: 1px;
-    line-height: 1.5;
-    margin: 10px -12px 10px 0px; 
+    color: #3366CC;
+    font: normal 500 0.9375rem "Work Sans", sans-serif;
+    margin: 0; 
+    padding: 10px 15px 10px 15px;
     text-transform: uppercase;
     text-align: center;
     width: 100%;
@@ -15,14 +21,4 @@
     background-color: #13386d;
     border-color: #13386d;
     color: #FFFF;
-}
-
-.inicio {
-    color: #3366CC;
-    font: normal 600 15px "Work Sans", sans-serif;
-}
-
-.inicio:hover {
-    color: #FFFF !important;
-    text-decoration: none !important;
 }

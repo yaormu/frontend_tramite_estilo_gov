@@ -19,9 +19,9 @@ import ProcesoSolicitud from "./Pages/ProcesoSolicitud/ProcesoSolicitud";
 import RespuestaSolicitud from "./Pages/RespuestaSolicitud/RespuestaSolicitud";
 
 //Componentes de pruebas, para eliminar posteriormente
-import PruebaTramite from "./Pages/PruebaTramite/PruebaTramite";
-import PruebaRespuesta from "./Pages/PruebaRespuesta/PruebaRespuesta";
-import Prueba from "./components/Cards/Prueba/Prueba";
+import PruebaTramite from "./Pages/PRUEBAS/PruebaTramite/PruebaTramite";
+import PruebaRespuesta from "./Pages/PRUEBAS/PruebaRespuesta/PruebaRespuesta";
+import Prueba from "./Pages/PRUEBAS/Prueba/Prueba";
 
 
 import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";

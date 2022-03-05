@@ -6,8 +6,8 @@ import NavProceso from "../../components/NavProceso/NavProceso";
 import SolicitudTramite from "../../components/Cards/SolicitudTramite/SolicitudTramite";
 import ConsultaTramite from "../../components/Cards/ConsultaTramite/ConsultaTramite";
 
-import BotonTutoriales from "../../components/Botones/BotonTutoriales/BotonTutoriales"
-import BotonDeDudas from "../../components/Botones/BotonDeDudas/BotonDeDudas";
+import CardTutoriales from "../../components/CardTutoriales/CardTutoriales"
+import CardDudas from "../../components/CardDudas/CardDudas";
 
 import "./Inicio.scss";
 //import ContactForm from "../../components/ContactForm/ContactForm";
@@ -150,8 +150,8 @@ const Inicio = () => {
           <div className="col-lg-3 p-0">
             <aside className="aside">
               <br /><br />
-              <BotonTutoriales />
-              <BotonDeDudas />
+              <CardTutoriales />
+              <CardDudas />
 
               <br />
               <br />

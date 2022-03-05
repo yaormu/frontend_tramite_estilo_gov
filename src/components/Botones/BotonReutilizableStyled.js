@@ -10,7 +10,7 @@ const Button = styled.button`
 `;
 
 export const PrimaryButton = Button.extend`
-  background-color: #4682b4;
+  background-color: red;
 `;
 
 export const SecondaryButton = Button.extend`

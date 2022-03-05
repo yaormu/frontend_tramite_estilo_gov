@@ -8,7 +8,13 @@ const Header = () => {
             <div className="row">
                 <div className="col-md-10">
                     <a href="https://www.crcom.gov.co/es/pagina/inicio" Target="_blank">
-                        <img className="img-crc" alt="logo de CRC" src={logoCRC}></img>  
+                        <img 
+                            className="img-crc" 
+                            alt="logo de CRC" 
+                            src={logoCRC}
+                            data-toggle="tooltip" 
+                            title="Logo CRC, aquí se puede dirigir a la página principal"   
+                        />  
                     </a>
                 </div>
             </div>

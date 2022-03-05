@@ -1,0 +1,49 @@
+.accordion {
+    max-width: 600px;
+    color: var(--titulo-subtitulo);
+    font: normal 600 16px/20px Montserrat;
+    opacity: 1;
+}
+  
+  .accordion-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0px 4px 0px #BABABA24;
+    background-color: var(--color-white-two);
+    outline: var(--color-white-two) solid;
+  }
+  
+  .accordion-title:hover {
+    background-color: var(--color-white-two);
+  }
+  
+  .accordion-title,
+  .accordion-content {
+    padding: 1rem;
+  }
+  
+  .accordion-content {
+    background-color: var(--color-white-two);
+    outline: var(--color-white-two) solid;
+    font-size: 10px;
+  }
+
+  .accordion-body {
+    padding: 0px;
+  }
+  
+  @media screen and (max-width: 700px) {
+    body {
+      font-size: 18px;
+    }
+  
+    .accordion {
+      width: 90%;
+    }
+  }
+
+.linea-gratuita {
+  margin: 0px 0px 0px 16px;
+}

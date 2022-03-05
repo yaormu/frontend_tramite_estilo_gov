@@ -7,12 +7,12 @@ import Header from "../../components/Header/Header";
 import Navegacion from "../../components/Navigation/Navegacion";
 import NavProceso from "../../components/NavProceso/NavProceso";
 
-import BotonTutoriales from "../../components/Botones/BotonTutoriales/BotonTutoriales";
-import BotonDeDudas from "../../components/Botones/BotonDeDudas/BotonDeDudas";
+import CardTutoriales from "../../components/CardTutoriales/CardTutoriales";
+import CardDudas from "../../components/CardDudas/CardDudas";
 import BotonInicio from "../../components/Botones/BotonInicio/BotonInicio";
 
-import CalificacionExperiencia from "../../components/Cards/CalificacionExperiencia/CalificacionExperiencia";
-import CalificaExperienciaFooter from "../../components/Cards/CalificacionExperiencia/CalificaExperienciaFooter";
+import CalificacionExperiencia from "../../components/CalificacionExperiencia/CalificacionExperiencia"
+import CalificaExperienciaFooter from "../../components/CalificacionExperiencia/CalificaExperienciaFooter"
 
 import {
   faCheckCircle,
@@ -38,7 +38,7 @@ const ConsultaEstadoTramite = () => {
   const [formularioValido, cambiarFormularioValido] = useState(null);
 
   const expresiones = {
-    numRadicado: /^\d{6,14}$/, // 6 a 14 numeros.
+    numRadicado: /^\d{9,11}$/, // min 9 y max 11 numeros.
   };
 
   const captcha = useRef(null);
@@ -76,7 +76,7 @@ const ConsultaEstadoTramite = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container" id="container">
         <Header />
         <div className="row">
           {!usuarioValido && (
@@ -99,7 +99,7 @@ const ConsultaEstadoTramite = () => {
               <br />
               
               <Formulario action="" onSubmit={submit}>
-                <div className="col-md-6">
+                <div className="col-md-5" >
                   <ComponenteInput
                     estado={radicado}
                     cambiarEstado={cambiarRadicado}
@@ -155,14 +155,11 @@ const ConsultaEstadoTramite = () => {
             <aside className="aside">
               <br />
               <br />
-              <BotonTutoriales />
-              <BotonDeDudas />
-              <br />
-              <br />
+              <CardTutoriales />
+              <CardDudas />
               <CalificacionExperiencia />
               <br />
-              <br />
-              <BotonInicio />
+              <BotonInicio name="volver a inicio del tramite" />
             </aside>
           </div>
         </div>

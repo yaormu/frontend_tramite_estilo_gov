@@ -72,14 +72,17 @@ footer {
       text-decoration: underline;
     }
     span {
-      font-size: 12px;
       color: var(--titulo-subtitulo);
-      margin: 0px 4px 0px 2px;
-      text-decoration: underline;
+      text-decoration: underline;    
     }
     svg {
       fill: var(--titulo-subtitulo);
+      margin: 0px 5px 0px 0px;
     }
+}
+
+.fa_text {
+  margin: 0px 15px 0px 0px !important;
 }
 
 .imgAsistente {

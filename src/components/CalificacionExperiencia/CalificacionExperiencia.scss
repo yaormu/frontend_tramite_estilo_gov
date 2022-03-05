@@ -1,0 +1,117 @@
+.txt-experiencia {
+  font: normal 800 20px/30px "Montserrat" sans-serif;
+  color: #3366CC;
+}
+
+.txt-experiencia:hover {
+  color: #004884;
+}
+
+.accordion-body-califica {
+    display: flex;
+}
+
+.email {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 20px 0px 20px;
+    padding: 0px 20px 0px 0px;
+    text-align: center;
+}
+
+svg {
+  fill: #3366CC;
+}
+
+svg:hover {
+    fill: #004884;
+  }
+
+/*
+.email:hover {
+    background-color: blueviolet;
+}
+*/
+.textoarea {
+  margin: 5px 15px 5px 15px;
+  padding: 0px;
+}
+
+.textoarea::placeholder {
+  color: #BABABA;
+}
+
+.title-comentario {
+  text-align: center;
+}
+
+.accordion {
+    max-width: 600px;
+    color: var(--titulo-subtitulo);
+    font: normal 600 16px/20px Montserrat;
+    opacity: 1;
+    background-color: red;
+}
+  
+  .accordion-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0px 4px 0px #BABABA24;
+    background-color: var(--color-white-two);
+    outline: var(--color-white-two) solid;
+    width: 120%;
+  }
+  
+  .accordion-title:hover {
+    background-color: var(--color-white-two);
+  }
+  
+  .accordion-title,
+  .accordion-content {
+    padding: 1rem;
+  }
+  
+  .accordion-content {
+    background-color: var(--color-white-two);
+    outline: var(--color-white-two) solid;
+    width: 120%;
+  }
+
+  ::placeholder {
+    color: var(--titulo-subtitulo);
+    font-size: 0.8em;
+  }
+  
+  @media screen and (max-width: 700px) {
+    body {
+      font-size: 18px;
+    }
+  
+    .accordion {
+      width: 90%;
+    }
+  }
+
+
+.btn-comentarios {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  border: 2px solid #3366CC;
+  border-radius: 30px;
+  color: #3366CC;
+  margin: 0px;
+  padding: 12px 0px 12px 0px;
+  text-transform: uppercase;
+  white-space: pre-line;
+  width: 100%;
+  font: normal 500 15px "Montserrat", sans-serif;
+}
+
+.btn-comentarios:hover {
+  background-color: var(--titulo-subtitulo);
+  border-color: #004884;
+  color: #fff;
+}

@@ -6,10 +6,12 @@ import html2canvas from 'html2canvas';
 
 import Header from "../../components/Header/Header";
 import NavProceso from "../../components/NavProceso/NavProceso";
-import BotonTutoriales from "../../components/Botones/BotonTutoriales/BotonTutoriales";
-import BotonDeDudas from "../../components/Botones/BotonDeDudas/BotonDeDudas";
-import CalificacionExperiencia from "../../components/Cards/CalificacionExperiencia/CalificacionExperiencia";
+import CardTutoriales from "../../components/CardTutoriales/CardTutoriales";
+import CardDudas from "../../components/CardDudas/CardDudas";
+
+import CalificacionExperiencia from "../../components/CalificacionExperiencia/CalificacionExperiencia";
 import BotonInicio from "../../components/Botones/BotonInicio/BotonInicio";
+
 import Footer from "../../components/Footer/Footer";
 import FooterGov from "../../components/FooterGov/FooterGov";
 
@@ -61,8 +63,7 @@ const ProcesoSolicitud = () => {
                   </p>
 
                   <p style={{ color: "#A80521", fontSize: "15px" }}>
-                    Tiempo de Respuesta aproximadamente en 10 días habiles a
-                    partir de la fecha rádicado.
+                    Tiempo de Respuesta aproximadamente en quince (15) días hábiles a partir de la fecha radicado.
                   </p>
                 </div>
 
@@ -206,13 +207,14 @@ const ProcesoSolicitud = () => {
             <br />
             
 
-            <div className="col-md-12">
+            <div className="col-md-12 botones-finalizar">
               <Boton 
                 onClick={(e) => {exportPdf()}}
                 color="red"
               >
                 <a>Descargar</a>
               </Boton>
+              
             </div>
           </div>
           <div className="col-lg-1"></div>
@@ -220,8 +222,8 @@ const ProcesoSolicitud = () => {
             <aside className="aside">
               <br />
               <br />
-              <BotonTutoriales />
-              <BotonDeDudas />
+              <CardTutoriales />
+              <CardDudas />
               <br />
               <br />
               <CalificacionExperiencia />

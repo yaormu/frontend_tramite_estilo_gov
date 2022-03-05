@@ -10,9 +10,7 @@ const Formulario = styled.form `
     display: flex;
 `;
 
-
-
-const Label = styled.label `
+ const Label = styled.label `
     display: block;
     font: normal 500 16px Work Sans;
     line-height: 1.5;
@@ -20,6 +18,7 @@ const Label = styled.label `
     color: #4B4B4B;
     padding: padding: 22px 0px 0px 0px;
     cursor: pointer;
+    text-align: left;
 
     ${props => props.valido === 'false' && css `
         color: ${colores.error};
@@ -28,7 +27,7 @@ const Label = styled.label `
 
 const GrupoInput = styled.div `
     position: relative;
-    z-index: 90;
+    z-index: 0;
 `;
 
 const Input = styled.input `

@@ -2,10 +2,13 @@ import React from "react";
 //import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 //import NavProceso from "../../components/NavProceso/NavProceso";
-import BotonTutoriales from "../../components/Botones/BotonTutoriales/BotonTutoriales";
-import BotonDeDudas from "../../components/Botones/BotonDeDudas/BotonDeDudas";
-import CalificacionExperiencia from "../../components/Cards/CalificacionExperiencia/CalificacionExperiencia";
+import CardTutoriales from "../../components/CardTutoriales/CardTutoriales";
+import CardDudas from "../../components/CardDudas/CardDudas";
+
+import CalificacionExperiencia from "../../components/CalificacionExperiencia/CalificacionExperiencia";
+import CalificaExperienciaFooter from "../../components/CalificacionExperiencia/CalificaExperienciaFooter";
 import BotonInicio from "../../components/Botones/BotonInicio/BotonInicio";
+
 import Footer from "../../components/Footer/Footer";
 import FooterGov from "../../components/FooterGov/FooterGov";
 
@@ -13,7 +16,7 @@ import FooterGov from "../../components/FooterGov/FooterGov";
 
 import Navegacion from "../../components/Navigation/Navegacion";
 import Instancia4 from "../../components/NavProceso/Instancia4";
-import CalificaExperienciaFooter from "../../components/Cards/CalificacionExperiencia/CalificaExperienciaFooter";
+
 
 // Estilos generales del formulario
 import "./RespuestaSolicitud.scss";
@@ -51,16 +54,12 @@ const RespuestaSolicitud = () => {
                 <th>Fecha Radicación</th>
                 <th>Fecha Salida</th>
                 <th>Radicación Salida</th>
-                <th>Documento</th>
               </tr>
               <tr>
                 <td data-th="estado">Pendiente</td>
                 <td data-th="radicado">10-02-2022</td>
                 <td data-th="salida"></td>
                 <td data-th="salidaRadicado"></td>
-                <td data-th="documento">
-                  <a className="mostraDocumento" href="#" Target="_blank"></a>
-                </td>
               </tr>
             </table>
             <br />
@@ -75,8 +74,8 @@ const RespuestaSolicitud = () => {
             <aside className="aside">
               <br />
               <br />
-              <BotonTutoriales />
-              <BotonDeDudas />
+              <CardTutoriales />
+              <CardDudas />
               <br />
               <br />
               <CalificacionExperiencia />
